@@ -1,0 +1,45 @@
+.homePage {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #5C27FE, #FF2E93);
+    height: 100dvh;
+    font-family: sans-serif;
+}
+
+.home-icon-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+}
+
+.home-icon-area img {
+     width: 60px;
+}
+
+.homepage-into-text {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.startButton button {
+    background-color: #339CFF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4S ease-in;
+    transform: scale(1);
+}
+
+.startButton button:hover {
+  background-color: #1d77ca;
+  transform: scale(1.07);
+}
