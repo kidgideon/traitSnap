@@ -1,333 +1,564 @@
 {
-  "traits": {
-    "Confidence": [
-      {
-        "id": "C1",
-        "question": "Would you rather lead a team project or follow instructions quietly?",
-        "options": ["Lead a team project", "Follow instructions quietly"],
-        "values": [1, 0]
-      },
-      {
-        "id": "C2",
-        "question": "Would you rather confront someone about a problem or avoid the confrontation?",
-        "options": ["Confront the problem", "Avoid the confrontation"],
-        "values": [1, 0]
-      },
-      {
-        "id": "C3",
-        "question": "Would you rather speak up in a meeting or stay silent even if you disagree?",
-        "options": ["Speak up", "Stay silent"],
-        "values": [1, 0]
-      },
-      {
-        "id": "C4",
-        "question": "Would you rather try something new alone or wait for others to join first?",
-        "options": ["Try alone", "Wait for others"],
-        "values": [1, 0]
-      },
-      {
-        "id": "C5",
-        "question": "Would you rather take credit for success or let others take the spotlight?",
-        "options": ["Take credit", "Let others have it"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Humor": [
-      {
-        "id": "H1",
-        "question": "Would you rather tell a joke that no one gets or laugh alone at a joke no one else finds funny?",
-        "options": ["Tell a joke no one gets", "Laugh alone at a joke"],
-        "values": [1, 0]
-      },
-      {
-        "id": "H2",
-        "question": "Would you rather be the class clown or the serious one everyone respects?",
-        "options": ["Be the class clown", "Be the serious one"],
-        "values": [1, 0]
-      },
-      {
-        "id": "H3",
-        "question": "Would you rather make sarcastic remarks or keep your comments straightforward?",
-        "options": ["Make sarcastic remarks", "Keep comments straightforward"],
-        "values": [1, 0]
-      },
-      {
-        "id": "H4",
-        "question": "Would you rather watch a comedy movie alone or a thriller with friends?",
-        "options": ["Comedy alone", "Thriller with friends"],
-        "values": [1, 0]
-      },
-      {
-        "id": "H5",
-        "question": "Would you rather laugh at yourself in public or stay serious to avoid embarrassment?",
-        "options": ["Laugh at yourself", "Stay serious"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Creativity": [
-      {
-        "id": "CR1",
-        "question": "Would you rather paint a picture or build a model?",
-        "options": ["Paint a picture", "Build a model"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CR2",
-        "question": "Would you rather write a story or solve a puzzle?",
-        "options": ["Write a story", "Solve a puzzle"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CR3",
-        "question": "Would you rather invent something new or improve something existing?",
-        "options": ["Invent new", "Improve existing"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CR4",
-        "question": "Would you rather express yourself through music or visual art?",
-        "options": ["Music", "Visual art"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CR5",
-        "question": "Would you rather brainstorm wild ideas or stick to practical ones?",
-        "options": ["Wild ideas", "Practical ideas"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Intelligence": [
-      {
-        "id": "I1",
-        "question": "Would you rather solve a complex math problem or remember historical facts?",
-        "options": ["Solve math problem", "Remember facts"],
-        "values": [1, 0]
-      },
-      {
-        "id": "I2",
-        "question": "Would you rather learn a new language or master a technical skill?",
-        "options": ["Learn new language", "Master technical skill"],
-        "values": [1, 0]
-      },
-      {
-        "id": "I3",
-        "question": "Would you rather read a scientific article or a philosophical essay?",
-        "options": ["Scientific article", "Philosophical essay"],
-        "values": [1, 0]
-      },
-      {
-        "id": "I4",
-        "question": "Would you rather analyze data or create a theoretical model?",
-        "options": ["Analyze data", "Create model"],
-        "values": [1, 0]
-      },
-      {
-        "id": "I5",
-        "question": "Would you rather memorize details or understand concepts deeply?",
-        "options": ["Memorize details", "Understand deeply"],
-        "values": [0, 1]
-      }
-    ],
-
-    "Kindness": [
-      {
-        "id": "K1",
-        "question": "Would you rather help a stranger or give a gift to a close friend?",
-        "options": ["Help a stranger", "Gift to friend"],
-        "values": [1, 0]
-      },
-      {
-        "id": "K2",
-        "question": "Would you rather listen patiently to someone’s problems or give advice quickly?",
-        "options": ["Listen patiently", "Give advice quickly"],
-        "values": [1, 0]
-      },
-      {
-        "id": "K3",
-        "question": "Would you rather volunteer your time or donate money to charity?",
-        "options": ["Volunteer time", "Donate money"],
-        "values": [1, 0]
-      },
-      {
-        "id": "K4",
-        "question": "Would you rather forgive someone easily or hold a grudge?",
-        "options": ["Forgive easily", "Hold grudge"],
-        "values": [1, 0]
-      },
-      {
-        "id": "K5",
-        "question": "Would you rather comfort a friend or try to fix their problem?",
-        "options": ["Comfort friend", "Fix problem"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Patience": [
-      {
-        "id": "P1",
-        "question": "Would you rather wait in a long line quietly or get frustrated openly?",
-        "options": ["Wait quietly", "Get frustrated"],
-        "values": [1, 0]
-      },
-      {
-        "id": "P2",
-        "question": "Would you rather take your time completing a task or rush to finish early?",
-        "options": ["Take your time", "Rush to finish"],
-        "values": [1, 0]
-      },
-      {
-        "id": "P3",
-        "question": "Would you rather listen to a slow story or interrupt to get to the point?",
-        "options": ["Listen patiently", "Interrupt"],
-        "values": [1, 0]
-      },
-      {
-        "id": "P4",
-        "question": "Would you rather practice a skill repeatedly or switch to something new quickly?",
-        "options": ["Practice repeatedly", "Switch quickly"],
-        "values": [1, 0]
-      },
-      {
-        "id": "P5",
-        "question": "Would you rather wait for a delayed appointment calmly or complain about it?",
-        "options": ["Wait calmly", "Complain"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Courage": [
-      {
-        "id": "CO1",
-        "question": "Would you rather try a dangerous sport or stick to safe activities?",
-        "options": ["Try dangerous sport", "Stick to safe activities"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CO2",
-        "question": "Would you rather stand up against a crowd or stay quiet?",
-        "options": ["Stand up", "Stay quiet"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CO3",
-        "question": "Would you rather take a big risk for reward or play it safe with small gains?",
-        "options": ["Take big risk", "Play it safe"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CO4",
-        "question": "Would you rather face your fears directly or avoid them?",
-        "options": ["Face fears", "Avoid fears"],
-        "values": [1, 0]
-      },
-      {
-        "id": "CO5",
-        "question": "Would you rather be honest even if it hurts or keep silent to avoid conflict?",
-        "options": ["Be honest", "Keep silent"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Loyalty": [
-      {
-        "id": "L1",
-        "question": "Would you rather keep a secret or tell the truth even if it hurts?",
-        "options": ["Keep secret", "Tell truth"],
-        "values": [1, 0]
-      },
-      {
-        "id": "L2",
-        "question": "Would you rather stand by a friend in trouble or stay neutral?",
-        "options": ["Stand by friend", "Stay neutral"],
-        "values": [1, 0]
-      },
-      {
-        "id": "L3",
-        "question": "Would you rather prioritize family over work or work over family?",
-        "options": ["Family first", "Work first"],
-        "values": [1, 0]
-      },
-      {
-        "id": "L4",
-        "question": "Would you rather defend someone’s reputation or stay out of drama?",
-        "options": ["Defend reputation", "Stay out of drama"],
-        "values": [1, 0]
-      },
-      {
-        "id": "L5",
-        "question": "Would you rather forgive betrayal or cut ties immediately?",
-        "options": ["Forgive betrayal", "Cut ties"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Anger": [
-      {
-        "id": "A1",
-        "question": "Would you rather express anger immediately or bottle it up inside?",
-        "options": ["Express anger", "Bottle it up"],
-        "values": [1, 0]
-      },
-      {
-        "id": "A2",
-        "question": "Would you rather confront someone who wronged you or ignore it?",
-        "options": ["Confront", "Ignore"],
-        "values": [1, 0]
-      },
-      {
-        "id": "A3",
-        "question": "Would you rather yell when upset or stay silent?",
-        "options": ["Yell", "Stay silent"],
-        "values": [1, 0]
-      },
-      {
-        "id": "A4",
-        "question": "Would you rather seek revenge or forgive quickly?",
-        "options": ["Seek revenge", "Forgive"],
-        "values": [1, 0]
-      },
-      {
-        "id": "A5",
-        "question": "Would you rather get irritated by small things or stay calm no matter what?",
-        "options": ["Get irritated", "Stay calm"],
-        "values": [1, 0]
-      }
-    ],
-
-    "Ambition": [
-      {
-        "id": "AM1",
-        "question": "Would you rather work hard to achieve a goal or take it easy and enjoy life?",
-        "options": ["Work hard", "Take it easy"],
-        "values": [1, 0]
-      },
-      {
-        "id": "AM2",
-        "question": "Would you rather plan your future meticulously or go with the flow?",
-        "options": ["Plan future", "Go with flow"],
-        "values": [1, 0]
-      },
-      {
-        "id": "AM3",
-        "question": "Would you rather be recognized for success or stay humble and unnoticed?",
-        "options": ["Be recognized", "Stay humble"],
-        "values": [1, 0]
-      },
-      {
-        "id": "AM4",
-        "question": "Would you rather sacrifice free time for career or keep balance regardless?",
-        "options": ["Sacrifice free time", "Keep balance"],
-        "values": [1, 0]
-      },
-      {
-        "id": "AM5",
-        "question": "Would you rather compete to be the best or cooperate to improve together?",
-        "options": ["Compete to be best", "Cooperate"],
-        "values": [1, 0]
-      }
-    ]
-  }
+  "categories": [
+    {
+      "name": "Confidence",
+      "questions": [
+        {
+          "id": "conf_01",
+          "question": "Would you rather lead a team or follow instructions quietly?",
+          "options": [
+            { "text": "Lead a team", "points": 5 },
+            { "text": "Follow instructions quietly", "points": 2 }
+          ]
+        },
+        {
+          "id": "conf_02",
+          "question": "Would you rather speak up in a meeting or stay silent?",
+          "options": [
+            { "text": "Speak up in a meeting", "points": 5 },
+            { "text": "Stay silent", "points": 2 }
+          ]
+        },
+        {
+          "id": "conf_03",
+          "question": "Would you rather try something new without preparation or wait until fully ready?",
+          "options": [
+            { "text": "Try without preparation", "points": 5 },
+            { "text": "Wait until fully ready", "points": 3 }
+          ]
+        },
+        {
+          "id": "conf_04",
+          "question": "Would you rather be the center of attention or blend into the crowd?",
+          "options": [
+            { "text": "Be the center of attention", "points": 5 },
+            { "text": "Blend into the crowd", "points": 2 }
+          ]
+        },
+        {
+          "id": "conf_05",
+          "question": "Would you rather admit when you’re wrong or insist you’re right?",
+          "options": [
+            { "text": "Admit when you’re wrong", "points": 3 },
+            { "text": "Insist you’re right", "points": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Humor",
+      "questions": [
+        {
+          "id": "hum_01",
+          "question": "Would you rather crack a joke in a serious situation or keep quiet?",
+          "options": [
+            { "text": "Crack a joke", "points": 5 },
+            { "text": "Keep quiet", "points": 2 }
+          ]
+        },
+        {
+          "id": "hum_02",
+          "question": "Would you rather laugh at yourself or get offended easily?",
+          "options": [
+            { "text": "Laugh at yourself", "points": 5 },
+            { "text": "Get offended easily", "points": 2 }
+          ]
+        },
+        {
+          "id": "hum_03",
+          "question": "Would you rather watch a comedy or a documentary?",
+          "options": [
+            { "text": "Watch a comedy", "points": 5 },
+            { "text": "Watch a documentary", "points": 2 }
+          ]
+        },
+        {
+          "id": "hum_04",
+          "question": "Would you rather tell a silly joke or stay serious?",
+          "options": [
+            { "text": "Tell a silly joke", "points": 5 },
+            { "text": "Stay serious", "points": 2 }
+          ]
+        },
+        {
+          "id": "hum_05",
+          "question": "Would you rather lighten the mood with humor or keep it formal?",
+          "options": [
+            { "text": "Lighten the mood", "points": 5 },
+            { "text": "Keep it formal", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Creativity",
+      "questions": [
+        {
+          "id": "cre_01",
+          "question": "Would you rather paint or follow instructions to build something?",
+          "options": [
+            { "text": "Paint", "points": 5 },
+            { "text": "Follow instructions", "points": 2 }
+          ]
+        },
+        {
+          "id": "cre_02",
+          "question": "Would you rather come up with new ideas or stick to proven methods?",
+          "options": [
+            { "text": "Come up with new ideas", "points": 5 },
+            { "text": "Stick to proven methods", "points": 2 }
+          ]
+        },
+        {
+          "id": "cre_03",
+          "question": "Would you rather write a story or read one?",
+          "options": [
+            { "text": "Write a story", "points": 5 },
+            { "text": "Read a story", "points": 3 }
+          ]
+        },
+        {
+          "id": "cre_04",
+          "question": "Would you rather invent something or improve existing things?",
+          "options": [
+            { "text": "Invent something", "points": 5 },
+            { "text": "Improve existing things", "points": 3 }
+          ]
+        },
+        {
+          "id": "cre_05",
+          "question": "Would you rather experiment freely or follow a strict plan?",
+          "options": [
+            { "text": "Experiment freely", "points": 5 },
+            { "text": "Follow a strict plan", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Intelligence",
+      "questions": [
+        {
+          "id": "int_01",
+          "question": "Would you rather solve puzzles or socialize at a party?",
+          "options": [
+            { "text": "Solve puzzles", "points": 5 },
+            { "text": "Socialize at a party", "points": 2 }
+          ]
+        },
+        {
+          "id": "int_02",
+          "question": "Would you rather read a book or watch TV?",
+          "options": [
+            { "text": "Read a book", "points": 5 },
+            { "text": "Watch TV", "points": 2 }
+          ]
+        },
+        {
+          "id": "int_03",
+          "question": "Would you rather learn a new language or a new sport?",
+          "options": [
+            { "text": "Learn a new language", "points": 5 },
+            { "text": "Learn a new sport", "points": 3 }
+          ]
+        },
+        {
+          "id": "int_04",
+          "question": "Would you rather ask questions or accept answers at face value?",
+          "options": [
+            { "text": "Ask questions", "points": 5 },
+            { "text": "Accept answers", "points": 2 }
+          ]
+        },
+        {
+          "id": "int_05",
+          "question": "Would you rather analyze data or trust intuition?",
+          "options": [
+            { "text": "Analyze data", "points": 5 },
+            { "text": "Trust intuition", "points": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kindness",
+      "questions": [
+        {
+          "id": "kind_01",
+          "question": "Would you rather help a stranger or mind your own business?",
+          "options": [
+            { "text": "Help a stranger", "points": 5 },
+            { "text": "Mind your own business", "points": 2 }
+          ]
+        },
+        {
+          "id": "kind_02",
+          "question": "Would you rather forgive easily or hold grudges?",
+          "options": [
+            { "text": "Forgive easily", "points": 5 },
+            { "text": "Hold grudges", "points": 1 }
+          ]
+        },
+        {
+          "id": "kind_03",
+          "question": "Would you rather volunteer for charity or avoid it?",
+          "options": [
+            { "text": "Volunteer for charity", "points": 5 },
+            { "text": "Avoid it", "points": 2 }
+          ]
+        },
+        {
+          "id": "kind_04",
+          "question": "Would you rather comfort a friend or ignore their problems?",
+          "options": [
+            { "text": "Comfort a friend", "points": 5 },
+            { "text": "Ignore their problems", "points": 1 }
+          ]
+        },
+        {
+          "id": "kind_05",
+          "question": "Would you rather share your resources or keep them to yourself?",
+          "options": [
+            { "text": "Share your resources", "points": 5 },
+            { "text": "Keep them to yourself", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Patience",
+      "questions": [
+        {
+          "id": "pat_01",
+          "question": "Would you rather wait calmly or get frustrated quickly?",
+          "options": [
+            { "text": "Wait calmly", "points": 5 },
+            { "text": "Get frustrated quickly", "points": 1 }
+          ]
+        },
+        {
+          "id": "pat_02",
+          "question": "Would you rather take your time or rush through tasks?",
+          "options": [
+            { "text": "Take your time", "points": 5 },
+            { "text": "Rush through tasks", "points": 2 }
+          ]
+        },
+        {
+          "id": "pat_03",
+          "question": "Would you rather listen fully or interrupt to speak?",
+          "options": [
+            { "text": "Listen fully", "points": 5 },
+            { "text": "Interrupt to speak", "points": 1 }
+          ]
+        },
+        {
+          "id": "pat_04",
+          "question": "Would you rather stay calm in traffic or honk repeatedly?",
+          "options": [
+            { "text": "Stay calm in traffic", "points": 5 },
+            { "text": "Honk repeatedly", "points": 2 }
+          ]
+        },
+        {
+          "id": "pat_05",
+          "question": "Would you rather work steadily or get easily distracted?",
+          "options": [
+            { "text": "Work steadily", "points": 5 },
+            { "text": "Get easily distracted", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Courage",
+      "questions": [
+        {
+          "id": "cou_01",
+          "question": "Would you rather face your fears or avoid them?",
+          "options": [
+            { "text": "Face your fears", "points": 5 },
+            { "text": "Avoid them", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_02",
+          "question": "Would you rather stand up for yourself or stay silent?",
+          "options": [
+            { "text": "Stand up for yourself", "points": 5 },
+            { "text": "Stay silent", "points": 2 }
+          ]
+        },
+        {
+          "id": "cou_03",
+          "question": "Would you rather try something risky or play it safe?",
+          "options": [
+            { "text": "Try something risky", "points": 5 },
+            { "text": "Play it safe", "points": 2 }
+          ]
+        },
+        {
+          "id": "cou_04",
+          "question": "Would you rather admit mistakes publicly or hide them?",
+          "options": [
+            { "text": "Admit mistakes publicly", "points": 5 },
+            { "text": "Hide them", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_05",
+          "question": "Would you rather take initiative or wait for instructions?",
+          "options": [
+            { "text": "Take initiative", "points": 5 },
+            { "text": "Wait for instructions", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loyalty",
+      "questions": [
+        {
+          "id": "loy_01",
+          "question": "Would you rather support a friend or criticize them honestly?",
+          "options": [
+            { "text": "Support a friend", "points": 5 },
+            { "text": "Criticize honestly", "points": 3 }
+          ]
+        },
+        {
+          "id": "loy_02",
+          "question": "Would you rather keep secrets or share everything?",
+          "options": [
+            { "text": "Keep secrets", "points": 5 },
+            { "text": "Share everything", "points": 2 }
+          ]
+        },
+        {
+          "id": "loy_03",
+          "question": "Would you rather stand by your friends or change sides when convenient?",
+          "options": [
+            { "text": "Stand by your friends", "points": 5 },
+            { "text": "Change sides", "points": 1 }
+          ]
+        },
+        {
+          "id": "loy_04",
+          "question": "Would you rather defend your group or stay neutral?",
+          "options": [
+            { "text": "Defend your group", "points": 5 },
+            { "text": "Stay neutral", "points": 2 }
+          ]
+        },
+        {
+          "id": "loy_05",
+          "question": "Would you rather forgive a betrayal or cut ties immediately?",
+          "options": [
+            { "text": "Forgive betrayal", "points": 4 },
+            { "text": "Cut ties immediately", "points": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Anger",
+      "questions": [
+        {
+          "id": "ang_01",
+          "question": "Would you rather stay calm under pressure or lose your temper?",
+          "options": [
+            { "text": "Stay calm", "points": 1 },
+            { "text": "Lose your temper", "points": 5 }
+          ]
+        },
+        {
+          "id": "ang_02",
+          "question": "Would you rather forgive quickly or hold grudges?",
+          "options": [
+            { "text": "Forgive quickly", "points": 1 },
+            { "text": "Hold grudges", "points": 5 }
+          ]
+        },
+        {
+          "id": "ang_03",
+          "question": "Would you rather react impulsively or think before acting?",
+          "options": [
+            { "text": "React impulsively", "points": 5 },
+            { "text": "Think before acting", "points": 1 }
+          ]
+        },
+        {
+          "id": "ang_04",
+          "question": "Would you rather express frustration or bottle it up?",
+          "options": [
+            { "text": "Express frustration", "points": 5 },
+            { "text": "Bottle it up", "points": 2 }
+          ]
+        },
+        {
+          "id": "ang_05",
+          "question": "Would you rather confront someone aggressively or avoid confrontation?",
+          "options": [
+            { "text": "Confront aggressively", "points": 5 },
+            { "text": "Avoid confrontation", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ambition",
+      "questions": [
+        {
+          "id": "amb1",
+          "question": "Would you rather work tirelessly for years to achieve a big goal (5 points) or enjoy life comfortably but without major achievements (1 point)?",
+          "options": [
+            { "text": "Work tirelessly for years", "points": 5 },
+            { "text": "Enjoy life comfortably", "points": 1 }
+          ]
+        },
+        {
+          "id": "amb2",
+          "question": "Would you rather take a risky opportunity with high reward (5 points) or stick to safe but limited growth (2 points)?",
+          "options": [
+            { "text": "Risky opportunity", "points": 5 },
+            { "text": "Safe limited growth", "points": 2 }
+          ]
+        },
+        {
+          "id": "amb3",
+          "question": "Would you rather lead a team to success but take full responsibility for failures (4 points) or work alone with less recognition but no pressure (2 points)?",
+          "options": [
+            { "text": "Lead a team", "points": 4 },
+            { "text": "Work alone", "points": 2 }
+          ]
+        },
+        {
+          "id": "amb4",
+          "question": "Would you rather sacrifice free time now for a better future (5 points) or prioritize present enjoyment even if future success is uncertain (1 point)?",
+          "options": [
+            { "text": "Sacrifice free time", "points": 5 },
+            { "text": "Prioritize present enjoyment", "points": 1 }
+          ]
+        },
+        {
+          "id": "amb5",
+          "question": "Would you rather be known for your ambition and success (5 points) or be content with simple achievements and a relaxed life (2 points)?",
+          "options": [
+            { "text": "Known for ambition and success", "points": 5 },
+            { "text": "Content with simple achievements", "points": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sociality",
+      "questions": [
+        {
+          "id": "soc1",
+          "question": "You arrive at a party full of unfamiliar people. What do you do?",
+          "options": [
+            {
+              "text": "Find a quiet spot, maybe chat with one or two people you know.",
+              "type": "Introvert",
+              "points": 5
+            },
+            {
+              "text": "Jump right into the crowd, introduce yourself and get talking.",
+              "type": "Extrovert",
+              "points": 5
+            },
+            {
+              "text": "Warm up slowly—hang around the edges at first, then join the fun.",
+              "type": "Ambivert",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "soc2",
+          "question": "How do you recharge after a long, stressful day?",
+          "options": [
+            {
+              "text": "Alone, maybe watching something or reading quietly.",
+              "type": "Introvert",
+              "points": 5
+            },
+            {
+              "text": "Hanging out with friends or calling someone to talk.",
+              "type": "Extrovert",
+              "points": 5
+            },
+            {
+              "text": "Depends on the day—sometimes I need space, sometimes I need people.",
+              "type": "Ambivert",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "soc3",
+          "question": "What’s your ideal weekend?",
+          "options": [
+            {
+              "text": "Spending time alone or doing a solo activity like gaming or reading.",
+              "type": "Introvert",
+              "points": 5
+            },
+            {
+              "text": "Going out, attending events, or being around lots of people.",
+              "type": "Extrovert",
+              "points": 5
+            },
+            {
+              "text": "A mix—maybe brunch with friends, then a solo walk or Netflix binge.",
+              "type": "Ambivert",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "soc4",
+          "question": "How do you act in group discussions or brainstorming sessions?",
+          "options": [
+            {
+              "text": "Listen more than talk, and speak up only when I have something strong to add.",
+              "type": "Introvert",
+              "points": 5
+            },
+            {
+              "text": "Lead the talk, bounce ideas, and get people hyped.",
+              "type": "Extrovert",
+              "points": 5
+            },
+            {
+              "text": "Contribute steadily, sometimes lead, sometimes follow.",
+              "type": "Ambivert",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "soc5",
+          "question": "You’re asked to give a toast at a gathering. How do you feel?",
+          "options": [
+            {
+              "text": "Anxious. I'd rather not speak publicly unless I have to.",
+              "type": "Introvert",
+              "points": 5
+            },
+            {
+              "text": "Excited. I love speaking in front of people and making them laugh.",
+              "type": "Extrovert",
+              "points": 5
+            },
+            {
+              "text": "Slightly nervous, but I can pull it off if needed.",
+              "type": "Ambivert",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
