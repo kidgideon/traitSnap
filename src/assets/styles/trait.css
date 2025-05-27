@@ -1,0 +1,142 @@
+/* trait css */
+
+.personality-card-page {
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #5C27FE, #FF2E93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.personality-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personality-card-container {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #0002;
+  padding: 32px 28px 28px 28px;
+  min-width: 340px;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.personality-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.personality-card-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #5C27FE;
+  margin-bottom: 12px;
+}
+
+.personality-card-username {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #5C27FE;
+  margin-bottom: 8px;
+}
+
+.personality-card-sociality {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.personality-card-sociality-label {
+  color: #888;
+  margin-right: 6px;
+}
+
+.personality-card-sociality-value {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.personality-card-sociality-introvert {
+  color: #2e7dff;
+}
+.personality-card-sociality-ambivert {
+  color: #ffb300;
+}
+.personality-card-sociality-extrovert {
+  color: #ff2e93;
+}
+
+.personality-card-traits {
+  margin-top: 10px;
+}
+
+.personality-card-trait-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.personality-card-trait-label {
+  width: 95px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.personality-card-trait-bar-bg {
+  flex: 1;
+  height: 18px;
+  background: #eee;
+  border-radius: 9px;
+  margin: 0 12px;
+  overflow: hidden;
+}
+
+.personality-card-trait-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #5C27FE, #FF2E93);
+  border-radius: 9px 0 0 9px;
+  transition: width 0.5s;
+}
+
+.personality-card-trait-percent {
+  width: 40px;
+  font-size: 0.95rem;
+  color: #5C27FE;
+  text-align: right;
+}
+
+.personality-card-download-btn {
+  margin-top: 10px;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #5C27FE, #FF2E93);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s;
+}
+
+.personality-card-download-btn:hover {
+  background: linear-gradient(90deg, #FF2E93, #5C27FE);
+}
+
+.personality-card-loading {
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}

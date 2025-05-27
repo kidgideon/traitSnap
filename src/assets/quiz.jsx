@@ -165,7 +165,7 @@ const Quizarea = () => {
           ),
         })
       );
-      navigate("/card-creation");
+      navigate("/trait card");
       return;
     }
     setCurrent((c) => c + 1);

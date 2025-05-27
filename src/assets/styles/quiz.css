@@ -1,7 +1,12 @@
 .quizArea-interface {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
+     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #5C27FE, #FF2E93);
+    height: 100dvh;
+    font-family: sans-serif;
 }
 
 .quiz-page__photo {
@@ -19,15 +24,27 @@
 .quiz-page__question {
   margin-bottom: 20px;
   transition: all 0.4s ease;
+  color: white;
+  width: 95%;
+  text-align: center;
 }
 
 .quiz-page__options {
   margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Ensures all children stretch to same height */
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .quiz-page__option-btn {
   display: block;
-  width: 100%;
+  width: 40%;
+  max-width: 300px;
+  min-height: 70px; /* Ensures consistent height */
   padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 8px;
@@ -36,6 +53,11 @@
   cursor: pointer;
   text-align: left;
   transition: border 0.2s, background 0.2s;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center; /* Vertically center text */
+  justify-content: flex-start;
+  word-break: break-word;
 }
 
 .quiz-page__option-btn--selected {
@@ -48,11 +70,11 @@
 }
 
 .quiz-page__nav-btn {
-  padding: 10px 20px;
+  padding: 10px 40px;
   border-radius: 8px;
   border: none;
   background-color: #00f0ff;
-  color: #000;
+  color: white;
   cursor: pointer;
   font-weight: bold;
   transition: background 0.2s;
