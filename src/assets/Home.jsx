@@ -23,6 +23,13 @@ const Home = () => {
       return;
     }
 
+    // Clear all relevant localStorage items before starting a new quiz
+    localStorage.removeItem("traitsnap-name");
+    localStorage.removeItem("traitsnap-photo");
+    localStorage.removeItem("traitsnap-scores");
+    // Add any other quiz-related keys here if needed
+
+    // Save new name and photo
     localStorage.setItem("traitsnap-name", name);
     localStorage.setItem("traitsnap-photo", photo);
 

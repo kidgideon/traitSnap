@@ -69,6 +69,14 @@ const Quizarea = () => {
   });
 
   const userPhoto = localStorage.getItem("traitsnap-photo");
+  const userName = localStorage.getItem("traitsnap-name");
+
+  // Redirect if name or photo is missing
+  useEffect(() => {
+    if (!userPhoto || !userName) {
+      navigate("/");
+    }
+  }, [userPhoto, userName, navigate]);
 
   // Prepare questions on mount
   useEffect(() => {

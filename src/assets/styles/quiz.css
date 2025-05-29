@@ -6,7 +6,7 @@
     flex-direction: column;
     background: linear-gradient(135deg, #5C27FE, #FF2E93);
     height: 100dvh;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .quiz-page__photo {
