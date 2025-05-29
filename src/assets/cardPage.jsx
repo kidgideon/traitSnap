@@ -84,6 +84,11 @@ const Card = () => {
     SOCIALITY_TYPES[0]
   );
 
+  // Calculate average trait percentage
+  const traitSum = barPercents.reduce((sum, val) => sum + val, 0);
+  const traitAvg = barPercents.length ? traitSum / barPercents.length : 0;
+  let sparkRating = Math.round(traitAvg * 0.05 * 2) / 2; // rounded to nearest 0.5
+
   const handleDownload = async () => {
     if (!cardRef.current) return;
     const canvas = await html2canvas(cardRef.current, {
@@ -96,6 +101,20 @@ const Card = () => {
     link.href = canvas.toDataURL("image/png");
     link.click();
   };
+
+  function renderStars(rating) {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) {
+        stars.push(<i key={i} className="fa-solid fa-star" style={{color: "#FFD700"}}></i>);
+      } else if (rating + 0.5 === i) {
+        stars.push(<i key={i} className="fa-solid fa-star-half" style={{color: "#FFD700"}}></i>);
+      } else {
+        stars.push(<i key={i} className="fa-regular fa-star" style={{color: "#FFD700"}}></i>);
+      }
+    }
+    return stars;
+  }
 
   return (
     <div className="personality-card-page">
@@ -123,7 +142,13 @@ const Card = () => {
                 <span className="personality-card-sociality-value">
                   {dominantSociality}
                 </span>
+
+               
               </div>
+               <div className="personality-score">
+  <p> Trait Spark Rating is {sparkRating}</p>
+  <span>{renderStars(sparkRating)}</span>
+</div>
             </div>
             <div className="personality-card-traits">
               {TRAITS.map((trait, index) => (
@@ -155,7 +180,7 @@ const Card = () => {
           Download Card
         </button>
         <button
-  className="personality-card-share-btn"
+  className="personality-card-download-btn"
   style={{ marginLeft: 12 }}
   onClick={async () => {
     if (!cardRef.current) return;
@@ -193,12 +218,7 @@ const Card = () => {
 >
   Share
 </button>
-<div className="personality-card-link">
-  <span>Make yours: </span>
-  <a href="https://traitsnap.vercel.app" target="_blank" rel="noopener noreferrer">
-    traitsnap.vercel.app
-  </a>
-</div>
+
       </div>
     </div>
   );

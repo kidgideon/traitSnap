@@ -19,7 +19,7 @@
    background: linear-gradient(135deg, #5C27FE, #FF2E93);
   box-shadow: 0 8px 32px rgba(10, 10, 10, 0.133);
   min-width: 340px;
-  max-width: 350px;
+  max-width: 360px;
   width: 100%;
   margin-bottom: 24px;
   position: relative;
@@ -55,7 +55,6 @@
   border-radius: 96px;
   margin-bottom: 5px;
   margin-left: 25px;
-  margin-top: -30px;
   border: 2px solid #00F0FF;
   box-shadow:
     0 0 4px #00F0FF,
@@ -69,10 +68,8 @@
 }
 
 .personality-card-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 96px;
+  height: 96px;
 }
 
 .personality-card-username {
@@ -152,7 +149,7 @@
 .personality-card-download-btn {
   margin-top: 30px;
   padding: 12px 32px;
-  background: linear-gradient(90deg, #5C27FE, #FF2E93);
+  background: #339CFF;
   color: #fff;
   border: none;
   border-radius: 18px;
@@ -196,6 +193,29 @@
   align-items: center;
   z-index: 2;
   backdrop-filter: blur(2px);
+}
+
+.personality-score {
+   position: absolute;
+  top: 50px;
+  right: 30px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #0001;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 5px;
+}
+
+.personality-score p {
+   font-size: 10px;
 }
 
 .personality-card-sociality-label {
