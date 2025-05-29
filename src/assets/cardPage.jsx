@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image-more";
 import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.png";
 import comments from "../assets/comments.json"; // Make sure the path is correct
+
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -45,6 +46,7 @@ const Card = () => {
   const [userPhoto, setUserPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [barPercents, setBarPercents] = useState(Array(TRAITS.length).fill(0));
+  const [downloading, setDownloading] = useState(false);
   const cardRef = useRef();
 
   useEffect(() => {
@@ -102,27 +104,48 @@ const Card = () => {
   }
 
   const handleDownload = async () => {
+    setDownloading(true);
+    await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
-    const canvas = await html2canvas(cardRef.current, {
-      backgroundColor: null,
-      scale: 10,        // Highest quality
-      useCORS: true,   // Allow cross-origin images
-    });
-    const link = document.createElement("a");
-    link.download = "personality_card.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+    domtoimage.toBlob(cardRef.current, {
+      quality: 5,
+      bgcolor: null,
+      cacheBust: true,
+      width: cardRef.current.offsetWidth * 4,
+      height: cardRef.current.offsetHeight * 4,
+      style: {
+        transform: "scale(4)",
+        transformOrigin: "top left",
+        width: cardRef.current.offsetWidth + "px",
+        height: cardRef.current.offsetHeight + "px"
+      }
+    }).then(blob => {
+      setDownloading(false);
+      const file = new File([blob], "personality_card.png", { type: "image/png" });
+      const shareData = {
+        title: "TraitSnap Personality Card",
+        text: "Check out my personality card! Make yours at TraitSnap.",
+        url: "https://traitsnap.vercel.app",
+        files: [file]
+      };
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share(shareData);
+      } else {
+        navigator.clipboard.writeText(shareData.url);
+        alert("Link copied! Share it with your friends: " + shareData.url);
+      }
+    }).catch(() => setDownloading(false));
   };
 
   function renderStars(rating) {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (rating >= i) {
-        stars.push(<i key={i} className="fa-solid fa-star" style={{color: "#FFD700"}}></i>);
-      } else if (rating + 0.5 === i) {
-        stars.push(<i key={i} className="fa-solid fa-star-half" style={{color: "#FFD700"}}></i>);
+        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>★</span>);
+      } else if (rating >= i - 0.5) {
+        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>☆</span>);
       } else {
-        stars.push(<i key={i} className="fa-regular fa-star" style={{color: "#FFD700"}}></i>);
+        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>✩</span>);
       }
     }
     return stars;
@@ -156,11 +179,25 @@ const Card = () => {
               <div className="personality-card-header">
                 {userPhoto && (
                   <div className="personality-card-photo">
-                    <img
-                      src={userPhoto}
-                      alt="Profile"
-                      className="personality-card-photo-img"
-                    />
+                    {downloading ? (
+                      <div
+                        className="personality-card-photo-img-fix"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundImage: `url(${userPhoto})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={userPhoto}
+                        alt="Profile"
+                        className="personality-card-photo-img"
+                      />
+                    )}
                   </div>
                 )}
                 <div className="personality-card-username">{userName}</div>
@@ -180,20 +217,33 @@ const Card = () => {
               <div className="personality-card-traits">
                 {TRAITS.map((trait, index) => (
                   <div className="personality-card-trait-row" key={trait}>
-                    <div className="personality-card-trait-bar-bg">
+                    <div className="personality-card-trait-bar-bg" style={{ position: "relative" }}>
                       <div
                         className="personality-card-trait-bar animated-bar"
                         style={{
                           width: `${barPercents[index]}%`,
                           background: TRAIT_GRADIENTS[trait],
+                          height: "100%",
+                          position: "absolute",
+                          left: 0,
+                          top: 0,
+                          zIndex: 1,
                         }}
-                      >
-                        <span className="personality-card-trait-bar-content">
-                          <span className="personality-card-trait-icon">{TRAIT_ICONS[trait]}</span>
-                          <span className="personality-card-trait-text">{trait}</span>
-                          <span className="personality-card-trait-percent">{barPercents[index]}%</span>
-                        </span>
-                      </div>
+                      />
+                      <span className="personality-card-trait-bar-content" style={{
+                        position: "relative",
+                        zIndex: 2,
+                        display: "flex",
+                        alignItems: "center",
+                        width: "100%",
+                        height: "100%",
+                        paddingLeft: 8,
+                        paddingRight: 8,
+                      }}>
+                        <span className="personality-card-trait-icon">{TRAIT_ICONS[trait]}</span>
+                        <span className="personality-card-trait-text">{trait}</span>
+                        <span className="personality-card-trait-percent">{barPercents[index]}%</span>
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -209,37 +259,37 @@ const Card = () => {
   className="personality-card-download-btn"
   style={{ marginLeft: 12 }}
   onClick={async () => {
+    setDownloading(true);
+    await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
-    const canvas = await html2canvas(cardRef.current, {
-      backgroundColor: null,
-      scale: 4,
-      useCORS: true,
-    });
-    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-    const file = new File([blob], "personality_card.png", { type: "image/png" });
-
-    const shareData = {
-      title: "TraitSnap Personality Card",
-      text: "Check out my personality card! Make yours at TraitSnap.",
-      url: "https://traitsnap.vercel.app",
-      files: [file]
-    };
-
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share(shareData);
-      } catch (e) {
-        // User cancelled or error
+    domtoimage.toBlob(cardRef.current, {
+      quality: 5,
+      bgcolor: null,
+      cacheBust: true,
+      width: cardRef.current.offsetWidth * 4,
+      height: cardRef.current.offsetHeight * 4,
+      style: {
+        transform: "scale(4)",
+        transformOrigin: "top left",
+        width: cardRef.current.offsetWidth + "px",
+        height: cardRef.current.offsetHeight + "px"
       }
-    } else {
-      // Fallback: copy link to clipboard
-      try {
-        await navigator.clipboard.writeText(shareData.url);
+    }).then(blob => {
+      setDownloading(false);
+      const file = new File([blob], "personality_card.png", { type: "image/png" });
+      const shareData = {
+        title: "TraitSnap Personality Card",
+        text: "Check out my personality card! Make yours at TraitSnap.",
+        url: "https://traitsnap.vercel.app",
+        files: [file]
+      };
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share(shareData);
+      } else {
+        navigator.clipboard.writeText(shareData.url);
         alert("Link copied! Share it with your friends: " + shareData.url);
-      } catch {
-        alert("Copy this link: " + shareData.url);
       }
-    }
+    }).catch(() => setDownloading(false));
   }}
 >
   Share

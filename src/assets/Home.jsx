@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/home.css";
 import logo from "../../images/nobglogo.png";
+import kai from "../../images/kaicenat.png";
+import henry from "../../images/henry.png";
+import helen from "../../images/helen.png"
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -44,6 +47,12 @@ const Home = () => {
       </div>
 
       <h1 className="homepage-into-text">Wrap your personality in one card</h1>
+
+      <div className="image-view-section">
+        <img  className="helen" src={helen} alt="" />
+          <img className="kai" src={kai} alt="" />
+            <img className="henry" src={henry} alt="" />
+      </div>
 
       <div className="startButton">
         <button onClick={() => setShowModal(true)}>Get Trait Card</button>

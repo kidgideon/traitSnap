@@ -5,8 +5,9 @@
     align-items: center;
     flex-direction: column;
     background: linear-gradient(135deg, #5C27FE, #FF2E93);
-    height: 100dvh;
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    padding-bottom: 10px;
 }
 
 .home-icon-area {
@@ -154,4 +155,50 @@
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+}
+
+
+.image-view-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 500px;
+}
+
+.helen {
+   width: 200px;
+   object-fit: contain;
+   border-radius: 5px;
+}
+
+.henry {
+   width: 200px;
+   object-fit: contain;
+    border-radius: 5px;
+}
+
+.kai {
+  width: 250px;
+  object-fit: contain;
+   border-radius: 5px;
+}
+/* For mobile devices (phones, usually less than 768px wide) */
+@media screen and (max-width: 767px) {
+  .helen {
+    width: 110px;
+  }
+
+  .henry {
+    width: 110px;
+  }
+
+  .kai {
+    width: 170px;
+  }
+
+  .image-view-section {
+    height: 360px;
+  }
 }
