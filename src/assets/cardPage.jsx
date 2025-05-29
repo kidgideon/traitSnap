@@ -177,7 +177,7 @@ const Card = () => {
             </div>
             <div className="filter-dark-box">
               <div className="personality-card-header">
-                {userPhoto && (
+                <div className="pch-left">
                   <div className="personality-card-photo">
                     {downloading ? (
                       <div
@@ -199,19 +199,21 @@ const Card = () => {
                       />
                     )}
                   </div>
-                )}
-                <div className="personality-card-username">{userName}</div>
-                <div
-                  className={`personality-card-sociality-box personality-card-sociality-${dominantSociality.toLowerCase()}`}
-                >
-                  <span className="personality-card-sociality-label"></span>
-                  <span className="personality-card-sociality-value">
-                    {dominantSociality}
-                  </span>
+                  <div className="personality-card-username">{userName}</div>
                 </div>
-                <div className="personality-score">
-                  <p> Trait Spark Rating is {sparkRating}</p>
-                  <span>{renderStars(sparkRating)}</span>
+                <div className="pch-right">
+                  <div
+                    className={`personality-card-sociality-box personality-card-sociality-${dominantSociality.toLowerCase()}`}
+                  >
+                    <span className="personality-card-sociality-label"></span>
+                    <span className="personality-card-sociality-value">
+                      {dominantSociality}
+                    </span>
+                  </div>
+                  <div className="personality-score">
+                    <p>Trait Spark Rating is {sparkRating}</p>
+                    <span>{renderStars(sparkRating)}</span>
+                  </div>
                 </div>
               </div>
               <div className="personality-card-traits">

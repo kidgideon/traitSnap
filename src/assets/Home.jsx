@@ -58,6 +58,39 @@ const Home = () => {
         <button onClick={() => setShowModal(true)}>Get Trait Card</button>
       </div>
 
+      <div className="context-layout">
+         <h1>How It Works</h1>
+
+         <div className="method">
+          <div>
+            <lord-icon
+    className="icon-lord"
+    src="https://cdn.lordicon.com/ijsqrapz.json"
+    trigger="loop"
+    stroke="bold"
+    colors="primary:#339cff,secondary:#339cff"
+   >
+
+</lord-icon>
+   <h3>Upload a picture</h3>
+          </div>
+
+          <div>
+            <lord-icon
+     className="icon-lord"
+    src="https://cdn.lordicon.com/sobzmbzh.json"
+    trigger="loop"
+    delay="2000"
+    stroke="bold"
+    colors="primary:#339cff,secondary:#339cff"
+>
+</lord-icon>
+ <h3>answer fun questions</h3>
+          </div>
+         </div>
+      </div>
+
+
       {showModal && (
         <div className="modal-backdrop" onClick={() => setShowModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>

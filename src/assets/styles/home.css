@@ -7,7 +7,6 @@
     background: linear-gradient(135deg, #5C27FE, #FF2E93);
     font-family: 'Montserrat', sans-serif;
     height: 100%;
-    padding-bottom: 10px;
 }
 
 .home-icon-area {
@@ -184,6 +183,40 @@
   object-fit: contain;
    border-radius: 5px;
 }
+
+.context-layout {
+  background: #21004D;
+  width: 100%;
+ color: white;
+ margin-top: 20px;
+ padding-bottom: 10px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+}
+
+.method {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  font-size: 13px;
+}
+
+.method div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon-lord {
+ width: 90px;
+ height: 90px;
+}
+
 /* For mobile devices (phones, usually less than 768px wide) */
 @media screen and (max-width: 767px) {
   .helen {
