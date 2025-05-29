@@ -187,18 +187,22 @@
 /* For mobile devices (phones, usually less than 768px wide) */
 @media screen and (max-width: 767px) {
   .helen {
-    width: 110px;
+    width: 80px;
   }
 
   .henry {
-    width: 110px;
+    width: 80px;
   }
 
   .kai {
-    width: 170px;
+    width: 150px;
   }
 
   .image-view-section {
     height: 360px;
+  }
+
+  .homePage {
+    height: 100dvh;
   }
 }
