@@ -3,6 +3,7 @@ import html2canvas from "html2canvas";
 import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.png";
+import comments from "../assets/comments.json"; // Make sure the path is correct
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -89,6 +90,17 @@ const Card = () => {
   const traitAvg = barPercents.length ? traitSum / barPercents.length : 0;
   let sparkRating = Math.round(traitAvg * 0.05 * 2) / 2; // rounded to nearest 0.5
 
+  // Find the trait with the highest score
+  const maxTraitIndex = barPercents.indexOf(Math.max(...barPercents));
+  const maxTrait = TRAITS[maxTraitIndex];
+
+  // Pick a random compliment for that trait
+  let compliment = "";
+  if (comments[maxTrait] && comments[maxTrait].length > 0) {
+    const randIdx = Math.floor(Math.random() * comments[maxTrait].length);
+    compliment = comments[maxTrait][randIdx];
+  }
+
   const handleDownload = async () => {
     if (!cardRef.current) return;
     const canvas = await html2canvas(cardRef.current, {
@@ -119,67 +131,81 @@ const Card = () => {
   return (
     <div className="personality-card-page">
       <div className="personality-card-center">
-        <div className="personality-card-container" ref={cardRef}>
-          <div className="pcard-l-a">
- <img className="logo" src={logo} alt="" />
-          </div>
-          <div className="filter-dark-box">
-            <div className="personality-card-header">
-              {userPhoto && (
-                <div className="personality-card-photo">
-                  <img
-                    src={userPhoto}
-                    alt="Profile"
-                    className="personality-card-photo-img"
-                  />
-                </div>
-              )}
-              <div className="personality-card-username">{userName}</div>
-              <div
-                className={`personality-card-sociality-box personality-card-sociality-${dominantSociality.toLowerCase()}`}
-              >
-                <span className="personality-card-sociality-label"></span>
-                <span className="personality-card-sociality-value">
-                  {dominantSociality}
-                </span>
+        <div className="personality-card-fancy-wrapper">
+        
+          {/* Your card */}
+          <div className="personality-card-container" ref={cardRef}>
+              {/* Top left SVG */}
+          <span className="fancy-svg fancy-svg-topleft">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </span>
+        
+          {/* Bottom right SVG */}
+          <span className="fancy-svg fancy-svg-bottomright">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+            </svg>
+          </span>
 
-               
-              </div>
-               <div className="personality-score">
-  <p> Trait Spark Rating is {sparkRating}</p>
-  <span>{renderStars(sparkRating)}</span>
-</div>
+            <div className="pcard-l-a">
+              <img className="logo" src={logo} alt="" />
             </div>
-            <div className="personality-card-traits">
-              {TRAITS.map((trait, index) => (
-                <div className="personality-card-trait-row" key={trait}>
-                  <div className="personality-card-trait-bar-bg">
-                    <div
-                      className="personality-card-trait-bar animated-bar"
-                      style={{
-                        width: `${barPercents[index]}%`,
-                        background: TRAIT_GRADIENTS[trait],
-                      }}
-                    >
-                      <span className="personality-card-trait-bar-content">
-                        <span className="personality-card-trait-icon">{TRAIT_ICONS[trait]}</span>
-                        <span className="personality-card-trait-text">{trait}</span>
-                        <span className="personality-card-trait-percent">{barPercents[index]}%</span>
-                      </span>
+            <div className="filter-dark-box">
+              <div className="personality-card-header">
+                {userPhoto && (
+                  <div className="personality-card-photo">
+                    <img
+                      src={userPhoto}
+                      alt="Profile"
+                      className="personality-card-photo-img"
+                    />
+                  </div>
+                )}
+                <div className="personality-card-username">{userName}</div>
+                <div
+                  className={`personality-card-sociality-box personality-card-sociality-${dominantSociality.toLowerCase()}`}
+                >
+                  <span className="personality-card-sociality-label"></span>
+                  <span className="personality-card-sociality-value">
+                    {dominantSociality}
+                  </span>
+                </div>
+                <div className="personality-score">
+                  <p> Trait Spark Rating is {sparkRating}</p>
+                  <span>{renderStars(sparkRating)}</span>
+                </div>
+              </div>
+              <div className="personality-card-traits">
+                {TRAITS.map((trait, index) => (
+                  <div className="personality-card-trait-row" key={trait}>
+                    <div className="personality-card-trait-bar-bg">
+                      <div
+                        className="personality-card-trait-bar animated-bar"
+                        style={{
+                          width: `${barPercents[index]}%`,
+                          background: TRAIT_GRADIENTS[trait],
+                        }}
+                      >
+                        <span className="personality-card-trait-bar-content">
+                          <span className="personality-card-trait-icon">{TRAIT_ICONS[trait]}</span>
+                          <span className="personality-card-trait-text">{trait}</span>
+                          <span className="personality-card-trait-percent">{barPercents[index]}%</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="personality-rating">
+                <p>{compliment}</p>
+              </div>
             </div>
-            <div className="personality-rating">
-              <p>you are worth living for</p>
-            </div>
-          </div>   
+          </div>
         </div>
-        <button className="personality-card-download-btn" onClick={handleDownload}>
-          Download Card
-        </button>
-        <button
+
+  <button
   className="personality-card-download-btn"
   style={{ marginLeft: 12 }}
   onClick={async () => {
@@ -219,6 +245,10 @@ const Card = () => {
   Share
 </button>
 
+ <button className="personality-card-download-btn" onClick={handleDownload}>
+          Download Card
+        </button>
+        
       </div>
     </div>
   );

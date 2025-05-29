@@ -6,6 +6,8 @@
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   padding: 20px 0px;
+  flex-direction: column;
+
 }
 
 .personality-card-center {
@@ -272,4 +274,50 @@
   color: #00F0FF;
   padding: 10px 15px;
   border-radius: 10px;
+}
+
+.personality-card-fancy-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.fancy-svg {
+  position: absolute;
+  z-index: 3;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.fancy-svg svg {
+  width: 25px;
+}
+
+.fancy-svg-topleft {
+  top: 25px;
+  left: 10px;
+}
+.fancysvg-topright {
+  top: 18px;
+  right: 19px;
+}
+.fancy-svg-bottomleft {
+  bottom: 5px;
+  left: 10px;
+}
+.fancy-svg-bottomright {
+  bottom: 1px;
+  right:  10px;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px);}
+  50% { transform: translateY(-10px);}
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px);}
+  50% { transform: translateY(10px);}
 }
