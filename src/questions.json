@@ -1,571 +1,555 @@
 {
   "categories": [
-{
-  “name”: “Confidence”,
-  “questions”: [
     {
-      “id”: “conf_01”,
-      “question”: “When you share an idea, what’s your biggest concern?”,
-      “options”: [
-        { “text”: “That people will ignore it completely”, “points”: 2 },
-        { “text”: “That it might not be smart enough”, “points”: 3 },
-        { “text”: “That someone else might get credit for it”, “points”: 4 },
-        { “text”: “None — I trust what I bring to the table”, “points”: 5 }
-      ]
-    },
-    {
-      “id”: “conf_02”,
-      “question”: “What’s your first reaction when you’re publicly disagreed with?”,
-      “options”: [
-        { “text”: “I shrink and go silent”, “points”: 1 },
-        { “text”: “I calmly stand my ground”, “points”: 5 },
-        { “text”: “I feel challenged but stay composed”, “points”: 4 },
-        { “text”: “I get defensive and emotional”, “points”: 2 }
-      ]
-    },
-    {
-      “id”: “conf_03”,
-      “question”: “How do you handle praise?”,
-      “options”: [
-        { “text”: “I brush it off or downplay it”, “points”: 2 },
-        { “text”: “I feel proud, but a bit awkward”, “points”: 3 },
-        { “text”: “I accept it and thank the person”, “points”: 4 },
-        { “text”: “I expect it — I worked for it”, “points”: 5 }
-      ]
-    },
-    {
-      “id”: “conf_04”,
-      “question”: “When people see you in a room, how do you think they describe you?”,
-      “options”: [
-        { “text”: “Quiet but observant”, “points”: 2 },
-        { “text”: “In control — I own my presence”, “points”: 5 },
-        { “text”: “Sociable and engaged”, “points”: 4 },
-        { “text”: “Unsure — I kind of blend in”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “conf_05”,
-      “question”: “How often do you second-guess your decisions?”,
-      “options”: [
-        { “text”: “Always — I don’t like to be wrong”, “points”: 2 },
-        { “text”: “Rarely — I go with what feels right”, “points”: 5 },
-        { “text”: “Sometimes — especially when the stakes are high”, “points”: 4 },
-        { “text”: “Often — I keep replaying what I should’ve done”, “points”: 3 }
-      ]
-    }
-  ]
-},
+      "name": "Confidence",
+      "questions": [
+        {
+          "id": "conf_01",
+          "question": "When you share an idea, what’s your biggest concern?",
+          "options": [
+            { "text": "That people will ignore it completely", "points": 2 },
+            { "text": "That it might not be smart enough", "points": 3 },
+            { "text": "That someone else might get credit for it", "points": 4 },
+            { "text": "None — I trust what I bring to the table", "points": 5 }
+          ]
+        },
+        {
+          "id": "conf_02",
+          "question": "What’s your first reaction when you’re publicly disagreed with?",
+          "options": [
+            { "text": "I shrink and go silent", "points": 1 },
+            { "text": "I calmly stand my ground", "points": 5 },
+            { "text": "I feel challenged but stay composed", "points": 4 },
+            { "text": "I get defensive and emotional", "points": 2 }
+          ]
+        },
+        {
+          "id": "conf_03",
+          "question": "How do you handle praise?",
+          "options": [
+            { "text": "I brush it off or downplay it", "points": 2 },
+            { "text": "I feel proud, but a bit awkward", "points": 3 },
+            { "text": "I accept it and thank the person", "points": 4 },
+            { "text": "I expect it — I worked for it", "points": 5 }
+          ]
+        },
         {
           "id": "conf_04",
-          "question": "Would you rather be the center of attention or blend into the crowd?",
+          "question": "When people see you in a room, how do you think they describe you?",
           "options": [
-            { "text": "Be the center of attention", "points": 5 },
-            { "text": "Blend into the crowd", "points": 2 }
+            { "text": "Quiet but observant", "points": 2 },
+            { "text": "In control — I own my presence", "points": 5 },
+            { "text": "Sociable and engaged", "points": 4 },
+            { "text": "Unsure — I kind of blend in", "points": 1 }
           ]
         },
         {
           "id": "conf_05",
-          "question": "Would you rather admit when you’re wrong or insist you’re right?",
+          "question": "How often do you second-guess your decisions?",
           "options": [
-            { "text": "Admit when you’re wrong", "points": 3 },
-            { "text": "Insist you’re right", "points": 5 }
+            { "text": "Always — I don’t like to be wrong", "points": 2 },
+            { "text": "Rarely — I go with what feels right", "points": 5 },
+            { "text": "Sometimes — especially when the stakes are high", "points": 4 },
+            { "text": "Often — I keep replaying what I should’ve done", "points": 3 }
           ]
         }
       ]
     },
-{
-  "name": "Humor",
-  "questions": [
     {
-      "id": "hum_01",
-      "question": "When people laugh at your joke and you weren’t even trying to be funny, how do you feel?",
-      "options": [
-        { "text": "A bit embarrassed — I didn’t mean to joke", "points": 2 },
-        { "text": "I smile and let it pass", "points": 3 },
-        { "text": "I lean into it — that’s my vibe", "points": 5 },
-        { "text": "I get annoyed — they misread me", "points": 1 }
+      "name": "Humor",
+      "questions": [
+        {
+          "id": "hum_01",
+          "question": "When people laugh at your joke and you weren’t even trying to be funny, how do you feel?",
+          "options": [
+            { "text": "A bit embarrassed — I didn’t mean to joke", "points": 2 },
+            { "text": "I smile and let it pass", "points": 3 },
+            { "text": "I lean into it — that’s my vibe", "points": 5 },
+            { "text": "I get annoyed — they misread me", "points": 1 }
+          ]
+        },
+        {
+          "id": "hum_02",
+          "question": "What kind of humor do you usually lean on when you're uncomfortable?",
+          "options": [
+            { "text": "Sarcasm — it masks the tension", "points": 4 },
+            { "text": "Self-deprecation — I laugh at myself first", "points": 5 },
+            { "text": "I don’t joke — I get quieter", "points": 1 },
+            { "text": "Random silliness — it lightens the mood", "points": 3 }
+          ]
+        },
+        {
+          "id": "hum_03",
+          "question": "What’s your instinct when someone takes your joke too seriously?",
+          "options": [
+            { "text": "I over-explain myself immediately", "points": 2 },
+            { "text": "I calmly clarify — no big deal", "points": 4 },
+            { "text": "I laugh and move on", "points": 5 },
+            { "text": "I feel bad and regret saying it", "points": 3 }
+          ]
+        },
+        {
+          "id": "hum_04",
+          "question": "When you're in a serious or tense group, how do you usually act?",
+          "options": [
+            { "text": "I joke to break the tension — even if it’s risky", "points": 5 },
+            { "text": "I wait for someone else to break the ice", "points": 2 },
+            { "text": "I stay quiet and observe", "points": 1 },
+            { "text": "I use subtle humor to test the waters", "points": 4 }
+          ]
+        },
+        {
+          "id": "hum_05",
+          "question": "How do you usually react when you embarrass yourself in public?",
+          "options": [
+            { "text": "I play it off with a joke", "points": 5 },
+            { "text": "I freeze and just hope no one saw", "points": 1 },
+            { "text": "I laugh and move past it", "points": 4 },
+            { "text": "I replay it in my head for hours", "points": 2 }
+          ]
+        }
       ]
     },
     {
-      "id": "hum_02",
-      "question": "What kind of humor do you usually lean on when you're uncomfortable?",
-      "options": [
-        { "text": "Sarcasm — it masks the tension", "points": 4 },
-        { "text": "Self-deprecation — I laugh at myself first", "points": 5 },
-        { "text": "I don’t joke — I get quieter", "points": 1 },
-        { "text": "Random silliness — it lightens the mood", "points": 3 }
+      "name": "Creativity",
+      "questions": [
+        {
+          "id": "cre_01",
+          "question": "How do you usually approach an unfamiliar problem?",
+          "options": [
+            { "text": "I try unusual methods to see what happens", "points": 5 },
+            { "text": "I research how others solved it before", "points": 3 },
+            { "text": "I ask for guidance first", "points": 2 },
+            { "text": "I avoid it unless I must deal with it", "points": 1 }
+          ]
+        },
+        {
+          "id": "cre_02",
+          "question": "What’s your mind like when you’re bored?",
+          "options": [
+            { "text": "It wanders into weird or random ideas", "points": 5 },
+            { "text": "I daydream about projects or stories", "points": 4 },
+            { "text": "I think of ways to be productive", "points": 3 },
+            { "text": "I just zone out or scroll endlessly", "points": 2 }
+          ]
+        },
+        {
+          "id": "cre_03",
+          "question": "When someone gives you a blank canvas, how do you feel?",
+          "options": [
+            { "text": "Excited — endless possibilities", "points": 5 },
+            { "text": "A bit overwhelmed — where do I start?", "points": 3 },
+            { "text": "Anxious — I’d rather have some structure", "points": 2 },
+            { "text": "Lost — I need clear instructions", "points": 1 }
+          ]
+        },
+        {
+          "id": "cre_04",
+          "question": "Which statement describes you best?",
+          "options": [
+            { "text": "I often connect unrelated things into new ideas", "points": 5 },
+            { "text": "I usually improve existing ideas rather than invent", "points": 4 },
+            { "text": "I prefer proven methods over experiments", "points": 2 },
+            { "text": "I rarely think about ideas unless prompted", "points": 1 }
+          ]
+        },
+        {
+          "id": "cre_05",
+          "question": "How do you handle a project with no clear instructions?",
+          "options": [
+            { "text": "I love the freedom to make it my own", "points": 5 },
+            { "text": "I start but often switch directions midway", "points": 4 },
+            { "text": "I try to find a guide or template first", "points": 3 },
+            { "text": "I feel stuck and need someone to lead", "points": 2 }
+          ]
+        }
       ]
     },
     {
-      "id": "hum_03",
-      "question": "What’s your instinct when someone takes your joke too seriously?",
-      "options": [
-        { "text": "I over-explain myself immediately", "points": 2 },
-        { "text": "I calmly clarify — no big deal", "points": 4 },
-        { "text": "I laugh and move on", "points": 5 },
-        { "text": "I feel bad and regret saying it", "points": 3 }
+      "name": "Intelligence",
+      "questions": [
+        {
+          "id": "int_01",
+          "question": "How do you usually react when someone gives you a fact that contradicts your belief?",
+          "options": [
+            { "text": "I research it myself before forming an opinion", "points": 5 },
+            { "text": "I question them calmly to understand their side", "points": 4 },
+            { "text": "I feel defensive and hold my stance", "points": 2 },
+            { "text": "I just nod and avoid the argument", "points": 1 }
+          ]
+        },
+        {
+          "id": "int_02",
+          "question": "What do you do when you encounter something you don’t understand?",
+          "options": [
+            { "text": "I dig into it deeply until I get it", "points": 5 },
+            { "text": "I skim through for the gist", "points": 3 },
+            { "text": "I ask someone to explain it", "points": 4 },
+            { "text": "I move on quickly — I don’t like struggling mentally", "points": 1 }
+          ]
+        },
+        {
+          "id": "int_03",
+          "question": "How do you handle moments when you feel intellectually inferior in a room?",
+          "options": [
+            { "text": "I listen closely and ask questions", "points": 5 },
+            { "text": "I try to observe quietly without drawing attention", "points": 3 },
+            { "text": "I try to prove I belong there too", "points": 4 },
+            { "text": "I mentally shut down and withdraw", "points": 1 }
+          ]
+        },
+        {
+          "id": "int_04",
+          "question": "Which of these would frustrate you the most?",
+          "options": [
+            { "text": "Repeating myself to people who aren’t paying attention", "points": 4 },
+            { "text": "Being misunderstood when I explain something complex", "points": 5 },
+            { "text": "Not being taken seriously despite being right", "points": 3 },
+            { "text": "Feeling like I’m not learning anything new", "points": 5 }
+          ]
+        },
+        {
+          "id": "int_05",
+          "question": "When faced with a difficult decision, what do you usually rely on?",
+          "options": [
+            { "text": "I gather and analyze as much info as I can", "points": 5 },
+            { "text": "I reflect logically but also trust my gut", "points": 4 },
+            { "text": "I ask someone smarter than me for help", "points": 3 },
+            { "text": "I choose whatever feels least risky", "points": 2 }
+          ]
+        }
       ]
     },
     {
-      "id": "hum_04",
-      "question": "When you're in a serious or tense group, how do you usually act?",
-      "options": [
-        { "text": "I joke to break the tension — even if it’s risky", "points": 5 },
-        { "text": "I wait for someone else to break the ice", "points": 2 },
-        { "text": "I stay quiet and observe", "points": 1 },
-        { "text": "I use subtle humor to test the waters", "points": 4 }
+      "name": "Kindness",
+      "questions": [
+        {
+          "id": "kin_01",
+          "question": "How do you usually respond when someone is rude to you without reason?",
+          "options": [
+            { "text": "I try to stay calm and respond with grace", "points": 5 },
+            { "text": "I walk away without engaging", "points": 4 },
+            { "text": "I respond with equal energy to defend myself", "points": 2 },
+            { "text": "I hold a grudge silently and remember it", "points": 1 }
+          ]
+        },
+        {
+          "id": "kin_02",
+          "question": "What’s your honest reaction when someone shares a problem you can’t help with?",
+          "options": [
+            { "text": "I still try to be emotionally supportive", "points": 5 },
+            { "text": "I listen quietly even if I can’t say much", "points": 4 },
+            { "text": "I feel uncomfortable and avoid the topic", "points": 2 },
+            { "text": "I change the subject because I don’t like emotional talks", "points": 1 }
+          ]
+        },
+        {
+          "id": "kin_03",
+          "question": "Which situation challenges your kindness the most?",
+          "options": [
+            { "text": "When someone disrespects me in front of others", "points": 4 },
+            { "text": "When I feel used or unappreciated", "points": 5 },
+            { "text": "When I’m already emotionally drained", "points": 3 },
+            { "text": "When the person needing kindness is someone I dislike", "points": 5 }
+          ]
+        },
+        {
+          "id": "kin_04",
+          "question": "How do you act when someone needs help, but helping would inconvenience you?",
+          "options": [
+            { "text": "If I can manage it, I still help", "points": 5 },
+            { "text": "I feel torn, but I usually end up helping", "points": 4 },
+            { "text": "I only help if it won’t affect my plans", "points": 2 },
+            { "text": "I avoid it and hope someone else steps in", "points": 1 }
+          ]
+        },
+        {
+          "id": "kin_05",
+          "question": "When someone gets what you wanted badly, how do you feel toward them?",
+          "options": [
+            { "text": "I genuinely feel happy for them", "points": 5 },
+            { "text": "I’m a bit jealous but still congratulate them", "points": 4 },
+            { "text": "I act polite, but deep down I feel bitter", "points": 2 },
+            { "text": "I avoid them until the feeling passes", "points": 1 }
+          ]
+        }
       ]
     },
     {
-      "id": "hum_05",
-      "question": "How do you usually react when you embarrass yourself in public?",
-      "options": [
-        { "text": "I play it off with a joke", "points": 5 },
-        { "text": "I freeze and just hope no one saw", "points": 1 },
-        { "text": "I laugh and move past it", "points": 4 },
-        { "text": "I replay it in my head for hours", "points": 2 }
-      ]
-    }
-  ]
-},  {
-  “name”: “Creativity”,
-  “questions”: [
-    {
-      “id”: “cre_01”,
-      “question”: “How do you usually approach an unfamiliar problem?”,
-      “options”: [
-        { “text”: “I try unusual methods to see what happens”, “points”: 5 },
-        { “text”: “I research how others solved it before”, “points”: 3 },
-        { “text”: “I ask for guidance first”, “points”: 2 },
-        { “text”: “I avoid it unless I must deal with it”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cre_02”,
-      “question”: “What’s your mind like when you’re bored?”,
-      “options”: [
-        { “text”: “It wanders into weird or random ideas”, “points”: 5 },
-        { “text”: “I daydream about projects or stories”, “points”: 4 },
-        { “text”: “I think of ways to be productive”, “points”: 3 },
-        { “text”: “I just zone out or scroll endlessly”, “points”: 2 }
-      ]
-    },
-    {
-      “id”: “cre_03”,
-      “question”: “When someone gives you a blank canvas, how do you feel?”,
-      “options”: [
-        { “text”: “Excited — endless possibilities”, “points”: 5 },
-        { “text”: “A bit overwhelmed — where do I start?”, “points”: 3 },
-        { “text”: “Anxious — I’d rather have some structure”, “points”: 2 },
-        { “text”: “Lost — I need clear instructions”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cre_04”,
-      “question”: “Which statement describes you best?”,
-      “options”: [
-        { “text”: “I often connect unrelated things into new ideas”, “points”: 5 },
-        { “text”: “I usually improve existing ideas rather than invent”, “points”: 4 },
-        { “text”: “I prefer proven methods over experiments”, “points”: 2 },
-        { “text”: “I rarely think about ideas unless prompted”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cre_05”,
-      “question”: “How do you handle a project with no clear instructions?”,
-      “options”: [
-        { “text”: “I love the freedom to make it my own”, “points”: 5 },
-        { “text”: “I start but often switch directions midway”, “points”: 4 },
-        { “text”: “I try to find a guide or template first”, “points”: 3 },
-        { “text”: “I feel stuck and need someone to lead”, “points”: 2 }
-      ]
-    }
-  ]
-},
-    {
-  “name”: “Intelligence”,
-  “questions”: [
-    {
-      “id”: “int_01”,
-      “question”: “How do you usually react when someone gives you a fact that contradicts your belief?”,
-      “options”: [
-        { “text”: “I research it myself before forming an opinion”, “points”: 5 },
-        { “text”: “I question them calmly to understand their side”, “points”: 4 },
-        { “text”: “I feel defensive and hold my stance”, “points”: 2 },
-        { “text”: “I just nod and avoid the argument”, “points”: 1 }
+      "name": "Patience",
+      "questions": [
+        {
+          "id": "pat_01",
+          "question": "You’re stuck in a slow-moving queue with people cutting in. What do you do?",
+          "options": [
+            { "text": "Politely confront the cutters and ask for order", "points": 4 },
+            { "text": "Wait your turn silently, even if it takes a while", "points": 5 },
+            { "text": "Mutter complaints under your breath", "points": 2 },
+            { "text": "Leave the queue in frustration", "points": 1 }
+          ]
+        },
+        {
+          "id": "pat_02",
+          "question": "You’re teaching someone something and they still don’t get it. How do you respond?",
+          "options": [
+            { "text": "Try a different approach with calmness", "points": 5 },
+            { "text": "Repeat yourself with slight irritation", "points": 3 },
+            { "text": "Tell them to figure it out themselves", "points": 1 },
+            { "text": "Pause and come back to it later when you both are calmer", "points": 4 }
+          ]
+        },
+        {
+          "id": "pat_03",
+          "question": "When an app keeps glitching while you’re trying to submit something important, what do you do?",
+          "options": [
+            { "text": "Keep restarting calmly until it works", "points": 5 },
+            { "text": "Throw your phone or shout in frustration", "points": 1 },
+            { "text": "Take a break and try again later", "points": 4 },
+            { "text": "Complain loudly and tag the company online", "points": 2 }
+          ]
+        },
+        {
+          "id": "pat_04",
+          "question": "How do you handle waiting for results that may affect your future?",
+          "options": [
+            { "text": "Keep yourself distracted and calm while waiting", "points": 5 },
+            { "text": "Check for updates constantly with anxiety", "points": 3 },
+            { "text": "Complain to everyone around about the delay", "points": 2 },
+            { "text": "Assume the worst and prepare for disappointment", "points": 1 }
+          ]
+        },
+        {
+          "id": "pat_05",
+          "question": "When you’re interrupted while explaining something important, what’s your reaction?",
+          "options": [
+            { "text": "Pause and wait for the other person to finish", "points": 5 },
+            { "text": "Get irritated but try to finish anyway", "points": 3 },
+            { "text": "Interrupt them right back", "points": 2 },
+            { "text": "Stay silent and give up explaining", "points": 1 }
+          ]
+        }
       ]
     },
     {
-      “id”: “int_02”,
-      “question”: “What do you do when you encounter something you don’t understand?”,
-      “options”: [
-        { “text”: “I dig into it deeply until I get it”, “points”: 5 },
-        { “text”: “I skim through for the gist”, “points”: 3 },
-        { “text”: “I ask someone to explain it”, “points”: 4 },
-        { “text”: “I move on quickly — I don’t like struggling mentally”, “points”: 1 }
+      "name": "Courage",
+      "questions": [
+        {
+          "id": "cou_01",
+          "question": "You witness someone being treated unfairly in public. What’s your instinct?",
+          "options": [
+            { "text": "Speak up calmly, even if it’s uncomfortable", "points": 5 },
+            { "text": "Stay quiet but feel guilty later", "points": 2 },
+            { "text": "Look around to see if someone else will act", "points": 3 },
+            { "text": "Walk away and tell yourself it’s not your problem", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_02",
+          "question": "You’re about to present something you’re proud of, but the audience looks judgmental. What do you do?",
+          "options": [
+            { "text": "Present it anyway, fully owning it", "points": 5 },
+            { "text": "Water it down so it’s more acceptable", "points": 3 },
+            { "text": "Rush through it just to get it over with", "points": 2 },
+            { "text": "Decide not to present and make an excuse", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_03",
+          "question": "How do you usually handle situations where your values are challenged?",
+          "options": [
+            { "text": "I explain my views with clarity, even if I stand alone", "points": 5 },
+            { "text": "I avoid the discussion to prevent conflict", "points": 2 },
+            { "text": "I downplay my opinion depending on who’s in the room", "points": 3 },
+            { "text": "I pretend to agree just to maintain peace", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_04",
+          "question": "You get an opportunity to try something completely new but risky. What’s your first response?",
+          "options": [
+            { "text": "I weigh the risk but usually go for it", "points": 5 },
+            { "text": "I seek others’ opinions before deciding", "points": 3 },
+            { "text": "I hesitate and likely pass on it", "points": 2 },
+            { "text": "I immediately reject it to avoid failing", "points": 1 }
+          ]
+        },
+        {
+          "id": "cou_05",
+          "question": "You’ve made a mistake that no one noticed yet. What do you do?",
+          "options": [
+            { "text": "Admit it quickly and take responsibility", "points": 5 },
+            { "text": "Fix it silently and hope no one finds out", "points": 3 },
+            { "text": "Wait to see if it even becomes a problem", "points": 2 },
+            { "text": "Blame it on something external if asked", "points": 1 }
+          ]
+        }
       ]
     },
     {
-      “id”: “int_03”,
-      “question”: “How do you handle moments when you feel intellectually inferior in a room?”,
-      “options”: [
-        { “text”: “I listen closely and ask questions”, “points”: 5 },
-        { “text”: “I try to observe quietly without drawing attention”, “points”: 3 },
-        { “text”: “I try to prove I belong there too”, “points”: 4 },
-        { “text”: “I mentally shut down and withdraw”, “points”: 1 }
+      "name": "Loyalty",
+      "questions": [
+        {
+          "id": "loy_01",
+          "question": "Your close friend starts getting disliked by others in your group. What do you do?",
+          "options": [
+            { "text": "Defend them and stay close, even if it isolates you", "points": 5 },
+            { "text": "Keep quiet but avoid speaking negatively", "points": 3 },
+            { "text": "Distance yourself quietly to avoid conflict", "points": 2 },
+            { "text": "Join the others in criticizing them to fit in", "points": 1 }
+          ]
+        },
+        {
+          "id": "loy_02",
+          "question": "Someone offers you a tempting deal that would hurt a team you belong to. What’s your response?",
+          "options": [
+            { "text": "Refuse instantly, loyalty means everything", "points": 5 },
+            { "text": "Consider it, but probably decline", "points": 3 },
+            { "text": "Take the deal if no one will know", "points": 1 },
+            { "text": "Accept but try to justify it to yourself", "points": 2 }
+          ]
+        },
+        {
+          "id": "loy_03",
+          "question": "A friend confides a secret that could damage their reputation. What do you do?",
+          "options": [
+            { "text": "Keep it, no matter the pressure", "points": 5 },
+            { "text": "Confide in one trusted person to process it", "points": 3 },
+            { "text": "Let it slip accidentally during conversation", "points": 2 },
+            { "text": "Use it against them if you fall out", "points": 1 }
+          ]
+        },
+        {
+          "id": "loy_04",
+          "question": "You’ve grown apart from someone who helped you a lot in the past. What’s your approach?",
+          "options": [
+            { "text": "Reach out and stay connected out of gratitude", "points": 5 },
+            { "text": "Silently appreciate them but move on", "points": 3 },
+            { "text": "Forget them — people grow apart", "points": 2 },
+            { "text": "Only contact them when you need something", "points": 1 }
+          ]
+        },
+        {
+          "id": "loy_05",
+          "question": "You’re wrongly accused in a group project. A teammate knows the truth. What would you do in their place?",
+          "options": [
+            { "text": "Speak up immediately to defend the truth", "points": 5 },
+            { "text": "Support privately but stay quiet publicly", "points": 3 },
+            { "text": "Avoid getting involved to stay neutral", "points": 2 },
+            { "text": "Let the false blame pass if it benefits me", "points": 1 }
+          ]
+        }
       ]
     },
     {
-      “id”: “int_04”,
-      “question”: “Which of these would frustrate you the most?”,
-      “options”: [
-        { “text”: “Repeating myself to people who aren’t paying attention”, “points”: 4 },
-        { “text”: “Being misunderstood when I explain something complex”, “points”: 5 },
-        { “text”: “Not being taken seriously despite being right”, “points”: 3 },
-        { “text”: “Feeling like I’m not learning anything new”, “points”: 5 }
+      "name": "Anger",
+      "questions": [
+        {
+          "id": "ang_01",
+          "question": "When someone interrupts you repeatedly in a conversation, how do you usually respond?",
+          "options": [
+            { "text": "I let it slide, but store the irritation", "points": 3 },
+            { "text": "I call it out firmly and directly", "points": 5 },
+            { "text": "I withdraw from the conversation altogether", "points": 2 },
+            { "text": "I lash out or cut them off mid-sentence", "points": 4 }
+          ]
+        },
+        {
+          "id": "ang_02",
+          "question": "You’re blamed for something you didn’t do. What’s your first emotional response?",
+          "options": [
+            { "text": "I feel the urge to explode and defend myself", "points": 5 },
+            { "text": "I get upset but wait to explain calmly", "points": 3 },
+            { "text": "I shut down and don’t respond", "points": 2 },
+            { "text": "I start blaming others to deflect quickly", "points": 4 }
+          ]
+        },
+        {
+          "id": "ang_03",
+          "question": "How do you usually deal with people who disrespect your boundaries more than once?",
+          "options": [
+            { "text": "I confront them directly with intensity", "points": 5 },
+            { "text": "I distance myself gradually", "points": 3 },
+            { "text": "I stay around but build silent resentment", "points": 2 },
+            { "text": "I do something to get back at them", "points": 4 }
+          ]
+        },
+        {
+          "id": "ang_04",
+          "question": "You’re stuck in traffic and running very late. What’s your internal state like?",
+          "options": [
+            { "text": "I curse internally and blame the universe", "points": 4 },
+            { "text": "I feel the tension but try to breathe through it", "points": 3 },
+            { "text": "I zone out and accept what I can’t control", "points": 2 },
+            { "text": "I honk, swear, and maybe even shout", "points": 5 }
+          ]
+        },
+        {
+          "id": "ang_05",
+          "question": "How do you behave when someone criticizes you harshly in front of others?",
+          "options": [
+            { "text": "I strike back and match their tone", "points": 5 },
+            { "text": "I stay calm but feel deeply bruised", "points": 3 },
+            { "text": "I laugh it off like it didn’t affect me", "points": 2 },
+            { "text": "I hold onto it and seek revenge later", "points": 4 }
+          ]
+        }
       ]
     },
     {
-      “id”: “int_05”,
-      "question": "When faced with a difficult decision, what do you usually rely on?",
-      "options": [
-        { "text": "I gather and analyze as much info as I can", "points": 5 },
-        { "text": "I reflect logically but also trust my gut", "points": 4 },
-        { "text": "I ask someone smarter than me for help", "points": 3 },
-        { "text": "I choose whatever feels least risky", "points": 2 }
-      ]
-    }
-  ]
-},
-{
-  “name”: “Kindness”,
-  “questions”: [
-    {
-      “id”: “kin_01”,
-      “question”: “How do you usually respond when someone is rude to you without reason?”,
-      “options”: [
-        { “text”: “I try to stay calm and respond with grace”, “points”: 5 },
-        { “text”: “I walk away without engaging”, “points”: 4 },
-        { “text”: “I respond with equal energy to defend myself”, “points”: 2 },
-        { “text”: “I hold a grudge silently and remember it”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “kin_02”,
-      “question”: “What’s your honest reaction when someone shares a problem you can’t help with?”,
-      “options”: [
-        { “text”: “I still try to be emotionally supportive”, “points”: 5 },
-        { “text”: “I listen quietly even if I can’t say much”, “points”: 4 },
-        { “text”: “I feel uncomfortable and avoid the topic”, “points”: 2 },
-        { “text”: “I change the subject because I don’t like emotional talks”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “kin_03”,
-      “question”: “Which situation challenges your kindness the most?”,
-      “options”: [
-        { “text”: “When someone disrespects me in front of others”, “points”: 4 },
-        { “text”: “When I feel used or unappreciated”, “points”: 5 },
-        { “text”: “When I’m already emotionally drained”, “points”: 3 },
-        { “text”: “When the person needing kindness is someone I dislike”, “points”: 5 }
-      ]
-    },
-    {
-      “id”: “kin_04”,
-      “question”: “How do you act when someone needs help, but helping would inconvenience you?”,
-      “options”: [
-        { “text”: “If I can manage it, I still help”, “points”: 5 },
-        { “text”: “I feel torn, but I usually end up helping”, “points”: 4 },
-        { “text”: “I only help if it won’t affect my plans”, “points”: 2 },
-        { “text”: “I avoid it and hope someone else steps in”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “kin_05”,
-      “question”: “When someone gets what you wanted badly, how do you feel toward them?”,
-      “options”: [
-        { “text”: “I genuinely feel happy for them”, “points”: 5 },
-        { “text”: “I’m a bit jealous but still congratulate them”, “points”: 4 },
-        { “text”: “I act polite, but deep down I feel bitter”, “points”: 2 },
-        { “text”: “I avoid them until the feeling passes”, “points”: 1 }
-      ]
-    }
-  ]
-},{
-  “name”: “Patience”,
-  “questions”: [
-    {
-      “id”: “pat_01”,
-      “question”: “You’re stuck in a slow-moving queue with people cutting in. What do you do?”,
-      “options”: [
-        { “text”: “Politely confront the cutters and ask for order”, “points”: 4 },
-        { “text”: “Wait your turn silently, even if it takes a while”, “points”: 5 },
-        { “text”: “Mutter complaints under your breath”, “points”: 2 },
-        { “text”: “Leave the queue in frustration”, “points”: 1 }
+      "name": "Ambition",
+      "questions": [
+        {
+          "id": "amb_01",
+          "question": "You’re offered a stable job with low growth or a risky one with huge potential. What do you pick?",
+          "options": [
+            { "text": "Take the risky one, I believe in big moves", "points": 5 },
+            { "text": "Take the stable one and plan long-term", "points": 3 },
+            { "text": "Take the stable one and stay comfortable", "points": 2 },
+            { "text": "Avoid both — too much pressure either way", "points": 1 }
+          ]
+        },
+        {
+          "id": "amb_02",
+          "question": "When you think of success, what drives you the most?",
+          "options": [
+            { "text": "Reaching my highest potential", "points": 5 },
+            { "text": "Being respected and admired", "points": 4 },
+            { "text": "Comfort and security", "points": 2 },
+            { "text": "Avoiding failure or embarrassment", "points": 3 }
+          ]
+        },
+        {
+          "id": "amb_03",
+          "question": "How do you react when you’re not the best at something you care about?",
+          "options": [
+            { "text": "I double down and train harder", "points": 5 },
+            { "text": "I feel disappointed but keep going", "points": 3 },
+            { "text": "I lose interest quickly", "points": 2 },
+            { "text": "I try something easier instead", "points": 1 }
+          ]
+        },
+        {
+          "id": "amb_04",
+          "question": "You’re given free time. What are you more likely to do?",
+          "options": [
+            { "text": "Work on a side project or skill", "points": 5 },
+            { "text": "Make future plans and organize", "points": 3 },
+            { "text": "Relax and enjoy the moment", "points": 2 },
+            { "text": "Scroll endlessly and avoid thinking", "points": 1 }
+          ]
+        },
+        {
+          "id": "amb_05",
+          "question": "How do you handle failure after putting in major effort?",
+          "options": [
+            { "text": "Learn from it and try again", "points": 5 },
+            { "text": "Reflect and slow down for a bit", "points": 3 },
+            { "text": "Blame external things and move on", "points": 2 },
+            { "text": "Drop the goal entirely — it wasn’t meant to be", "points": 1 }
+          ]
+        }
       ]
     },
-    {
-      “id”: “pat_02”,
-      “question”: “You’re teaching someone something and they still don’t get it. How do you respond?”,
-      “options”: [
-        { “text”: “Try a different approach with calmness”, “points”: 5 },
-        { “text”: “Repeat yourself with slight irritation”, “points”: 3 },
-        { “text”: “Tell them to figure it out themselves”, “points”: 1 },
-        { “text”: “Pause and come back to it later when you both are calmer”, “points”: 4 }
-      ]
-    },
-    {
-      “id”: “pat_03”,
-      “question”: “When an app keeps glitching while you’re trying to submit something important, what do you do?”,
-      “options”: [
-        { “text”: “Keep restarting calmly until it works”, “points”: 5 },
-        { “text”: “Throw your phone or shout in frustration”, “points”: 1 },
-        { “text”: “Take a break and try again later”, “points”: 4 },
-        { “text”: “Complain loudly and tag the company online”, “points”: 2 }
-      ]
-    },
-    {
-      “id”: “pat_04”,
-      “question”: “How do you handle waiting for results that may affect your future?”,
-      “options”: [
-        { “text”: “Keep yourself distracted and calm while waiting”, “points”: 5 },
-        { “text”: “Check for updates constantly with anxiety”, “points”: 3 },
-        { “text”: “Complain to everyone around about the delay”, “points”: 2 },
-        { “text”: “Assume the worst and prepare for disappointment”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “pat_05”,
-      “question”: “When you’re interrupted while explaining something important, what’s your reaction?”,
-      “options”: [
-        { “text”: “Pause and wait for the other person to finish”, “points”: 5 },
-        { “text”: “Get irritated but try to finish anyway”, “points”: 3 },
-        { “text”: “Interrupt them right back”, “points”: 2 },
-        { “text”: “Stay silent and give up explaining”, “points”: 1 }
-      ]
-    }
-  ]
-},
-    {
-  “name”: “Courage”,
-  “questions”: [
-    {
-      “id”: “cou_01”,
-      “question”: “You witness someone being treated unfairly in public. What’s your instinct?”,
-      “options”: [
-        { “text”: “Speak up calmly, even if it’s uncomfortable”, “points”: 5 },
-        { “text”: “Stay quiet but feel guilty later”, “points”: 2 },
-        { “text”: “Look around to see if someone else will act”, “points”: 3 },
-        { “text”: “Walk away and tell yourself it’s not your problem”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cou_02”,
-      “question”: “You’re about to present something you’re proud of, but the audience looks judgmental. What do you do?”,
-      “options”: [
-        { “text”: “Present it anyway, fully owning it”, “points”: 5 },
-        { “text”: “Water it down so it’s more acceptable”, “points”: 3 },
-        { “text”: “Rush through it just to get it over with”, “points”: 2 },
-        { “text”: “Decide not to present and make an excuse”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cou_03”,
-      “question”: “How do you usually handle situations where your values are challenged?”,
-      “options”: [
-        { “text”: “I explain my views with clarity, even if I stand alone”, “points”: 5 },
-        { “text”: “I avoid the discussion to prevent conflict”, “points”: 2 },
-        { “text”: “I downplay my opinion depending on who’s in the room”, “points”: 3 },
-        { “text”: “I pretend to agree just to maintain peace”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cou_04”,
-      “question”: “You get an opportunity to try something completely new but risky. What’s your first response?”,
-      “options”: [
-        { “text”: “I weigh the risk but usually go for it”, “points”: 5 },
-        { “text”: “I seek others’ opinions before deciding”, “points”: 3 },
-        { “text”: “I hesitate and likely pass on it”, “points”: 2 },
-        { “text”: “I immediately reject it to avoid failing”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “cou_05”,
-      “question”: “You’ve made a mistake that no one noticed yet. What do you do?”,
-      “options”: [
-        { “text”: “Admit it quickly and take responsibility”, “points”: 5 },
-        { “text”: “Fix it silently and hope no one finds out”, “points”: 3 },
-        { “text”: “Wait to see if it even becomes a problem”, “points”: 2 },
-        { “text”: “Blame it on something external if asked”, “points”: 1 }
-      ]
-    }
-  ]
-},
-    {
-  “name”: “Loyalty”,
-  “questions”: [
-    {
-      “id”: “loy_01”,
-      “question”: “Your close friend starts getting disliked by others in your group. What do you do?”,
-      “options”: [
-        { “text”: “Defend them and stay close, even if it isolates you”, “points”: 5 },
-        { “text”: “Keep quiet but avoid speaking negatively”, “points”: 3 },
-        { “text”: “Distance yourself quietly to avoid conflict”, “points”: 2 },
-        { “text”: “Join the others in criticizing them to fit in”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “loy_02”,
-      “question”: “Someone offers you a tempting deal that would hurt a team you belong to. What’s your response?”,
-      “options”: [
-        { “text”: “Refuse instantly, loyalty means everything”, “points”: 5 },
-        { “text”: “Consider it, but probably decline”, “points”: 3 },
-        { “text”: “Take the deal if no one will know”, “points”: 1 },
-        { “text”: “Accept but try to justify it to yourself”, “points”: 2 }
-      ]
-    },
-    {
-      “id”: “loy_03”,
-      “question”: “A friend confides a secret that could damage their reputation. What do you do?”,
-      “options”: [
-        { “text”: “Keep it, no matter the pressure”, “points”: 5 },
-        { “text”: “Confide in one trusted person to process it”, “points”: 3 },
-        { “text”: “Let it slip accidentally during conversation”, “points”: 2 },
-        { “text”: “Use it against them if you fall out”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “loy_04”,
-      “question”: “You’ve grown apart from someone who helped you a lot in the past. What’s your approach?”,
-      “options”: [
-        { “text”: “Reach out and stay connected out of gratitude”, “points”: 5 },
-        { “text”: “Silently appreciate them but move on”, “points”: 3 },
-        { “text”: “Forget them — people grow apart”, “points”: 2 },
-        { “text”: “Only contact them when you need something”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “loy_05”,
-      “question”: “You’re wrongly accused in a group project. A teammate knows the truth. What would you do in their place?”,
-      “options”: [
-        { “text”: “Speak up immediately to defend the truth”, “points”: 5 },
-        { “text”: “Support privately but stay quiet publicly”, “points”: 3 },
-        { “text”: “Avoid getting involved to stay neutral”, “points”: 2 },
-        { “text”: “Let the false blame pass if it benefits me”, “points”: 1 }
-      ]
-    }
-  ]
-},
-{
-  “name”: “Anger”,
-  “questions”: [
-    {
-      “id”: “ang_01”,
-      “question”: “When someone interrupts you repeatedly in a conversation, how do you usually respond?”,
-      “options”: [
-        { “text”: “I let it slide, but store the irritation”, “points”: 3 },
-        { “text”: “I call it out firmly and directly”, “points”: 5 },
-        { “text”: “I withdraw from the conversation altogether”, “points”: 2 },
-        { “text”: “I lash out or cut them off mid-sentence”, “points”: 4 }
-      ]
-    },
-    {
-      “id”: “ang_02”,
-      “question”: “You’re blamed for something you didn’t do. What’s your first emotional response?”,
-      “options”: [
-        { “text”: “I feel the urge to explode and defend myself”, “points”: 5 },
-        { “text”: “I get upset but wait to explain calmly”, “points”: 3 },
-        { “text”: “I shut down and don’t respond”, “points”: 2 },
-        { “text”: “I start blaming others to deflect quickly”, “points”: 4 }
-      ]
-    },
-    {
-      “id”: “ang_03”,
-      “question”: “How do you usually deal with people who disrespect your boundaries more than once?”,
-      “options”: [
-        { “text”: “I confront them directly with intensity”, “points”: 5 },
-        { “text”: “I distance myself gradually”, “points”: 3 },
-        { “text”: “I stay around but build silent resentment”, “points”: 2 },
-        { “text”: “I do something to get back at them”, “points”: 4 }
-      ]
-    },
-    {
-      “id”: “ang_04”,
-      “question”: “You’re stuck in traffic and running very late. What’s your internal state like?”,
-      “options”: [
-        { “text”: “I curse internally and blame the universe”, “points”: 4 },
-        { “text”: “I feel the tension but try to breathe through it”, “points”: 3 },
-        { “text”: “I zone out and accept what I can’t control”, “points”: 2 },
-        { “text”: “I honk, swear, and maybe even shout”, “points”: 5 }
-      ]
-    },
-    {
-      “id”: “ang_05”,
-      “question”: “How do you behave when someone criticizes you harshly in front of others?”,
-      “options”: [
-        { “text”: “I strike back and match their tone”, “points”: 5 },
-        { “text”: “I stay calm but feel deeply bruised”, “points”: 3 },
-        { “text”: “I laugh it off like it didn’t affect me”, “points”: 2 },
-        { “text”: “I hold onto it and seek revenge later”, “points”: 4 }
-      ]
-    }
-  ]
-},
-    {
-  “name”: “Ambition”,
-  “questions”: [
-    {
-      “id”: “amb_01”,
-      “question”: “You’re offered a stable job with low growth or a risky one with huge potential. What do you pick?”,
-      “options”: [
-        { “text”: “Take the risky one, I believe in big moves”, “points”: 5 },
-        { “text”: “Take the stable one and plan long-term”, “points”: 3 },
-        { “text”: “Take the stable one and stay comfortable”, “points”: 2 },
-        { “text”: “Avoid both — too much pressure either way”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “amb_02”,
-      “question”: “When you think of success, what drives you the most?”,
-      “options”: [
-        { “text”: “Reaching my highest potential”, “points”: 5 },
-        { “text”: “Being respected and admired”, “points”: 4 },
-        { “text”: “Comfort and security”, “points”: 2 },
-        { “text”: “Avoiding failure or embarrassment”, “points”: 3 }
-      ]
-    },
-    {
-      “id”: “amb_03”,
-      “question”: “How do you react when you’re not the best at something you care about?”,
-      “options”: [
-        { “text”: “I double down and train harder”, “points”: 5 },
-        { “text”: “I feel disappointed but keep going”, “points”: 3 },
-        { “text”: “I lose interest quickly”, “points”: 2 },
-        { “text”: “I try something easier instead”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “amb_04”,
-      “question”: “You’re given free time. What are you more likely to do?”,
-      “options”: [
-        { “text”: “Work on a side project or skill”, “points”: 5 },
-        { “text”: “Make future plans and organize”, “points”: 3 },
-        { “text”: “Relax and enjoy the moment”, “points”: 2 },
-        { “text”: “Scroll endlessly and avoid thinking”, “points”: 1 }
-      ]
-    },
-    {
-      “id”: “amb_05”,
-      “question”: “How do you handle failure after putting in major effort?”,
-      “options”: [
-        { “text”: “Learn from it and try again”, “points”: 5 },
-        { “text”: “Reflect and slow down for a bit”, “points”: 3 },
-        { “text”: “Blame external things and move on”, “points”: 2 },
-        { “text”: “Drop the goal entirely — it wasn’t meant to be”, “points”: 1 }
-      ]
-    }
-  ]
-},
     {
       "name": "Sociality",
       "questions": [
