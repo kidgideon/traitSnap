@@ -27,7 +27,7 @@ function shuffle(array) {
 }
 
 function normalizeTraitQuestion(q, category) {
-  // Always returns optionA, optionB, and (if present) optionC
+  // Always returns optionA, optionB, and (if present) optionC, optionD
   const opts = q.options;
   return {
     id: q.id,
@@ -36,6 +36,9 @@ function normalizeTraitQuestion(q, category) {
     optionB: { text: opts[1].text, points: opts[1].points },
     ...(opts[2] && {
       optionC: { text: opts[2].text, points: opts[2].points },
+    }),
+    ...(opts[3] && {
+      optionD: { text: opts[3].text, points: opts[3].points },
     }),
     category,
   };
@@ -184,6 +187,7 @@ const Quizarea = () => {
   const currentQ = questions[current];
   const optionKeys = ["A", "B"];
   if (currentQ.optionC) optionKeys.push("C");
+  if (currentQ.optionD) optionKeys.push("D");
 
   return (
     <div className="quiz-page quizArea-interface">
