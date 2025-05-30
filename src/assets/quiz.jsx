@@ -4,16 +4,8 @@ import quizes from "../questions.json";
 import "./styles/quiz.css"
 
 const TRAITS = [
-  "Confidence",
-  "Humor",
-  "Creativity",
-  "Intelligence",
-  "Kindness",
-  "Patience",
-  "Courage",
-  "Loyalty",
-  "Anger",
-  "Ambition",
+  "Confidence", "Humor", "Creativity", "Intelligence", "Kindness", "Patience",
+  "Courage", "Loyalty", "Anger", "Ambition",
 ];
 const SOCIALITY_TYPES = ["Introvert", "Ambivert", "Extrovert"];
 
@@ -27,25 +19,19 @@ function shuffle(array) {
 }
 
 function normalizeTraitQuestion(q, category) {
-  // Always returns optionA, optionB, and (if present) optionC, optionD
   const opts = q.options;
   return {
     id: q.id,
     question: q.question,
     optionA: { text: opts[0].text, points: opts[0].points },
     optionB: { text: opts[1].text, points: opts[1].points },
-    ...(opts[2] && {
-      optionC: { text: opts[2].text, points: opts[2].points },
-    }),
-    ...(opts[3] && {
-      optionD: { text: opts[3].text, points: opts[3].points },
-    }),
+    ...(opts[2] && { optionC: { text: opts[2].text, points: opts[2].points } }),
+    ...(opts[3] && { optionD: { text: opts[3].text, points: opts[3].points } }),
     category,
   };
 }
 
 function normalizeSocialityQuestion(q) {
-  // Each option has a type field
   const opts = q.options;
   return {
     id: q.id,
@@ -71,8 +57,17 @@ const Quizarea = () => {
     return initial;
   });
 
-  const userPhoto = localStorage.getItem("traitsnap-photo");
-  const userName = localStorage.getItem("traitsnap-name");
+  // Use state to store user info loaded from localStorage on client only
+  const [userPhoto, setUserPhoto] = useState(null);
+  const [userName, setUserName] = useState(null);
+
+  // Safely get user info on client only
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      setUserPhoto(localStorage.getItem("traitsnap-photo"));
+      setUserName(localStorage.getItem("traitsnap-name"));
+    }
+  }, []);
 
   // Redirect if name or photo is missing
   useEffect(() => {
@@ -85,11 +80,8 @@ const Quizarea = () => {
   useEffect(() => {
     const usedIds = new Set();
     let tempQuestions = [];
-
-    // Find categories in JSON
     const categories = quizes.categories || [];
 
-    // 1. Add 3 random questions per trait
     TRAITS.forEach((trait) => {
       const cat = categories.find((c) => c.name === trait);
       if (!cat) return;
@@ -102,7 +94,6 @@ const Quizarea = () => {
       });
     });
 
-    // 2. Add 3 random Sociality questions
     const socialityCat = categories.find((c) => c.name === "Sociality");
     if (socialityCat) {
       const picked = shuffle(socialityCat.questions)
@@ -114,14 +105,11 @@ const Quizarea = () => {
       });
     }
 
-    // 3. Shuffle all questions for quiz order
     setQuestions(shuffle(tempQuestions));
   }, []);
 
-  // Option select handler
   const handleOptionSelect = (optionKey) => setSelectedOption(optionKey);
 
-  // Next/Finish handler
   const handleNext = () => {
     if (selectedOption === null) return;
     const currentQ = questions[current];
@@ -130,13 +118,11 @@ const Quizarea = () => {
     setScores((prevScores) => {
       const newScores = { ...prevScores };
       if (currentQ.category === "Sociality" && selectedOptionData.type) {
-        // Sociality: add to type
         const socType = selectedOptionData.type;
         if (newScores[socType] !== undefined) {
           newScores[socType] += selectedOptionData.points;
         }
       } else {
-        // Trait: add to trait
         const trait = currentQ.category;
         if (newScores[trait] !== undefined) {
           newScores[trait] += selectedOptionData.points;
@@ -162,20 +148,22 @@ const Quizarea = () => {
           finalScores[trait] += selectedOptionData.points;
         }
       }
-      // Save to localStorage
-      localStorage.setItem(
-        "traitsnap-scores",
-        JSON.stringify({
-          traits: TRAITS.reduce(
-            (acc, t) => ({ ...acc, [t]: finalScores[t] || 0 }),
-            {}
-          ),
-          sociality: SOCIALITY_TYPES.reduce(
-            (acc, s) => ({ ...acc, [s]: finalScores[s] || 0 }),
-            {}
-          ),
-        })
-      );
+      // Save to localStorage only on client
+      if (typeof window !== "undefined" && window.localStorage) {
+        localStorage.setItem(
+          "traitsnap-scores",
+          JSON.stringify({
+            traits: TRAITS.reduce(
+              (acc, t) => ({ ...acc, [t]: finalScores[t] || 0 }),
+              {}
+            ),
+            sociality: SOCIALITY_TYPES.reduce(
+              (acc, s) => ({ ...acc, [s]: finalScores[s] || 0 }),
+              {}
+            ),
+          })
+        );
+      }
       navigate("/trait card");
       return;
     }
