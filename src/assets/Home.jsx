@@ -36,7 +36,7 @@ const Home = () => {
     localStorage.setItem("traitsnap-name", name);
     localStorage.setItem("traitsnap-photo", photo);
 
-    navigate("/trait test");
+    navigate("/trait-test");
   };
 
   return (
