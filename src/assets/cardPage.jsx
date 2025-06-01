@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import domtoimage from "dom-to-image-more";
+import * as htmlToImage from "html-to-image";
 import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.png";
@@ -107,9 +107,9 @@ const Card = () => {
     setDownloading(true);
     await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
-    domtoimage.toBlob(cardRef.current, {
-      quality: 5,
-      bgcolor: null,
+    htmlToImage.toBlob(cardRef.current, {
+      quality: 1,
+      backgroundColor: null,
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
@@ -264,9 +264,9 @@ const Card = () => {
     setDownloading(true);
     await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
-    domtoimage.toBlob(cardRef.current, {
-      quality: 5,
-      bgcolor: null,
+    htmlToImage.toBlob(cardRef.current, {
+      quality: 1,
+      backgroundColor: null,
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
