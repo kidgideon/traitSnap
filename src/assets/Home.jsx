@@ -113,7 +113,7 @@ const Home = () => {
       </section>
         <h1>How It Works</h1>
         <div className="method">
-          <div>
+          <div className="method-div">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/ijsqrapz.json"
@@ -123,7 +123,7 @@ const Home = () => {
             ></lord-icon>
             <h3>Upload a picture</h3>
           </div>
-          <div>
+          <div className="method-div">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/sobzmbzh.json"
@@ -134,7 +134,7 @@ const Home = () => {
             ></lord-icon>
             <h3>Answer fun questions</h3>
           </div>
-          <div>
+          <div  className="method-div">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/ssartdnc.json"
@@ -203,9 +203,7 @@ const Home = () => {
           </div>
         </div>
       </footer>
-
       </div>
-
     
       {/* Modal */}
       {showModal && (

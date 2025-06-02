@@ -69,6 +69,10 @@
   color: white;
 }
 
+.mascot-are img{
+  width: 300px;
+}
+
 
 @keyframes bounceIn {
   0% {
@@ -148,7 +152,6 @@
 
 .next-btn {
   padding: 10px 50px;
-
   background-color:#339CFF;
   color: white;
   border: none;
@@ -156,7 +159,6 @@
   cursor: pointer;
   font-weight: bold;
 }
-
 
 .image-view-section {
   width: 100%;
@@ -202,17 +204,21 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
   font-size: 13px;
+  flex-wrap: wrap;
 }
 
-.method div {
+.method-div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-   box-shadow: 0 2px 8px rgba(8, 50, 50, 0.067);
-   width: 150px;
+  box-shadow: 0 2px 8px rgba(20, 50, 50, 0.067);
+  width: 150px;
+ background: #120029;;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .method div h3 {
@@ -220,8 +226,8 @@
 }
 
 .icon-lord {
- width: 70px;
- height: 70px;
+ width: 90px;
+ height: 90px;
 }
 
 
@@ -252,8 +258,8 @@
 }
 
 .icon-lord {
- width: 50px;
- height: 50px;
+ width: 90px;
+ height: 90px;
 }
 }
 
@@ -332,7 +338,7 @@
 
 /* Testimonials Section */
 .testimonials-section {
-  background: #fff;
+  background: transparent;
   color: #21004D;
   padding: 40px 10% 30px 10%;
   border-radius: 18px;
@@ -343,7 +349,7 @@
 }
 .testimonials-section h2 {
   margin-bottom: 18px;
-  color: #5C27FE;
+  color: white;
 }
 .testimonials-list {
   display: flex;
@@ -352,8 +358,8 @@
   gap: 24px;
 }
 .testimonials-list > div {
-  background: #f7f7ff;
   border-radius: 12px;
+   background: #120029;
   padding: 18px 14px;
   width: 240px;
   min-height: 120px;
@@ -361,6 +367,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 .testimonial-avatar {
   width: 44px;
@@ -393,7 +400,7 @@
   gap: 32px;
 }
 .faq-list > div {
-  background: #fff2;
+  background: #120029;
   border-radius: 12px;
   padding: 22px 18px;
   width: 260px;
@@ -411,9 +418,10 @@
 
 /* Footer Section */
 .footer-section {
-  background: #1a003a;
+ background: #120029;
+ width: 100%;
   color: #fff;
-  padding: 32px 10% 18px 10%;
+  padding: 10px 0px;
   margin-top: 40px;
   border-radius: 18px 18px 0 0;
   box-shadow: 0 -2px 16px #0002;
@@ -435,7 +443,7 @@
 /* Responsive adjustments */
 @media screen and (max-width: 900px) {
   .about-section, .features-section, .testimonials-section, .faq-section, .footer-section {
-    padding: 32px 4% 22px 4%;
+
     max-width: 99vw;
 
   }
@@ -448,7 +456,5 @@
     flex-direction: column;
     align-items: center;
   }
-  .about-section, .features-section, .testimonials-section, .faq-section, .footer-section {
-    padding: 18px 2% 12px 2%;
-  }
+  
 }
