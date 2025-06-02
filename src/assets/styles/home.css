@@ -37,6 +37,7 @@
     cursor: pointer;
     transition: 0.4S ease-in;
     transform: scale(1);
+    margin: 20px;
 }
 
 .startButton button:hover {
@@ -212,10 +213,15 @@
   flex-direction: column;
 }
 
-.icon-lord {
- width: 90px;
- height: 90px;
+.method div h3 {
+  font-size: 95%;
 }
+
+.icon-lord {
+ width: 70px;
+ height: 70px;
+}
+
 
 /* For mobile devices (phones, usually less than 768px wide) */
 @media screen and (max-width: 767px) {
@@ -236,6 +242,212 @@
   }
 
   .homePage {
-    height: 100dvh;
+  }
+
+  
+.method div h3 {
+  font-size: 90%;
+}
+
+.icon-lord {
+ width: 50px;
+ height: 50px;
+}
+}
+
+/* Fade-in animation for sections */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.1s cubic-bezier(.4,0,.2,1), transform 1.1s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About Section */
+.about-section {
+  background: #fff;
+  color: #21004D;
+  padding: 40px 10% 30px 10%;
+  border-radius: 18px;
+  margin: 32px auto 0 auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px #0002;
+  text-align: center;
+}
+.about-section h2 {
+  margin-bottom: 12px;
+  font-size: 2rem;
+  color: #5C27FE;
+}
+.about-section p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Features Section */
+.features-section {
+  background: #21004D;
+  color: #fff;
+  padding: 40px 10% 30px 10%;
+  border-radius: 18px;
+  margin: 32px auto 0 auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px #0002;
+  text-align: center;
+}
+.features-section h2 {
+  margin-bottom: 18px;
+  color: #00F0FF;
+}
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 0;
+}
+.features-list > div {
+  border-radius: 14px;
+  padding: 18px 12px 12px 12px;
+  width: 200px;
+  min-height: 170px;
+  box-shadow: 0 2px 8px #0001;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .2s;
+}
+.features-list > div:hover {
+  box-shadow: 0 6px 24px #339cff33;
+  transform: translateY(-4px) scale(1.03);
+}
+.features-list svg {
+  margin-bottom: 8px;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background: #fff;
+  color: #21004D;
+  padding: 40px 10% 30px 10%;
+  border-radius: 18px;
+  margin: 32px auto 0 auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px #0002;
+  text-align: center;
+}
+.testimonials-section h2 {
+  margin-bottom: 18px;
+  color: #5C27FE;
+}
+.testimonials-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.testimonials-list > div {
+  background: #f7f7ff;
+  border-radius: 12px;
+  padding: 18px 14px;
+  width: 240px;
+  min-height: 120px;
+  box-shadow: 0 2px 8px #0001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+  border: 2px solid #5C27FE;
+}
+
+/* FAQ Section */
+.faq-section {
+  background: #21004D;
+  color: #fff;
+  padding: 40px 10% 30px 10%;
+  border-radius: 18px;
+  margin: 32px auto 0 auto;
+  max-width: 900px;
+  box-shadow: 0 4px 24px #0002;
+  text-align: center;
+}
+.faq-section h2 {
+  margin-bottom: 18px;
+  color: #00F0FF;
+}
+.faq-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+.faq-list > div {
+  background: #fff2;
+  border-radius: 12px;
+  padding: 22px 18px;
+  width: 260px;
+  min-height: 100px;
+  box-shadow: 0 2px 8px #0001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.faq-list h4 {
+  margin-bottom: 6px;
+  color: #00F0FF;
+}
+
+/* Footer Section */
+.footer-section {
+  background: #1a003a;
+  color: #fff;
+  padding: 32px 10% 18px 10%;
+  margin-top: 40px;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -2px 16px #0002;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+  .about-section, .features-section, .testimonials-section, .faq-section, .footer-section {
+    padding: 32px 4% 22px 4%;
+    max-width: 99vw;
+  }
+  .features-list, .testimonials-list, .faq-list {
+    gap: 18px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .features-list, .testimonials-list, .faq-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-section, .features-section, .testimonials-section, .faq-section, .footer-section {
+    padding: 18px 2% 12px 2%;
   }
 }

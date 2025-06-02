@@ -113,11 +113,13 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
+      pixelRatio: 3,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
         width: cardRef.current.offsetWidth + "px",
         height: cardRef.current.offsetHeight + "px"
+
       }
     }).then(blob => {
       setDownloading(false);
@@ -270,6 +272,7 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
+       pixelRatio: 3,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
