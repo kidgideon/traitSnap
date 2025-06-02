@@ -90,26 +90,22 @@ const Home = () => {
         <h2>Why You'll Love TraitSnap</h2>
         <div className="features-list">
           <div>
-            {/* Sparkle SVG */}
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path fill="#5C27FE" d="M12 2l2.09 6.26L20 9.27l-5 3.64L16.18 20 12 16.77 7.82 20 9 12.91l-5-3.64 5.91-.01z"/></svg>
+            <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="spark">✨</span>
             <h4>Instant Personality Card</h4>
             <p>Get a personalized card in seconds, ready to share or download.</p>
           </div>
           <div>
-            {/* Share SVG */}
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path stroke="#339cff" strokeWidth="2" d="M15 8l5 4-5 4M20 12H9a5 5 0 1 1 0-10h1"/></svg>
+            <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="share">🔗</span>
             <h4>One-Tap Sharing</h4>
             <p>Show off your card on socials or DM it to friends—just tap and go!</p>
           </div>
           <div>
-            {/* Lock SVG */}
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="8" rx="2" fill="#21004D"/><path stroke="#339cff" strokeWidth="2" d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="lock">🔒</span>
             <h4>Privacy First</h4>
             <p>Your data never leaves your device. No servers, no snooping, just you.</p>
           </div>
           <div>
-            {/* Party SVG */}
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path fill="#FF2E93" d="M2 22l16-16 4 4-16 16z"/><circle cx="17" cy="7" r="2" fill="#FFD700"/></svg>
+            <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="party">🎉</span>
             <h4>Fun & Insightful</h4>
             <p>Answer quirky questions, get real compliments, and discover your spark!</p>
           </div>
@@ -173,30 +169,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Meet Traity Section */}
-      <section className="mascot-section fade-section">
-        <div className="mascot-flex">
-          {/* Fun SVG mascot */}
-          <svg className="mascot-img" width="110" height="110" viewBox="0 0 110 110" fill="none">
-            <circle cx="55" cy="55" r="50" fill="#339cff" />
-            <ellipse cx="55" cy="70" rx="28" ry="18" fill="#fff"/>
-            <ellipse cx="40" cy="50" rx="7" ry="10" fill="#fff"/>
-            <ellipse cx="70" cy="50" rx="7" ry="10" fill="#fff"/>
-            <ellipse cx="40" cy="52" rx="3" ry="4" fill="#21004D"/>
-            <ellipse cx="70" cy="52" rx="3" ry="4" fill="#21004D"/>
-            <ellipse cx="55" cy="80" rx="8" ry="4" fill="#21004D"/>
-            <ellipse cx="55" cy="80" rx="5" ry="2" fill="#fff"/>
-            <ellipse cx="35" cy="35" rx="3" ry="2" fill="#FFD700"/>
-            <ellipse cx="75" cy="35" rx="3" ry="2" fill="#FFD700"/>
-          </svg>
-          <div>
-            <h2>Meet Our Mascot: <span style={{color:'#5C27FE'}}>Traity</span>!</h2>
-            <p>
-              Traity is your friendly guide on the TraitSnap journey. Always cheerful and a little quirky, Traity loves helping you discover what makes you, <b>you</b>. Spot Traity for tips, encouragement, and a sprinkle of magic as you explore your personality!
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="faq-section fade-section">

@@ -211,6 +211,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+   box-shadow: 0 2px 8px rgba(8, 50, 50, 0.067);
+   width: 150px;
 }
 
 .method div h3 {
@@ -269,19 +271,18 @@
 
 /* About Section */
 .about-section {
-  background: #fff;
-  color: #21004D;
-  padding: 40px 10% 30px 10%;
+  background: transparent;
+  color: white;
   border-radius: 18px;
   margin: 32px auto 0 auto;
-  max-width: 900px;
-  box-shadow: 0 4px 24px #0002;
+  max-width: 95%;
   text-align: center;
+
 }
 .about-section h2 {
   margin-bottom: 12px;
   font-size: 2rem;
-  color: #5C27FE;
+  color: #339CFF;
 }
 .about-section p {
   font-size: 1.15rem;
@@ -290,13 +291,11 @@
 
 /* Features Section */
 .features-section {
-  background: #21004D;
+  background: transparent;
   color: #fff;
-  padding: 40px 10% 30px 10%;
   border-radius: 18px;
   margin: 32px auto 0 auto;
-  max-width: 900px;
-  box-shadow: 0 4px 24px #0002;
+  width: 100%;
   text-align: center;
 }
 .features-section h2 {
@@ -316,7 +315,8 @@
   width: 200px;
   min-height: 170px;
   box-shadow: 0 2px 8px #0001;
-  background: #fff;
+  background-color: transparent;
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -437,6 +437,7 @@
   .about-section, .features-section, .testimonials-section, .faq-section, .footer-section {
     padding: 32px 4% 22px 4%;
     max-width: 99vw;
+
   }
   .features-list, .testimonials-list, .faq-list {
     gap: 18px;
