@@ -282,14 +282,14 @@
   color: white;
   border-radius: 18px;
   margin: 32px auto 0 auto;
-  max-width: 95%;
+  width: 95%;
   text-align: center;
 
 }
 .about-section h2 {
   margin-bottom: 12px;
   font-size: 2rem;
-  color: #339CFF;
+  color: #00F0FF;
 }
 .about-section p {
   font-size: 1.15rem;
