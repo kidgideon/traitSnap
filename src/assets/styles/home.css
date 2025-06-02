@@ -192,7 +192,6 @@
   width: 100%;
  color: white;
  margin-top: 20px;
- padding-bottom: 10px;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -207,6 +206,7 @@
   width: 90%;
   font-size: 13px;
   flex-wrap: wrap;
+   gap: 10px;
 }
 
 .method-div {
@@ -219,6 +219,7 @@
  background: #120029;;
   padding: 10px;
   border-radius: 10px;
+ 
 }
 
 .method div h3 {
@@ -419,7 +420,7 @@
 /* Footer Section */
 .footer-section {
  background: #120029;
- width: 100%;
+ width: 98%;
   color: #fff;
   padding: 10px 0px;
   margin-top: 40px;
