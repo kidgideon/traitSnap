@@ -125,7 +125,7 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-      pixelRatio: 3,
+      pixelRatio: 2,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
@@ -288,7 +288,7 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-       pixelRatio: 3,
+       pixelRatio: 2,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",

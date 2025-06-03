@@ -45,11 +45,11 @@ function normalizeSocialityQuestion(q) {
 }
 
 const MOTIVATION_MSGS = [
-  "You're doing great! Just be honest with your answers for the best results.",
-  "Keep it up! Honest answers make your card shine.",
-  "Awesome progress! Stay true to yourself for the best results.",
-  "You're on a roll! Answer honestly for your most accurate card.",
-  "Almost there! Keep going and be yourself.",
+  "Just be honest with your answers for the best results.",
+  "Honest answers make your card feel like you",
+  "Stay true to yourself for the best results.",
+  "Answer honestly for your most accurate card.",
+  "Be yourself.",
 ];
 
 const Quizarea = () => {
@@ -63,7 +63,8 @@ const Quizarea = () => {
   const [usedQuestionIds, setUsedQuestionIds] = useState(new Set());
   const [extraQuestions, setExtraQuestions] = useState([]);
   const [realTestFlag, setRealTestFlag] = useState(null);
-const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
+  const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
+  const [usedMotivationIndexes, setUsedMotivationIndexes] = useState([0]);
 
   // Scores for all traits and sociality types
   const [scores, setScores] = useState(() => {
@@ -151,7 +152,16 @@ const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
     // Motivational modal after every 10 questions (except last)
     const totalQ = extraMode ? extraQuestions.length : questions.length;
     if (!extraMode && (current + 1) % 10 === 0 && current + 1 < totalQ) {
-      setMotivationMsg(MOTIVATION_MSGS[Math.floor(Math.random() * MOTIVATION_MSGS.length)]);
+      // Pick a message not used yet
+      let availableIndexes = MOTIVATION_MSGS.map((_, i) => i).filter(i => !usedMotivationIndexes.includes(i));
+      // If all used, reset except for the last one shown
+      if (availableIndexes.length === 0) {
+        availableIndexes = MOTIVATION_MSGS.map((_, i) => i).filter(i => i !== usedMotivationIndexes[usedMotivationIndexes.length - 1]);
+        setUsedMotivationIndexes([]);
+      }
+      const randomIdx = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+      setMotivationMsg(MOTIVATION_MSGS[randomIdx]);
+      setUsedMotivationIndexes(prev => [...prev, randomIdx]);
       setShowMotivation(true);
       return;
     }
