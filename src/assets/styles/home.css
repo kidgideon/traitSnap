@@ -250,10 +250,6 @@
     height: 360px;
   }
 
-  .homePage {
-  }
-
-  
 .method div h3 {
   font-size: 90%;
 }
@@ -326,7 +322,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow .2s;
 }
 .features-list > div:hover {
   box-shadow: 0 6px 24px #339cff33;
@@ -413,20 +408,24 @@
 /* Footer Section */
 .footer-section {
  background: #120029;
- width: 98%;
+  width: 100%;
   color: #fff;
-  padding: 10px 0px;
   margin-top: 40px;
-  border-radius: 18px 18px 0 0;
-  box-shadow: 0 -2px 16px #0002;
+  border-radius: 10px 10px 0px 0px;
 }
 .footer-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  width: 100%;
+   flex-direction: column;
 }
+
+.footer-content p {
+  width: 100%;
+  text-align: center;
+}
+
 .footer-logo {
   width: 48px;
   height: 48px;

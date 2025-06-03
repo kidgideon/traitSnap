@@ -281,31 +281,32 @@ const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
         </button>
       </div>
 
-      {/* Motivational Modal */}
-      <div className={modalClass(showMotivation)}>
-        <div className="quiz-modal__content">
-          <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
-          <h3>Keep Going!</h3>
-          <p>{motivationMsg}</p>
-          <button className="quiz-modal__btn" onClick={handleMotivationOk}>OK</button>
-        </div>
-      </div>
+     {/* Motivational Modal */}
+<div className={modalClass(showMotivation)}>
+  <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
+  <div className="quiz-modal__content">
+    <h3>Keep Going!</h3>
+    <p>{motivationMsg}</p>
+    <button className="quiz-modal__btn" onClick={handleMotivationOk}>OK</button>
+  </div>
+</div>
 
-      {/* Final Modal */}
-      <div className={modalClass(showFinalModal)}>
-        <div className="quiz-modal__content">
-          <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
-          <h3>You've completed the core test!</h3>
-          <p>
-            You can view your result now.<br />
-            <b>But for best accuracy, take 10 more questions (1 extra per trait).</b>
-          </p>
-          <div style={{display: "flex", gap: 16, marginTop: 16, justifyContent: "center"}}>
-            <button className="quiz-modal__btn" onClick={handleTakeMore}>Take More Questions</button>
-            <button className="quiz-modal__btn quiz-modal__btn--skip" onClick={handleSkip}>Skip</button>
-          </div>
-        </div>
-      </div>
+{/* Final Modal */}
+<div className={modalClass(showFinalModal)}>
+  <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
+  <div className="quiz-modal__content">
+    <h3>You've completed the core test!</h3>
+    <p>
+      You can view your result now.<br />
+      <b>But for best accuracy, take 10 more questions</b>
+    </p>
+    <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginTop: 16 , width: "100%"}}>
+      <button className="quiz-modal__btn" onClick={handleTakeMore}>Continue</button>
+      <button className="quiz-modal__btn quiz-modal__btn--skip" onClick={handleSkip}>Finish</button>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 };

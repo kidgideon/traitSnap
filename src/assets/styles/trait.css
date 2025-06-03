@@ -369,3 +369,9 @@
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
 }
+
+.shield-per-real-test-users  {
+  width: 30px;
+  top: 100px;
+  left: 140px;
+}

@@ -191,11 +191,11 @@ const Home = () => {
         <div className="footer-content">
           <img src={logo} alt="TraitSnap Logo" className="footer-logo" />
           <div>
-            <p>
-              &copy; {new Date().getFullYear()} TraitSnap. All rights reserved.
+             <p>
+              Made with <span style={{color:'#FF2E93'}}>♥</span> for self-discovery.
             </p>
             <p>
-              Made with <span style={{color:'#FF2E93'}}>♥</span> for self-discovery.
+              &copy; {new Date().getFullYear()} TraitSnap. All rights reserved.
             </p>
           </div>
         </div>

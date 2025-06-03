@@ -99,66 +99,98 @@
   z-index: 10;
 }
 
-/* Animated modal for quiz */
+ /* Modal Background Overlay */
 .quiz-modal {
   position: fixed;
-  left: 0; right: 0; bottom: 0; top: 0;
-  background: rgba(33,0,77,0.65);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(33, 0, 77, 0.65);
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.35s ease;
   z-index: 1000;
 }
+
 .quiz-modal--show {
   opacity: 1;
   pointer-events: auto;
 }
-.quiz-modal__content {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 32px #0002;
-  padding: 36px 24px 24px 24px;
-  width: 95vw;
-  max-width: 370px;
-  margin: 0;
-  animation: slideUpModal 0.45s cubic-bezier(.4,0,.2,1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-@keyframes slideUpModal {
-  from { opacity: 0; transform: translateY(60px) scale(0.96);}
-  to { opacity: 1; transform: translateY(0) scale(1);}
-}
+
+/* Floating Mascot Face */
 .quiz-modal__mascot {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  margin-bottom: 12px;
-  background: #f7f7ff;
-  object-fit: contain;
+   width: 270px;
+  margin-bottom: 16px;
+  animation: popIn 0.6s ease forwards;
 }
-.quiz-modal__btn {
-  background: #339cff;
+
+/* Floating Speech Bubble */
+.quiz-modal__content {
+  margin-top: -30px;
+  background:  #21004D;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 10px 0px;
+  width: 95%;
+  text-align: center;
+  animation: slideUpModal 0.5s ease forwards;
   color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  margin-top: 18px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
+  transform: translateY(60px);
+  opacity: 0;
 }
+
+/* Animate into view */
+.quiz-modal--show .quiz-modal__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Buttons Float */
+.quiz-modal__btn {
+  background: #00F0FF;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.4);
+  transition: all 0.25s ease;
+}
+
 .quiz-modal__btn--skip {
   background: #FF2E93;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(255, 46, 147, 0.4);
 }
+
 .quiz-modal__btn:hover {
-  background: #5C27FE;
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
-.quiz-modal__btn--skip:hover {
-  background: #d81b60;
+
+@keyframes slideUpModal {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
