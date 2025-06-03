@@ -192,6 +192,7 @@
   width: 100%;
  color: white;
  margin-top: 20px;
+ padding-bottom: 10px;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -378,6 +379,7 @@
   text-align: center;
   margin: 20px 0px;
 }
+
 .faq-section h2 {
   margin-bottom: 18px;
   color: #00F0FF;

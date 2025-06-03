@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.png";
 import comments from "../assets/comments.json"; // Make sure the path is correct
+import facts from "../assets/facts.json"; // Add this import at the top
 import BannerAd from "./Ad";
 import Shield from "../../images/shield.png"
-
+import mascot from "../../images/traitsnap_mascot.png"
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -319,7 +320,35 @@ const Card = () => {
  <button className="personality-card-download-btn" onClick={handleDownload}>
           Download Card
         </button>
-  <BannerAd />
+
+        <div className="context-layout">
+  <section className="faq-section">
+    <h2>Facts on your traits</h2>
+    <div className="faq-list">
+      {TRAITS.map((trait, idx) => {
+        const percent = barPercents[idx];
+        // Find the correct band for this trait
+        let band = null;
+        if (percent >= 90) band = "90-100";
+        else if (percent >= 70) band = "70-80";
+        else if (percent >= 50) band = "50-60";
+        else if (percent >= 30) band = "30-40";
+        else band = "10-20";
+        const fact = facts[trait] && facts[trait][band];
+        return (
+          <div key={trait}>
+            <h4>{trait}</h4>
+            <p>{fact || "No fact available for this range."}</p>
+          </div>
+        );
+      })}
+    </div>
+     <div className="mascot-are ">
+          <img src={mascot} alt="" />
+        </div>
+    <BannerAd />
+  </section>
+</div>
       </div>
     </div>
   );
