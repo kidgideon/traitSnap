@@ -51,6 +51,7 @@ const Card = () => {
   const [barPercents, setBarPercents] = useState(Array(TRAITS.length).fill(0));
   const [downloading, setDownloading] = useState(false);
   const [realTest, setRealTest] = useState(() => localStorage.getItem("realtest") === "true");
+  const [progress, setProgress] = useState(0);
   const cardRef = useRef();
 
   useEffect(() => {
@@ -116,25 +117,43 @@ const Card = () => {
     compliment = comments[maxTrait][randIdx];
   }
 
+  // Helper for progress bar animation
+  function animateProgress(setter, duration = 1200) {
+    setter(0);
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      const percent = Math.min(100, Math.round((elapsed / duration) * 100));
+      setter(percent);
+      if (percent < 100) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   const handleDownload = async () => {
     setDownloading(true);
+    setProgress(0);
+    animateProgress(setProgress, 1200);
     await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
+    await waitForImagesLoaded(cardRef.current);
     htmlToImage.toBlob(cardRef.current, {
       quality: 1,
       backgroundColor: null,
       cacheBust: true,
-      width: cardRef.current.offsetWidth * 4,
-      height: cardRef.current.offsetHeight * 4,
+      width: 1080,
+      height: 1080,
+      pixelRatio: 2.0,
       style: {
-        transform: "scale(4)",
+        transform: "scale(1)",
         transformOrigin: "top left",
-        width: cardRef.current.offsetWidth + "px",
-        height: cardRef.current.offsetHeight + "px"
-
+        width: "1080px",
+        height: "1080px"
       }
     }).then(blob => {
       setDownloading(false);
+      setProgress(100);
       const file = new File([blob], "personality_card.png", { type: "image/png" });
       const shareData = {
         title: "TraitSnap Personality Card",
@@ -148,7 +167,52 @@ const Card = () => {
         navigator.clipboard.writeText(shareData.url);
         alert("Link copied! Share it with your friends: " + shareData.url);
       }
-    }).catch(() => setDownloading(false));
+    }).catch(() => {
+      setDownloading(false);
+      setProgress(0);
+    });
+  };
+
+  const handleShare = async () => {
+    setDownloading(true);
+    setProgress(0);
+    animateProgress(setProgress, 1200);
+    await new Promise(res => setTimeout(res, 50));
+    if (!cardRef.current) return;
+    await waitForImagesLoaded(cardRef.current);
+    htmlToImage.toBlob(cardRef.current, {
+      quality: 1,
+      backgroundColor: null,
+      cacheBust: true,
+      width: 1080,
+      height: 1080,
+      pixelRatio: 2.0,
+      style: {
+        transform: "scale(1)",
+        transformOrigin: "top left",
+        width: "1080px",
+        height: "1080px"
+      }
+    }).then(blob => {
+      setDownloading(false);
+      setProgress(100);
+      const file = new File([blob], "personality_card.png", { type: "image/png" });
+      const shareData = {
+        title: "TraitSnap Personality Card",
+        text: "Check out my personality card! Make yours at TraitSnap.",
+        url: "https://traitsnap.vercel.app",
+        files: [file]
+      };
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share(shareData);
+      } else {
+        navigator.clipboard.writeText(shareData.url);
+        alert("Link copied! Share it with your friends: " + shareData.url);
+      }
+    }).catch(() => {
+      setDownloading(false);
+      setProgress(0);
+    });
   };
 
   function renderStars(rating) {
@@ -287,48 +351,65 @@ const Card = () => {
 
   <button
   className="personality-card-download-btn"
-  style={{ marginLeft: 12 }}
-  onClick={async () => {
-    setDownloading(true);
-    await new Promise(res => setTimeout(res, 50));
-    if (!cardRef.current) return;
-    await waitForImagesLoaded(cardRef.current); // <-- Wait for images!
-    htmlToImage.toBlob(cardRef.current, {
-      quality: 1,
-      backgroundColor: null,
-      cacheBust: true,
-      width: cardRef.current.offsetWidth * 4,
-      height: cardRef.current.offsetHeight * 4,
-      style: {
-        transform: "scale(4)",
-        transformOrigin: "top left",
-        width: cardRef.current.offsetWidth + "px",
-        height: cardRef.current.offsetHeight + "px"
-      }
-    }).then(blob => {
-      setDownloading(false);
-      const file = new File([blob], "personality_card.png", { type: "image/png" });
-      const shareData = {
-        title: "TraitSnap Personality Card",
-        text: "Check out my personality card! Make yours at TraitSnap.",
-        url: "https://traitsnap.vercel.app",
-        files: [file]
-      };
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share(shareData);
-      } else {
-        navigator.clipboard.writeText(shareData.url);
-        alert("Link copied! Share it with your friends: " + shareData.url);
-      }
-    }).catch(() => setDownloading(false));
-  }}
+  style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
+  onClick={handleShare}
+  disabled={downloading}
 >
-  Share
+  {downloading ? (
+    <span style={{ position: "relative", zIndex: 2 }}>
+      Sharing... {progress}%
+    </span>
+  ) : (
+    "Share"
+  )}
+  {downloading && (
+    <span
+      className="progress-bar"
+      style={{
+        position: "absolute",
+        left: 0,
+        top: 0,
+        height: "100%",
+        width: `${progress}%`,
+        background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
+        opacity: 0.4,
+        zIndex: 1,
+        transition: "width 0.2s"
+      }}
+    />
+  )}
 </button>
 
- <button className="personality-card-download-btn" onClick={handleDownload}>
-          Download Card
-        </button>
+ <button
+  className="personality-card-download-btn"
+  style={{ position: "relative", overflow: "hidden" }}
+  onClick={handleDownload}
+  disabled={downloading}
+>
+  {downloading ? (
+    <span style={{ position: "relative", zIndex: 2 }}>
+      Downloading... {progress}%
+    </span>
+  ) : (
+    "Download Card"
+  )}
+  {downloading && (
+    <span
+      className="progress-bar"
+      style={{
+        position: "absolute",
+        left: 0,
+        top: 0,
+        height: "100%",
+        width: `${progress}%`,
+        background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
+        opacity: 0.4,
+        zIndex: 1,
+        transition: "width 0.2s"
+      }}
+    />
+  )}
+</button>
 
         <div className="context-layout">
   <section className="faq-section">
