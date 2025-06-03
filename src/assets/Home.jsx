@@ -85,22 +85,22 @@ const Home = () => {
       <section className="features-section fade-section">
         <h2>Why You'll Love TraitSnap</h2>
         <div className="features-list">
-          <div>
+          <div className="fade-section">
             <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="spark">✨</span>
             <h4>Instant Personality Card</h4>
             <p>Get a personalized card in seconds, ready to share or download.</p>
           </div>
-          <div>
+          <div className="fade-section">
             <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="share">🔗</span>
             <h4>One-Tap Sharing</h4>
             <p>Show off your card on socials or DM it to friends—just tap and go!</p>
           </div>
-          <div>
+          <div className="fade-section">
             <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="lock">🔒</span>
             <h4>Privacy First</h4>
             <p>Your data never leaves your device. No servers, no snooping, just you.</p>
           </div>
-          <div>
+          <div className="fade-section">
             <span style={{ fontSize: "2.2rem", marginBottom: 8 }} role="img" aria-label="party">🎉</span>
             <h4>Fun & Insightful</h4>
             <p>Answer quirky questions, get real compliments, and discover your spark!</p>
@@ -109,7 +109,7 @@ const Home = () => {
       </section>
         <h1>How It Works</h1>
         <div className="method">
-          <div className="method-div">
+          <div className="method-div fade-section">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/ijsqrapz.json"
@@ -119,7 +119,7 @@ const Home = () => {
             ></lord-icon>
             <h3>Upload a picture</h3>
           </div>
-          <div className="method-div">
+          <div className="method-div fade-section">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/sobzmbzh.json"
@@ -130,7 +130,7 @@ const Home = () => {
             ></lord-icon>
             <h3>Answer fun questions</h3>
           </div>
-          <div  className="method-div">
+          <div  className="method-div fade-section">
             <lord-icon
               className="icon-lord"
               src="https://cdn.lordicon.com/ssartdnc.json"
@@ -142,24 +142,24 @@ const Home = () => {
             <h3>Get your trait card</h3>
           </div>
         </div>
-        <div className="mascot-are">
+        <div className="mascot-are fade-section">
           <img src={mascot} alt="" />
         </div>
-   <AdBanner />
+   <AdBanner/>
 
            {/* Testimonials Section */}
       <section className="testimonials-section fade-section">
         <h2>What Users Say</h2>
         <div className="testimonials-list">
-          <div>
+          <div className="fade-section">
             <p>"TraitSnap made my day! The card looks amazing and the compliments are spot on."</p>
             <span>- Alex</span>
           </div>
-          <div>
+          <div className="fade-section">
             <p>"Super fun and easy to use. I loved sharing my card with friends!"</p>
             <span>- Jamie</span>
           </div>
-          <div>
+          <div className="fade-section">
             <p>"The design is beautiful and the questions are actually interesting."</p>
             <span>- Priya</span>
           </div>
@@ -171,15 +171,15 @@ const Home = () => {
       <section className="faq-section fade-section">
         <h2>Frequently Asked Questions</h2>
         <div className="faq-list">
-          <div>
+          <div className="fade-section">
             <h4>Is TraitSnap free?</h4>
             <p>Yes! TraitSnap is completely free to use.</p>
           </div>
-          <div>
+          <div className="fade-section">
             <h4>Do you store my data?</h4>
             <p>No, your data is only stored locally in your browser and never sent to our servers.</p>
           </div>
-          <div>
+          <div className="fade-section">
             <h4>Can I retake the quiz?</h4>
             <p>Absolutely! Just refresh the page or click "Get Trait Card" to start over.</p>
           </div>

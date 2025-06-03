@@ -340,16 +340,13 @@
 .testimonials-section {
   background: transparent;
   color: #21004D;
-  padding: 40px 10% 30px 10%;
-  border-radius: 18px;
-  margin: 32px auto 0 auto;
-  max-width: 900px;
-  box-shadow: 0 4px 24px #0002;
+  width: 100%;
   text-align: center;
+  margin: 20px 0px;
 }
 .testimonials-section h2 {
   margin-bottom: 18px;
-  color: white;
+ color: #00F0FF
 }
 .testimonials-list {
   display: flex;
@@ -380,14 +377,11 @@
 
 /* FAQ Section */
 .faq-section {
-  background: #21004D;
+  background: transparent;
   color: #fff;
-  padding: 40px 10% 30px 10%;
-  border-radius: 18px;
-  margin: 32px auto 0 auto;
-  max-width: 900px;
-  box-shadow: 0 4px 24px #0002;
+  width: 100%;
   text-align: center;
+  margin: 20px 0px;
 }
 .faq-section h2 {
   margin-bottom: 18px;
