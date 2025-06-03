@@ -141,6 +141,7 @@ const Card = () => {
         style: {
           transform: "scale(4)",
           transformOrigin: "top left",
+          width: '360px'
         }
       });
 
