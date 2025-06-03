@@ -132,7 +132,6 @@ const Card = () => {
       const height = cardDimensions.height;
 
       const blob = await htmlToImage.toBlob(cardRef.current, {
-        Quality: 1,
         backgroundColor: null,
         cacheBust: true,
         pixelRatio: 4, // Increased for better clarity
