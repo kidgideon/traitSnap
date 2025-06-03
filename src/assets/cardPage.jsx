@@ -132,88 +132,52 @@ const Card = () => {
   }
 
   const handleDownload = async () => {
-    setDownloading(true);
-    setProgress(0);
-    animateProgress(setProgress, 1200);
-    await new Promise(res => setTimeout(res, 50));
-    if (!cardRef.current) return;
-    await waitForImagesLoaded(cardRef.current);
-    htmlToImage.toBlob(cardRef.current, {
-      quality: 1,
-      backgroundColor: null,
-      cacheBust: true,
-      width: 1080,
-      height: 1080,
-      pixelRatio: 2.0,
-      style: {
-        transform: "scale(1)",
-        transformOrigin: "top left",
-        width: "1080px",
-        height: "1080px"
-      }
-    }).then(blob => {
-      setDownloading(false);
-      setProgress(100);
-      const file = new File([blob], "personality_card.png", { type: "image/png" });
-      const shareData = {
-        title: "TraitSnap Personality Card",
-        text: "Check out my personality card! Make yours at TraitSnap.",
-        url: "https://traitsnap.vercel.app",
-        files: [file]
-      };
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share(shareData);
-      } else {
-        navigator.clipboard.writeText(shareData.url);
-        alert("Link copied! Share it with your friends: " + shareData.url);
-      }
-    }).catch(() => {
-      setDownloading(false);
-      setProgress(0);
-    });
-  };
+  setDownloading(true);
+  setProgress(0);
+  animateProgress(setProgress, 1200);
+  await new Promise(res => setTimeout(res, 50));
+  if (!cardRef.current) return;
+  await waitForImagesLoaded(cardRef.current);
 
-  const handleShare = async () => {
-    setDownloading(true);
+  const cardDimensions = cardRef.current.getBoundingClientRect();
+  const width = cardDimensions.width;  // Get real dimensions of the card
+  const height = cardDimensions.height;
+
+  htmlToImage.toBlob(cardRef.current, {  
+    quality: 1,  
+    backgroundColor: null,  
+    cacheBust: true,  
+    width: width,  // Use dynamic width based on the card
+    height: height,  // Use dynamic height based on the card
+    pixelRatio: 3.0,  
+    style: {  
+      transform: "scale(1)",  
+      transformOrigin: "top left",
+      width: `${width}px`,  
+      height: `${height}px`  
+    }  
+  }).then(blob => {
+    setDownloading(false);
+    setProgress(100);
+    const file = new File([blob], "personality_card.png", { type: "image/png" });
+    const shareData = {
+      title: "TraitSnap Personality Card",
+      text: "Check out my personality card! Make yours at TraitSnap.",
+      url: "https://traitsnap.vercel.app",
+      files: [file]
+    };
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share(shareData);
+    } else {
+      navigator.clipboard.writeText(shareData.url);
+      alert("Link copied! Share it with your friends: " + shareData.url);
+    }
+  }).catch(() => {
+    setDownloading(false);
     setProgress(0);
-    animateProgress(setProgress, 1200);
-    await new Promise(res => setTimeout(res, 50));
-    if (!cardRef.current) return;
-    await waitForImagesLoaded(cardRef.current);
-    htmlToImage.toBlob(cardRef.current, {
-      quality: 1,
-      backgroundColor: null,
-      cacheBust: true,
-      width: 1080,
-      height: 1080,
-      pixelRatio: 2.0,
-      style: {
-        transform: "scale(1)",
-        transformOrigin: "top left",
-        width: "1080px",
-        height: "1080px"
-      }
-    }).then(blob => {
-      setDownloading(false);
-      setProgress(100);
-      const file = new File([blob], "personality_card.png", { type: "image/png" });
-      const shareData = {
-        title: "TraitSnap Personality Card",
-        text: "Check out my personality card! Make yours at TraitSnap.",
-        url: "https://traitsnap.vercel.app",
-        files: [file]
-      };
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share(shareData);
-      } else {
-        navigator.clipboard.writeText(shareData.url);
-        alert("Link copied! Share it with your friends: " + shareData.url);
-      }
-    }).catch(() => {
-      setDownloading(false);
-      setProgress(0);
-    });
-  };
+  });
+};
+
 
   function renderStars(rating) {
     const stars = [];
