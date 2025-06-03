@@ -140,8 +140,6 @@ const Card = () => {
         pixelRatio: 4, // Increased for better clarity
         style: {
           transform: "scale(4)",
-          transformOrigin: "top left",
-          width: '360px'
         }
       });
 
