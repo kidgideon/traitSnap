@@ -3,11 +3,11 @@ import * as htmlToImage from "html-to-image";
 import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.webp";
-import comments from "../assets/comments.json"; // Make sure the path is correct
-import facts from "../assets/facts.json"; // Add this import at the top
+import comments from "../assets/comments.json";
+import facts from "../assets/facts.json";
 import BannerAd from "./Ad";
-import Shield from "../../images/shield.webp"
-import mascot from "../../images/traitsnap_mascot.webp"
+import Shield from "../../images/shield.webp";
+import mascot from "../../images/traitsnap_mascot.webp";
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -49,7 +49,7 @@ const Card = () => {
   const [userPhoto, setUserPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [barPercents, setBarPercents] = useState(Array(TRAITS.length).fill(0));
-  const [downloading, setDownloading] = useState(false);
+  const [sharing, setSharing] = useState(false);
   const [realTest, setRealTest] = useState(() => localStorage.getItem("realtest") === "true");
   const [progress, setProgress] = useState(0);
   const cardRef = useRef();
@@ -74,14 +74,12 @@ const Card = () => {
         setBarPercents(
           TRAITS.map(trait => {
             const value = scores.traits?.[trait] || 0;
-            // If realTest is false, max score is 2 questions * 5 points each
-            // If realTest is true, max score is 3 questions * 5 points each
             const maxTraitScore = realTest ? 3 * 5 : 2 * 5;
             const percent = Math.round((value / maxTraitScore) * 100);
             return percent;
           })
         );
-      }, 200); // slight delay for animation effect
+      }, 200);
     }
   }, [scores, realTest]);
 
@@ -91,9 +89,8 @@ const Card = () => {
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
-  if (loading || !scores) return <div className="personality-card-loading">Loading...</div>;
-
-  const maxTraitScore = 3 * 5;
+  if (loading || !scores)
+    return <div className="personality-card-loading">Loading...</div>;
 
   const sociality = scores.sociality || {};
   const dominantSociality = SOCIALITY_TYPES.reduce(
@@ -101,96 +98,17 @@ const Card = () => {
     SOCIALITY_TYPES[0]
   );
 
-  // Calculate average trait percentage
   const traitSum = barPercents.reduce((sum, val) => sum + val, 0);
   const traitAvg = barPercents.length ? traitSum / barPercents.length : 0;
-  let sparkRating = Math.round(traitAvg * 0.05 * 2) / 2; // rounded to nearest 0.5
+  let sparkRating = Math.round(traitAvg * 0.05 * 2) / 2;
 
-  // Find the trait with the highest score
   const maxTraitIndex = barPercents.indexOf(Math.max(...barPercents));
   const maxTrait = TRAITS[maxTraitIndex];
 
-  // Pick a random compliment for that trait
   let compliment = "";
   if (comments[maxTrait] && comments[maxTrait].length > 0) {
     const randIdx = Math.floor(Math.random() * comments[maxTrait].length);
     compliment = comments[maxTrait][randIdx];
-  }
-
-  // Helper for progress bar animation
-  function animateProgress(setter, duration = 1200) {
-    setter(0);
-    let start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      const elapsed = ts - start;
-      const percent = Math.min(100, Math.round((elapsed / duration) * 100));
-      setter(percent);
-      if (percent < 100) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  const handleDownload = async () => {
-  setDownloading(true);
-  setProgress(0);
-  animateProgress(setProgress, 1200);
-  await new Promise(res => setTimeout(res, 50));
-  if (!cardRef.current) return;
-  await waitForImagesLoaded(cardRef.current);
-
-  const cardDimensions = cardRef.current.getBoundingClientRect();
-  const width = cardDimensions.width;  // Get real dimensions of the card
-  const height = cardDimensions.height;
-
-  htmlToImage.toBlob(cardRef.current, {  
-    quality: 1,  
-    backgroundColor: null,  
-    cacheBust: true,  
-    width: width,  // Use dynamic width based on the card
-    height: height,  // Use dynamic height based on the card
-    pixelRatio: 3.0,  
-    style: {  
-      transform: "scale(1)",  
-      transformOrigin: "top left",
-      width: `${width}px`,  
-      height: `${height}px`  
-    }  
-  }).then(blob => {
-    setDownloading(false);
-    setProgress(100);
-    const file = new File([blob], "personality_card.png", { type: "image/png" });
-    const shareData = {
-      title: "TraitSnap Personality Card",
-      text: "Check out my personality card! Make yours at TraitSnap.",
-      url: "https://traitsnap.vercel.app",
-      files: [file]
-    };
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      navigator.share(shareData);
-    } else {
-      navigator.clipboard.writeText(shareData.url);
-      alert("Link copied! Share it with your friends: " + shareData.url);
-    }
-  }).catch(() => {
-    setDownloading(false);
-    setProgress(0);
-  });
-};
-
-
-  function renderStars(rating) {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (rating >= i) {
-        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>★</span>);
-      } else if (rating >= i - 0.5) {
-        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>☆</span>);
-      } else {
-        stars.push(<span key={i} style={{color: "#FFD700", fontSize: "1.2em"}}>✩</span>);
-      }
-    }
-    return stars;
   }
 
   async function waitForImagesLoaded(container) {
@@ -203,30 +121,96 @@ const Card = () => {
     }));
   }
 
+  async function handleShare() {
+    setSharing(true);
+    setProgress(0);
+    try {
+      if (!cardRef.current) throw new Error("Card not ready");
+      await waitForImagesLoaded(cardRef.current);
+
+      const cardDimensions = cardRef.current.getBoundingClientRect();
+      const width = cardDimensions.width;
+      const height = cardDimensions.height;
+
+      const blob = await htmlToImage.toBlob(cardRef.current, {
+        quality: 1,
+        backgroundColor: null,
+        cacheBust: true,
+        width: width,
+        height: height,
+        pixelRatio: 3.0,
+        style: {
+          transform: "scale(1)",
+          transformOrigin: "top left",
+          width: `${width}px`,
+          height: `${height}px`
+        }
+      });
+
+      const file = new File([blob], "personality_card.png", { type: "image/png" });
+      const shareData = {
+        title: "TraitSnap Personality Card",
+        text: "Check out my personality card! Make yours at TraitSnap.",
+        url: "https://traitsnap.vercel.app"
+      };
+
+      // Try to share the image if supported
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          ...shareData,
+          files: [file]
+        });
+      } else if (navigator.share) {
+        // Fallback: Share link and text
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(shareData.url);
+        alert("Link copied! Share it with your friends: " + shareData.url);
+      }
+    } catch (err) {
+      alert("Sharing failed. Please try again or copy the link manually.");
+    }
+    setSharing(false);
+    setProgress(100);
+  }
+
+  function renderStars(rating) {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) {
+        stars.push(<span key={i} style={{ color: "#FFD700", fontSize: "1.2em" }}>★</span>);
+      } else if (rating >= i - 0.5) {
+        stars.push(<span key={i} style={{ color: "#FFD700", fontSize: "1.2em" }}>☆</span>);
+      } else {
+        stars.push(<span key={i} style={{ color: "#FFD700", fontSize: "1.2em" }}>✩</span>);
+      }
+    }
+    return stars;
+  }
+
   return (
     <div className="personality-card-page">
       <div className="personality-card-center">
         <div className="personality-card-fancy-wrapper">
-        
-          {/* Your card */}
+          {/* Card */}
           <div className="personality-card-container" ref={cardRef}>
-              {/* Top left SVG */}
-          <span className="fancy-svg fancy-svg-topleft">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-            </svg>
-          </span>
-        
-          {/* Bottom right SVG */}
-          <span className="fancy-svg fancy-svg-bottomright">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-            </svg>
-          </span>
+            {/* Top left SVG */}
+            <span className="fancy-svg fancy-svg-topleft">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25..." />
+              </svg>
+            </span>
+            {/* Bottom right SVG */}
+            <span className="fancy-svg fancy-svg-bottomright">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 ..." />
+              </svg>
+            </span>
 
-          {realTest && (
-  <img className="fancy-svg shield-per-real-test-users" src={Shield} alt="" />
-)}
+            {realTest && (
+              <img className="fancy-svg shield-per-real-test-users" src={Shield} alt="" />
+            )}
 
             <div className="pcard-l-a">
               <img className="logo" src={logo} alt="" />
@@ -235,25 +219,11 @@ const Card = () => {
               <div className="personality-card-header">
                 <div className="pch-left">
                   <div className="personality-card-photo">
-                    {downloading ? (
-                      <div
-                        className="personality-card-photo-img-fix"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          backgroundImage: `url(${userPhoto})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          borderRadius: "50%",
-                        }}
-                      />
-                    ) : (
-                      <img
-                        src={userPhoto}
-                        alt="Profile"
-                        className="personality-card-photo-img"
-                      />
-                    )}
+                    <img
+                      src={userPhoto}
+                      alt="Profile"
+                      className="personality-card-photo-img"
+                    />
                   </div>
                   <div className="personality-card-username">{userName}</div>
                 </div>
@@ -313,96 +283,64 @@ const Card = () => {
           </div>
         </div>
 
-  <button
-  className="personality-card-download-btn"
-  style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
-  onClick={handleShare}
-  disabled={downloading}
->
-  {downloading ? (
-    <span style={{ position: "relative", zIndex: 2 }}>
-      Sharing... {progress}%
-    </span>
-  ) : (
-    "Share"
-  )}
-  {downloading && (
-    <span
-      className="progress-bar"
-      style={{
-        position: "absolute",
-        left: 0,
-        top: 0,
-        height: "100%",
-        width: `${progress}%`,
-        background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
-        opacity: 0.4,
-        zIndex: 1,
-        transition: "width 0.2s"
-      }}
-    />
-  )}
-</button>
-
- <button
-  className="personality-card-download-btn"
-  style={{ position: "relative", overflow: "hidden" }}
-  onClick={handleDownload}
-  disabled={downloading}
->
-  {downloading ? (
-    <span style={{ position: "relative", zIndex: 2 }}>
-      Downloading... {progress}%
-    </span>
-  ) : (
-    "Download Card"
-  )}
-  {downloading && (
-    <span
-      className="progress-bar"
-      style={{
-        position: "absolute",
-        left: 0,
-        top: 0,
-        height: "100%",
-        width: `${progress}%`,
-        background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
-        opacity: 0.4,
-        zIndex: 1,
-        transition: "width 0.2s"
-      }}
-    />
-  )}
-</button>
+        <button
+          className="personality-card-download-btn"
+          style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
+          onClick={handleShare}
+          disabled={sharing}
+        >
+          {sharing ? (
+            <span style={{ position: "relative", zIndex: 2 }}>
+              Sharing... {progress}%
+            </span>
+          ) : (
+            "Share"
+          )}
+          {sharing && (
+            <span
+              className="progress-bar"
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                height: "100%",
+                width: `${progress}%`,
+                background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
+                opacity: 0.4,
+                zIndex: 1,
+                transition: "width 0.2s"
+              }}
+            />
+          )}
+        </button>
 
         <div className="context-layout">
-  <section className="faq-section">
-    <h2>Facts on your traits</h2>
-    <div className="faq-list">
-      {TRAITS.map((trait, idx) => {
-        const percent = barPercents[idx];
-        // Find the correct band for this trait
-        let band = null;
-        if (percent >= 90) band = "90-100";
-        else if (percent >= 70) band = "70-80";
-        else if (percent >= 50) band = "50-60";
-        else if (percent >= 30) band = "30-40";
-        else band = "10-20";
-        const fact = facts[trait] && facts[trait][band];
-        return (
-          <div key={trait}>
-            <h4>{trait}</h4>
-            <p>{fact || "No fact available for this range."}</p>
-          </div>
-        );
-      })}
-    </div>
-     <div className="mascot-are ">
-          <img src={mascot} alt="" />
+          <section className="faq-section">
+            <h2>Facts on your traits</h2>
+            <div className="faq-list">
+              {TRAITS.map((trait, idx) => {
+                const percent = barPercents[idx];
+                let band = null;
+                if (percent >= 90) band = "90-100";
+                else if (percent >= 70) band = "70-80";
+                else if (percent >= 50) band = "50-60";
+                else if (percent >= 30) band = "30-40";
+                else band = "10-20";
+                const fact = facts[trait] && facts[trait][band];
+                return (
+                  <div key={trait}>
+                    <h4>{trait}</h4>
+                    <p>{fact || "No fact available for this range."}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="mascot-are">
+              <img src={mascot} alt="" />
+            </div>
+            <BannerAd />
+          </section>
         </div>
-    <BannerAd />
-  </section>
-</div>
       </div>
     </div>
   );
