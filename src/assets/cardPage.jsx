@@ -75,8 +75,7 @@ const Card = () => {
           TRAITS.map(trait => {
             const value = scores.traits?.[trait] || 0;
             const maxTraitScore = realTest ? 3 * 5 : 2 * 5;
-            const percent = Math.round((value / maxTraitScore) * 100);
-            return percent;
+            return Math.round((value / maxTraitScore) * 100);
           })
         );
       }, 200);
@@ -136,9 +135,9 @@ const Card = () => {
         quality: 1,
         backgroundColor: null,
         cacheBust: true,
-        width: width,
-        height: height,
-        pixelRatio: 3.0,
+        width,
+        height,
+        pixelRatio: 4.0, // Increased for better clarity
         style: {
           transform: "scale(1)",
           transformOrigin: "top left",
@@ -154,17 +153,14 @@ const Card = () => {
         url: "https://traitsnap.vercel.app"
       };
 
-      // Try to share the image if supported
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           ...shareData,
           files: [file]
         });
       } else if (navigator.share) {
-        // Fallback: Share link and text
         await navigator.share(shareData);
       } else {
-        // Fallback: Copy to clipboard
         await navigator.clipboard.writeText(shareData.url);
         alert("Link copied! Share it with your friends: " + shareData.url);
       }
@@ -193,18 +189,17 @@ const Card = () => {
     <div className="personality-card-page">
       <div className="personality-card-center">
         <div className="personality-card-fancy-wrapper">
-          {/* Card */}
           <div className="personality-card-container" ref={cardRef}>
             {/* Top left SVG */}
             <span className="fancy-svg fancy-svg-topleft">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25..." />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
               </svg>
             </span>
             {/* Bottom right SVG */}
             <span className="fancy-svg fancy-svg-bottomright">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 ..." />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09z" />
               </svg>
             </span>
 
@@ -291,26 +286,10 @@ const Card = () => {
         >
           {sharing ? (
             <span style={{ position: "relative", zIndex: 2 }}>
-              Sharing... {progress}%
+              Sharing...
             </span>
           ) : (
             "Share"
-          )}
-          {sharing && (
-            <span
-              className="progress-bar"
-              style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                height: "100%",
-                width: `${progress}%`,
-                background: "linear-gradient(90deg, #7edcff 0%, #339cff 100%)",
-                opacity: 0.4,
-                zIndex: 1,
-                transition: "width 0.2s"
-              }}
-            />
           )}
         </button>
 
