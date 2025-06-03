@@ -137,12 +137,12 @@ const Card = () => {
         cacheBust: true,
         width,
         height,
-        pixelRatio: 4.0, // Increased for better clarity
+        pixelRatio: 4, // Increased for better clarity
         style: {
-          transform: "scale(1)",
+          transform: "scale(4)",
           transformOrigin: "top left",
-          width: `${width}px`,
-          height: `${height}px`
+          width: `${1080}px`,
+          height: `${1080}px`
         }
       });
 
