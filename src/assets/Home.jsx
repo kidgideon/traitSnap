@@ -69,10 +69,6 @@ const Home = () => {
         <button onClick={() => setShowModal(true)}>Get Trait Card</button>
       </div>
 
-      <AdBanner />
-
-    
-
       {/* How It Works */}
       <div className="context-layout fade-section">
           {/* About Section */}
@@ -149,6 +145,7 @@ const Home = () => {
         <div className="mascot-are">
           <img src={mascot} alt="" />
         </div>
+   <AdBanner />
 
            {/* Testimonials Section */}
       <section className="testimonials-section fade-section">

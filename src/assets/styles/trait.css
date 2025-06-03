@@ -193,11 +193,9 @@
   cursor: pointer;
   box-shadow: 0 2px 8px #0001;
   transition: background 0.2s;
+  margin: 10px;
 }
 
-.personality-card-download-btn:hover {
-  background: linear-gradient(90deg, #FF2E93, #5C27FE);
-}
 
 .personality-card-loading {
   color: #fff;

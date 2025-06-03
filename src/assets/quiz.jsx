@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import quizes from "../questions.json";
-import "./styles/quiz.css"
+import "./styles/quiz.css";
+import mascot from "../../images/traitsnap_mascot.png";
 
 const TRAITS = [
-  "Confidence",
-  "Humor",
-  "Creativity",
-  "Intelligence",
-  "Kindness",
-  "Patience",
-  "Courage",
-  "Loyalty",
-  "Anger",
-  "Ambition",
+  "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
+  "Patience", "Courage", "Loyalty", "Anger", "Ambition"
 ];
 const SOCIALITY_TYPES = ["Introvert", "Ambivert", "Extrovert"];
 
@@ -27,25 +20,19 @@ function shuffle(array) {
 }
 
 function normalizeTraitQuestion(q, category) {
-  // Always returns optionA, optionB, and (if present) optionC, optionD
   const opts = q.options;
   return {
     id: q.id,
     question: q.question,
     optionA: { text: opts[0].text, points: opts[0].points },
     optionB: { text: opts[1].text, points: opts[1].points },
-    ...(opts[2] && {
-      optionC: { text: opts[2].text, points: opts[2].points },
-    }),
-    ...(opts[3] && {
-      optionD: { text: opts[3].text, points: opts[3].points },
-    }),
+    ...(opts[2] && { optionC: { text: opts[2].text, points: opts[2].points } }),
+    ...(opts[3] && { optionD: { text: opts[3].text, points: opts[3].points } }),
     category,
   };
 }
 
 function normalizeSocialityQuestion(q) {
-  // Each option has a type field
   const opts = q.options;
   return {
     id: q.id,
@@ -57,11 +44,26 @@ function normalizeSocialityQuestion(q) {
   };
 }
 
+const MOTIVATION_MSGS = [
+  "You're doing great! Just be honest with your answers for the best results.",
+  "Keep it up! Honest answers make your card shine.",
+  "Awesome progress! Stay true to yourself for the best results.",
+  "You're on a roll! Answer honestly for your most accurate card.",
+  "Almost there! Keep going and be yourself.",
+];
+
 const Quizarea = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [showMotivation, setShowMotivation] = useState(false);
+  const [showFinalModal, setShowFinalModal] = useState(false);
+  const [extraMode, setExtraMode] = useState(false);
+  const [usedQuestionIds, setUsedQuestionIds] = useState(new Set());
+  const [extraQuestions, setExtraQuestions] = useState([]);
+  const [realTestFlag, setRealTestFlag] = useState(null);
+const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
 
   // Scores for all traits and sociality types
   const [scores, setScores] = useState(() => {
@@ -81,28 +83,27 @@ const Quizarea = () => {
     }
   }, [userPhoto, userName, navigate]);
 
-  // Prepare questions on mount
+  // Prepare initial 23 questions on mount
   useEffect(() => {
     const usedIds = new Set();
     let tempQuestions = [];
 
-    // Find categories in JSON
     const categories = quizes.categories || [];
 
-    // 1. Add 3 random questions per trait
+    // 2 random questions per trait (20)
     TRAITS.forEach((trait) => {
       const cat = categories.find((c) => c.name === trait);
       if (!cat) return;
       const picked = shuffle(cat.questions)
         .filter((q) => !usedIds.has(q.id))
-        .slice(0, 3);
+        .slice(0, 2);
       picked.forEach((q) => {
         tempQuestions.push(normalizeTraitQuestion(q, trait));
         usedIds.add(q.id);
       });
     });
 
-    // 2. Add 3 random Sociality questions
+    // 3 random Sociality questions
     const socialityCat = categories.find((c) => c.name === "Sociality");
     if (socialityCat) {
       const picked = shuffle(socialityCat.questions)
@@ -114,8 +115,10 @@ const Quizarea = () => {
       });
     }
 
-    // 3. Shuffle all questions for quiz order
-    setQuestions(shuffle(tempQuestions));
+    // Shuffle all questions for quiz order
+    const shuffled = shuffle(tempQuestions);
+    setQuestions(shuffled);
+    setUsedQuestionIds(new Set(shuffled.map(q => q.id)));
   }, []);
 
   // Option select handler
@@ -124,19 +127,17 @@ const Quizarea = () => {
   // Next/Finish handler
   const handleNext = () => {
     if (selectedOption === null) return;
-    const currentQ = questions[current];
+    const currentQ = (extraMode ? extraQuestions : questions)[current];
     const selectedOptionData = currentQ[`option${selectedOption}`];
 
     setScores((prevScores) => {
       const newScores = { ...prevScores };
       if (currentQ.category === "Sociality" && selectedOptionData.type) {
-        // Sociality: add to type
         const socType = selectedOptionData.type;
         if (newScores[socType] !== undefined) {
           newScores[socType] += selectedOptionData.points;
         }
       } else {
-        // Trait: add to trait
         const trait = currentQ.category;
         if (newScores[trait] !== undefined) {
           newScores[trait] += selectedOptionData.points;
@@ -147,52 +148,99 @@ const Quizarea = () => {
 
     setSelectedOption(null);
 
-    // If last question, save and navigate
-    if (current === questions.length - 1) {
-      // Synchronously update scores for last question
-      const finalScores = { ...scores };
-      if (currentQ.category === "Sociality" && selectedOptionData.type) {
-        const socType = selectedOptionData.type;
-        if (finalScores[socType] !== undefined) {
-          finalScores[socType] += selectedOptionData.points;
-        }
-      } else {
-        const trait = currentQ.category;
-        if (finalScores[trait] !== undefined) {
-          finalScores[trait] += selectedOptionData.points;
-        }
-      }
-      // Save to localStorage
-      localStorage.setItem(
-        "traitsnap-scores",
-        JSON.stringify({
-          traits: TRAITS.reduce(
-            (acc, t) => ({ ...acc, [t]: finalScores[t] || 0 }),
-            {}
-          ),
-          sociality: SOCIALITY_TYPES.reduce(
-            (acc, s) => ({ ...acc, [s]: finalScores[s] || 0 }),
-            {}
-          ),
-        })
-      );
-      navigate("/trait-card");
+    // Motivational modal after every 10 questions (except last)
+    const totalQ = extraMode ? extraQuestions.length : questions.length;
+    if (!extraMode && (current + 1) % 10 === 0 && current + 1 < totalQ) {
+      setMotivationMsg(MOTIVATION_MSGS[Math.floor(Math.random() * MOTIVATION_MSGS.length)]);
+      setShowMotivation(true);
       return;
     }
+
+    // After 23rd question, show final modal
+    if (!extraMode && current === 22) {
+      setShowFinalModal(true);
+      return;
+    }
+
+    // After 10th extra question, finish
+    if (extraMode && current === 9) {
+      localStorage.setItem("realtest", "true");
+      saveScoresAndGo();
+      return;
+    }
+
     setCurrent((c) => c + 1);
   };
 
-  if (questions.length === 0) return <div>Loading questions...</div>;
+  // Continue after motivational modal
+  const handleMotivationOk = () => {
+    setShowMotivation(false);
+    setCurrent((c) => c + 1);
+  };
 
-  const currentQ = questions[current];
+  // Handle "Take More Questions"
+  const handleTakeMore = () => {
+    // Pick 1 unused question per trait
+    const categories = quizes.categories || [];
+    let extras = [];
+    const usedIds = new Set([...usedQuestionIds]);
+    TRAITS.forEach((trait) => {
+      const cat = categories.find((c) => c.name === trait);
+      if (!cat) return;
+      const unused = cat.questions.filter((q) => !usedIds.has(q.id));
+      if (unused.length > 0) {
+        const picked = shuffle(unused)[0];
+        extras.push(normalizeTraitQuestion(picked, trait));
+        usedIds.add(picked.id);
+      }
+    });
+    setExtraQuestions(shuffle(extras));
+    setExtraMode(true);
+    setCurrent(0);
+    setShowFinalModal(false);
+    setUsedQuestionIds(usedIds);
+    setRealTestFlag(true);
+  };
+
+  // Handle "Skip"
+  const handleSkip = () => {
+    localStorage.setItem("realtest", "false");
+    saveScoresAndGo();
+  };
+
+  // Save scores and go to trait card
+  const saveScoresAndGo = () => {
+    localStorage.setItem(
+      "traitsnap-scores",
+      JSON.stringify({
+        traits: TRAITS.reduce(
+          (acc, t) => ({ ...acc, [t]: scores[t] || 0 }),
+          {}
+        ),
+        sociality: SOCIALITY_TYPES.reduce(
+          (acc, s) => ({ ...acc, [s]: scores[s] || 0 }),
+          {}
+        ),
+      })
+    );
+    navigate("/trait-card");
+  };
+
+  // If loading
+  const currentQ = extraMode ? extraQuestions[current] : questions[current];
+  if (!currentQ) return <div>Loading questions...</div>;
+
   const optionKeys = ["A", "B"];
   if (currentQ.optionC) optionKeys.push("C");
   if (currentQ.optionD) optionKeys.push("D");
 
+  // Modal animation classes
+  const modalClass = (show) => show ? "quiz-modal quiz-modal--show" : "quiz-modal";
+
   return (
     <div className="quiz-page quizArea-interface">
       <div className="quiz-page__counter">
-        {current + 1}/{questions.length}
+        {current + 1}/{extraMode ? extraQuestions.length : questions.length}
       </div>
       {userPhoto && (
         <div className="quiz-page__photo">
@@ -229,8 +277,34 @@ const Quizarea = () => {
           onClick={handleNext}
           className="quiz-page__nav-btn"
         >
-          {current === questions.length - 1 ? "Finish" : "Next"}
+          {(extraMode && current === 9) || (!extraMode && current === 22) ? "Finish" : "Next"}
         </button>
+      </div>
+
+      {/* Motivational Modal */}
+      <div className={modalClass(showMotivation)}>
+        <div className="quiz-modal__content">
+          <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
+          <h3>Keep Going!</h3>
+          <p>{motivationMsg}</p>
+          <button className="quiz-modal__btn" onClick={handleMotivationOk}>OK</button>
+        </div>
+      </div>
+
+      {/* Final Modal */}
+      <div className={modalClass(showFinalModal)}>
+        <div className="quiz-modal__content">
+          <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
+          <h3>You've completed the core test!</h3>
+          <p>
+            You can view your result now.<br />
+            <b>But for best accuracy, take 10 more questions (1 extra per trait).</b>
+          </p>
+          <div style={{display: "flex", gap: 16, marginTop: 16, justifyContent: "center"}}>
+            <button className="quiz-modal__btn" onClick={handleTakeMore}>Take More Questions</button>
+            <button className="quiz-modal__btn quiz-modal__btn--skip" onClick={handleSkip}>Skip</button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
 import logo from "../../images/nobglogo.png";
 import comments from "../assets/comments.json"; // Make sure the path is correct
+import BannerAd from "./Ad";
 
 
 const TRAITS = [
@@ -303,7 +304,7 @@ const Card = () => {
  <button className="personality-card-download-btn" onClick={handleDownload}>
           Download Card
         </button>
-        
+  <BannerAd />
       </div>
     </div>
   );
