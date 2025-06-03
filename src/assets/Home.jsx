@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/home.css";
 import logo from "../../images/nobglogo.png";
-import kai from "../../images/kaicenat.png";
-import henry from "../../images/henry.png";
-import helen from "../../images/helen.png";
+import kai from "../../images/kaicenat.webp";
+import henry from "../../images/henry.webp";
+import helen from "../../images/helen.webp";
 import AdBanner from "./Adbanner";
-import mascot from "../../images/traitsnap_mascot.png";
+import mascot from "../../images/traitsnap_mascot.webp";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);

@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 import { useNavigate } from "react-router-dom";
 import "./styles/trait.css";
-import logo from "../../images/nobglogo.png";
+import logo from "../../images/nobglogo.webp";
 import comments from "../assets/comments.json"; // Make sure the path is correct
 import facts from "../assets/facts.json"; // Add this import at the top
 import BannerAd from "./Ad";
-import Shield from "../../images/shield.png"
-import mascot from "../../images/traitsnap_mascot.png"
+import Shield from "../../images/shield.webp"
+import mascot from "../../images/traitsnap_mascot.webp"
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -126,7 +126,6 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-      pixelRatio: 1.5,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
@@ -300,7 +299,6 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-       pixelRatio: 1.5,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",

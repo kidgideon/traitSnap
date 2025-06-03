@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import quizes from "../questions.json";
 import "./styles/quiz.css";
-import mascot from "../../images/traitsnap_mascot.png";
+import mascot from "../../images/traitsnap_mascot.webp";
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
