@@ -126,7 +126,7 @@ const Card = () => {
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-      pixelRatio: 2,
+      pixelRatio: 1.5,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
@@ -164,6 +164,16 @@ const Card = () => {
       }
     }
     return stars;
+  }
+
+  async function waitForImagesLoaded(container) {
+    const images = container.querySelectorAll("img");
+    await Promise.all(Array.from(images).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(res => {
+        img.onload = img.onerror = res;
+      });
+    }));
   }
 
   return (
@@ -283,13 +293,14 @@ const Card = () => {
     setDownloading(true);
     await new Promise(res => setTimeout(res, 50));
     if (!cardRef.current) return;
+    await waitForImagesLoaded(cardRef.current); // <-- Wait for images!
     htmlToImage.toBlob(cardRef.current, {
       quality: 1,
       backgroundColor: null,
       cacheBust: true,
       width: cardRef.current.offsetWidth * 4,
       height: cardRef.current.offsetHeight * 4,
-       pixelRatio: 2,
+       pixelRatio: 1.5,
       style: {
         transform: "scale(4)",
         transformOrigin: "top left",
