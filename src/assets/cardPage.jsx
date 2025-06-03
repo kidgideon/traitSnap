@@ -138,9 +138,6 @@ const Card = () => {
         width,
         height,
         pixelRatio: 4, // Increased for better clarity
-        style: {
-          transform: "scale(4)",
-        }
       });
 
       const file = new File([blob], "personality_card.png", { type: "image/png" });
