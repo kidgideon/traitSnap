@@ -64,15 +64,9 @@
   margin-bottom: 8px;
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 100px;
   margin-bottom: 5px;
   border: 2px solid #00F0FF;
-  box-shadow:
-    0 0 4px #00F0FF,
-    0 0 6px #00F0FF,
-    0 0 8px #00F0FF,
-    0 0 10px #00F0FF;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
