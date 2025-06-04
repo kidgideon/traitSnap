@@ -170,6 +170,45 @@ const Card = () => {
     setProgress(100);
   }
 
+  // ---- NEW: Download button handler ----
+  async function handleDownload() {
+    try {
+      if (!cardRef.current) throw new Error("Card not ready");
+      await waitForImagesLoaded(cardRef.current);
+
+      const width = cardRef.current.offsetWidth;
+      const height = cardRef.current.offsetHeight;
+
+      const blob = await htmlToImage.toBlob(cardRef.current, {
+        quality: 1,
+        backgroundColor: null,
+        cacheBust: true,
+        width: width * 4,
+        height: height * 4,
+        pixelRatio: 2,
+        style: {
+          transform: "scale(4)",
+          transformOrigin: "top left",
+          width: width + "px",
+          height: height + "px"
+        }
+      });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "personality_card.png";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }, 100);
+    } catch (err) {
+      alert("Download failed. Please try again.");
+    }
+  }
+
   function renderStars(rating) {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -192,12 +231,9 @@ const Card = () => {
             {/* Top left SVG */}
             <span className="fancy-svg fancy-svg-topleft">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.022 9 13.5 9 13.5s9-6.478 9-13.5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 11.25 9 11.25s9-4.03 9-11.25z" />
               </svg>
-            </span>
-            {/* Bottom right SVG */}
-            <span className="fancy-svg fancy-svg-bottomright">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
+            </spansvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" width="38" height="38">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09z" />
               </svg>
             </span>
@@ -277,6 +313,15 @@ const Card = () => {
           </div>
         </div>
 
+        {/* Download Button (NEW, above Share) */}
+        <button
+          className="personality-card-download-btn"
+          style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
+          onClick={handleDownload}
+        >
+          Download Your Card
+        </button>
+        {/* Share Button (existing) */}
         <button
           className="personality-card-download-btn"
           style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
