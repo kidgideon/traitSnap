@@ -134,11 +134,11 @@ const Card = () => {
         quality: 1,
         backgroundColor: null,
         cacheBust: true,
-        width: width * 2,
-        height: height * 2,
-        pixelRatio: 1.5,
+        width: width * 4,
+        height: height * 4,
+        pixelRatio: 2,
         style: {
-          transform: "scale(2)",
+          transform: "scale(4)",
           transformOrigin: "top left",
           width: width + "px",
           height: height + "px"
@@ -295,7 +295,7 @@ const Card = () => {
         <div className="context-layout">
           <section className="faq-section">
             <h2>Facts on your traits</h2>
-            <div class="faq-list">
+            <div className="faq-list">
               {TRAITS.map((trait, idx) => {
                 const percent = barPercents[idx];
                 let band = null;
