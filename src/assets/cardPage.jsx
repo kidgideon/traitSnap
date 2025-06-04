@@ -127,14 +127,22 @@ const Card = () => {
       if (!cardRef.current) throw new Error("Card not ready");
       await waitForImagesLoaded(cardRef.current);
 
-      const cardDimensions = cardRef.current.getBoundingClientRect();
-      const width = cardDimensions.width;
-      const height = cardDimensions.height;
+      const width = cardRef.current.offsetWidth;
+      const height = cardRef.current.offsetHeight;
 
       const blob = await htmlToImage.toBlob(cardRef.current, {
+        quality: 1,
         backgroundColor: null,
         cacheBust: true,
-        pixelRatio: 4, // Increased for better clarity
+        width: width * 2,
+        height: height * 2,
+        pixelRatio: 1.5,
+        style: {
+          transform: "scale(2)",
+          transformOrigin: "top left",
+          width: width + "px",
+          height: height + "px"
+        }
       });
 
       const file = new File([blob], "personality_card.png", { type: "image/png" });
@@ -184,7 +192,7 @@ const Card = () => {
             {/* Top left SVG */}
             <span className="fancy-svg fancy-svg-topleft">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00F0FF" width="38" height="38">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.022 9 13.5 9 13.5s9-6.478 9-13.5z" />
               </svg>
             </span>
             {/* Bottom right SVG */}
@@ -287,7 +295,7 @@ const Card = () => {
         <div className="context-layout">
           <section className="faq-section">
             <h2>Facts on your traits</h2>
-            <div className="faq-list">
+            <div class="faq-list">
               {TRAITS.map((trait, idx) => {
                 const percent = barPercents[idx];
                 let band = null;
