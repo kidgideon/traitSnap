@@ -344,7 +344,7 @@ const Card = () => {
         >
           {downloading ? (
             <>
-              <span>Downloading...</span>
+              <span>Downloading</span>
               {/* Progress bar */}
               <span
                 style={{
@@ -359,7 +359,7 @@ const Card = () => {
               />
             </>
           ) : (
-            "Download Your Card"
+            "Download"
           )}
         </button>
 
