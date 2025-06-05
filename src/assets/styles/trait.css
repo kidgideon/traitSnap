@@ -186,6 +186,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  margin: 10px;
 }
 
 .personality-card-download-btn:disabled {
