@@ -31,7 +31,7 @@ const TRAIT_ICONS = {
 
 const TRAIT_GRADIENTS = {
   Confidence: "linear-gradient(90deg, #FFC371, #FF5F6D)",
-  Humor: "linear-gradient(90deg, #f7ff00, #db)",
+  Humor: "linear-gradient(90deg, #f7ff00, #db36a4)",
   Creativity: "linear-gradient(90deg, #00c3ff, #ffff1c)",
   Intelligence: "linear-gradient(90deg, #4facfe, #00f2fe)",
   Kindness: "linear-gradient(90deg, #43e97b, #38f9d7)",
