@@ -7,7 +7,7 @@ import henry from "../../images/henry.webp";
 import helen from "../../images/helen.webp";
 import AdBanner from "./Adbanner";
 import mascot from "../../images/traitsnap_mascot.webp";
-import InlineBannerOne from "./ad1";
+import InlineBannerOne from "./adone";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
