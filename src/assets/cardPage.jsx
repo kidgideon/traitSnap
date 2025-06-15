@@ -387,7 +387,7 @@ const Card = () => {
  <div className="mascot-are">
               <img src={mascot} alt="" />
             </div>
-<InlineBannerTwo/>
+<InlineBannerTwo />
            
             <div className="faq-list">
               {TRAITS.map((trait, idx) => {
