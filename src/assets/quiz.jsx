@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import quizes from "../questions.json";
 import "./styles/quiz.css";
 import mascot from "../../images/traitsnap_mascot.webp";
+import InlineBannerTwo from "./Adtwo";
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -316,6 +317,9 @@ const Quizarea = () => {
     </div>
   </div>
 </div>
+
+
+<InlineBannerTwo />
 
     </div>
   );
