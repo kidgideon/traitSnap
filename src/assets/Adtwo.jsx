@@ -41,8 +41,7 @@ const InlineBannerTwo = () => {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent", // or rgba(255,255,255,0.95) if you want some transparency
-    zIndex: 9999, // keep it above all content
-    boxShadow: "0 -2px 6px rgba(0, 0, 0, 0.15)" // optional, adds nice separation
+    zIndex: 9999
   }}
 />
   );
