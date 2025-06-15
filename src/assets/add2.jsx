@@ -4,32 +4,30 @@ const InlineBannerTwo = () => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    window.atOptions = {
-      key: "8a5e2af560aca5053ce2806d6b3bd6e7",
-      format: "iframe",
-      height: 50,
-      width: 300,
-      params: {},
-    };
+    const scriptConfig = document.createElement("script");
+    scriptConfig.type = "text/javascript";
+    scriptConfig.innerHTML = `
+      atOptions = {
+        'key' : '8a5e2af560aca5053ce2806d6b3bd6e7',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 300,
+        'params' : {}
+      };
+    `;
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src =
-      "//www.highperformanceformat.com/8a5e2af560aca5053ce2806d6b3bd6e7/invoke.js";
-    script.async = true;
-
-    script.onerror = () => {
-      console.warn("CompactBanner320x50 failed to load.");
-    };
+    const scriptAd = document.createElement("script");
+    scriptAd.type = "text/javascript";
+    scriptAd.src = "//www.highperformanceformat.com/8a5e2af560aca5053ce2806d6b3bd6e7/invoke.js";
 
     if (adRef.current) {
-      adRef.current.appendChild(script);
+      adRef.current.innerHTML = "";
+      adRef.current.appendChild(scriptConfig);
+      adRef.current.appendChild(scriptAd);
     }
 
     return () => {
-      if (adRef.current) {
-        adRef.current.innerHTML = "";
-      }
+      if (adRef.current) adRef.current.innerHTML = "";
     };
   }, []);
 
