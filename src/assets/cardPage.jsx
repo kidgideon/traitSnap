@@ -152,7 +152,7 @@ const Card = () => {
       const shareData = {
         title: "TraitSnap Personality Card",
         text: "Check out my personality card! Make yours at TraitSnap.",
-        url: "https://traitsnap.vercel.app"
+        url: "https://traitsnap.online"
       };
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
