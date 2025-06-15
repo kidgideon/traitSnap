@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const InlineBanner468x60 = () => {
+const inlineBannerOne = () => {
   const adRef = useRef(null);
 
   useEffect(() => {
@@ -47,4 +47,4 @@ const InlineBanner468x60 = () => {
   );
 };
 
-export default InlineBannerOne;
+export default inlineBannerOne;
