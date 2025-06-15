@@ -383,12 +383,11 @@ const Card = () => {
         <div className="context-layout">
           <section className="faq-section">
             <h2>Facts on your traits</h2>
-
- <div className="mascot-are">
+<div className="mascot-are">
               <img src={mascot} alt="" />
             </div>
-<InlineBannerTwo />
-           
+            <BannerAd />
+          
             <div className="faq-list">
               {TRAITS.map((trait, idx) => {
                 const percent = barPercents[idx];
@@ -407,12 +406,6 @@ const Card = () => {
                 );
               })}
             </div>
-
- <div className="mascot-are">
-              <img src={mascot} alt="" />
-            </div>
-            <BannerAd />
-            
           </section>
         </div>
       </div>
