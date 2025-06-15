@@ -168,10 +168,6 @@ const Home = () => {
         </div>
       </section>
 
- <div className="mascot-are fade-section">
-          <img src={mascot} alt="" />
-        </div>
-   <AdBanner/>
 
       {/* FAQ Section */}
       <section className="faq-section fade-section">
