@@ -8,7 +8,7 @@ import facts from "../assets/facts.json";
 import BannerAd from "./Ad";
 import Shield from "../../images/shield.webp";
 import mascot from "../../images/traitsnap_mascot.webp";
-import InlineBannerTwo from "./adtwo";
+import InlineBannerTwo from "./Adtwo";
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
