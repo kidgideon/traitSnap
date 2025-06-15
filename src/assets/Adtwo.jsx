@@ -29,16 +29,22 @@ const InlineBannerTwo = () => {
 
   return (
     <div
-      ref={adRef}
-      style={{
-        width: "95%",
-        height: "50px",
-        overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    />
+  ref={adRef}
+  style={{
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "50px",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff", // or rgba(255,255,255,0.95) if you want some transparency
+    zIndex: 9999, // keep it above all content
+    boxShadow: "0 -2px 6px rgba(0, 0, 0, 0.15)" // optional, adds nice separation
+  }}
+/>
   );
 };
 
