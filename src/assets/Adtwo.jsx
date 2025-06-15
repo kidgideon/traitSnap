@@ -21,22 +21,19 @@ const InlineBannerTwo = () => {
     scriptAd.src = "//www.highperformanceformat.com/8a5e2af560aca5053ce2806d6b3bd6e7/invoke.js";
 
     if (adRef.current) {
-      adRef.current.innerHTML = "";
+      adRef.current.innerHTML = ""; // Clear old ad
       adRef.current.appendChild(scriptConfig);
       adRef.current.appendChild(scriptAd);
     }
-
-    return () => {
-      if (adRef.current) adRef.current.innerHTML = "";
-    };
   }, []);
 
   return (
     <div
       ref={adRef}
       style={{
-        width: 300,
-        height: 50,
+        width: "95%",
+        height: "50px",
+        overflow: "hidden",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
