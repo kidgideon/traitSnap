@@ -7,6 +7,7 @@ import henry from "../../images/henry.webp";
 import helen from "../../images/helen.webp";
 import AdBanner from "./Adbanner";
 import mascot from "../../images/traitsnap_mascot.webp";
+import InlineBannerOne from "./ad1.jsx";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -142,10 +143,11 @@ const Home = () => {
             <h3>Get your trait card</h3>
           </div>
         </div>
-        <div className="mascot-are fade-section">
+
+<div className="mascot-are fade-section">
           <img src={mascot} alt="" />
         </div>
-   <AdBanner/>
+    <InlineBannerOne/>
 
            {/* Testimonials Section */}
       <section className="testimonials-section fade-section">
@@ -166,6 +168,10 @@ const Home = () => {
         </div>
       </section>
 
+ <div className="mascot-are fade-section">
+          <img src={mascot} alt="" />
+        </div>
+   <AdBanner/>
 
       {/* FAQ Section */}
       <section className="faq-section fade-section">
