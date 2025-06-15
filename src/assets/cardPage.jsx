@@ -8,6 +8,7 @@ import facts from "../assets/facts.json";
 import BannerAd from "./Ad";
 import Shield from "../../images/shield.webp";
 import mascot from "../../images/traitsnap_mascot.webp";
+import InlineBannerTwo "./add2.jsx";
 
 const TRAITS = [
   "Confidence", "Humor", "Creativity", "Intelligence", "Kindness",
@@ -386,8 +387,8 @@ const Card = () => {
  <div className="mascot-are">
               <img src={mascot} alt="" />
             </div>
-            <BannerAd />
-
+<InlineBannerTwo/>
+           
             <div className="faq-list">
               {TRAITS.map((trait, idx) => {
                 const percent = barPercents[idx];
@@ -406,6 +407,11 @@ const Card = () => {
                 );
               })}
             </div>
+
+ <div className="mascot-are">
+              <img src={mascot} alt="" />
+            </div>
+            <BannerAd />
             
           </section>
         </div>
