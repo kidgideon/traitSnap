@@ -4,26 +4,32 @@ const InlineBannerOne = () => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    window.atOptions = {
-      key: "a9248628b9376af25c552a2a3ea9aa06",
-      format: "iframe",
-      height: 60,
-      width: 250,
-      params: {},
-    };
+    // Inject ad configuration as an inline script
+    const scriptConfig = document.createElement("script");
+    scriptConfig.type = "text/javascript";
+    scriptConfig.innerHTML = `
+      atOptions = {
+        'key' : 'a9248628b9376af25c552a2a3ea9aa06',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 250,
+        'params' : {}
+      };
+    `;
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src =
-      "//www.highperformanceformat.com/a9248628b9376af25c552a2a3ea9aa06/invoke.js";
-    script.async = true;
-
-    script.onerror = () => {
-      console.warn("InlineBanner468x60 failed to load.");
+    // Inject ad script
+    const scriptAd = document.createElement("script");
+    scriptAd.type = "text/javascript";
+    scriptAd.src = "//www.highperformanceformat.com/a9248628b9376af25c552a2a3ea9aa06/invoke.js";
+    scriptAd.async = true;
+    scriptAd.onerror = () => {
+      console.warn("InlineBannerOne failed to load.");
     };
 
     if (adRef.current) {
-      adRef.current.appendChild(script);
+      adRef.current.innerHTML = ""; // Clear any previous ad
+      adRef.current.appendChild(scriptConfig);
+      adRef.current.appendChild(scriptAd);
     }
 
     return () => {
@@ -33,6 +39,7 @@ const InlineBannerOne = () => {
     };
   }, []);
 
+  // Retain your exact div style as you had it
   return (
     <div
       ref={adRef}
