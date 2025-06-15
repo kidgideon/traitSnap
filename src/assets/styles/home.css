@@ -129,7 +129,7 @@
 
 .pencil-icon {
   background: transparent;
-  color: white;
+  color: black;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -145,8 +145,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: rgb(207, 207, 207);
+  border: 1px solid #444; /* darker border for premium edge */
+  background-color: #1c1c1e; /* premium near-black tone */
+  color: #f1f1f1; /* light text for contrast */
   outline: none;
 }
 
