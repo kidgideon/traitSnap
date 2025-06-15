@@ -8,7 +8,7 @@ const InlineBannerOne = () => {
       key: "a9248628b9376af25c552a2a3ea9aa06",
       format: "iframe",
       height: 60,
-      width: 468,
+      width: 250,
       params: {},
     };
 
@@ -37,7 +37,7 @@ const InlineBannerOne = () => {
     <div
       ref={adRef}
       style={{
-        width: 468,
+        width: 300,
         height: 60,
         display: "flex",
         justifyContent: "center",
