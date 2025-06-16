@@ -66,7 +66,7 @@ const Quizarea = () => {
   const [realTestFlag, setRealTestFlag] = useState(null);
   const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
   const [usedMotivationIndexes, setUsedMotivationIndexes] = useState([0]);
-  const [showAd, setShowAd] = useState(true); // AD CONTROL
+  const [showAd, setShowAd] = useState(true);
 
   // Scores for all traits and sociality types
   const [scores, setScores] = useState(() => {
@@ -79,11 +79,9 @@ const Quizarea = () => {
   const userPhoto = localStorage.getItem("traitsnap-photo");
   const userName = localStorage.getItem("traitsnap-name");
 
-  // Ad Display Logic: Show ad for 3 questions, hide for next 3, etc.
+  // Ad Display Logic: Show for 3, hide for 2, repeat (3 visible, 2 hidden)
   useEffect(() => {
-    // When current changes, recalculate ad visibility
-    // Show ad if in the "show" phase: (current / 3) % 2 === 0
-    setShowAd(Math.floor(current / 3) % 2 === 0);
+    setShowAd([0, 1, 2].includes(current % 5));
   }, [current]);
 
   // Redirect if name or photo is missing
@@ -326,7 +324,7 @@ const Quizarea = () => {
         </div>
       </div>
 
-      {/* Ad appears after every 3 rounds, disappears for next 3 */}
+      {/* Ad appears for 3 questions, disappears for 2, repeat */}
       {showAd && <InlineBannerTwo />}
 
     </div>
