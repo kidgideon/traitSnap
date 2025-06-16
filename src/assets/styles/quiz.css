@@ -7,6 +7,7 @@
     background: linear-gradient(135deg, #5C27FE, #FF2E93);
     height: 100dvh;
     font-family: 'Montserrat', sans-serif;
+    padding-bottom: 50px;
 }
 
 .quiz-page__photo {
