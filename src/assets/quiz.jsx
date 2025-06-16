@@ -66,7 +66,9 @@ const Quizarea = () => {
   const [realTestFlag, setRealTestFlag] = useState(null);
   const [motivationMsg, setMotivationMsg] = useState(MOTIVATION_MSGS[0]);
   const [usedMotivationIndexes, setUsedMotivationIndexes] = useState([0]);
+  const [showAd, setShowAd] = useState(true); // AD CONTROL
 
+  // Scores for all traits and sociality types
   const [scores, setScores] = useState(() => {
     const initial = {};
     TRAITS.forEach((t) => (initial[t] = 0));
@@ -77,18 +79,28 @@ const Quizarea = () => {
   const userPhoto = localStorage.getItem("traitsnap-photo");
   const userName = localStorage.getItem("traitsnap-name");
 
+  // Ad Display Logic: Show ad for 3 questions, hide for next 3, etc.
+  useEffect(() => {
+    // When current changes, recalculate ad visibility
+    // Show ad if in the "show" phase: (current / 3) % 2 === 0
+    setShowAd(Math.floor(current / 3) % 2 === 0);
+  }, [current]);
+
+  // Redirect if name or photo is missing
   useEffect(() => {
     if (!userPhoto || !userName) {
       navigate("/");
     }
   }, [userPhoto, userName, navigate]);
 
+  // Prepare initial 23 questions on mount
   useEffect(() => {
     const usedIds = new Set();
     let tempQuestions = [];
 
     const categories = quizes.categories || [];
 
+    // 2 random questions per trait (20)
     TRAITS.forEach((trait) => {
       const cat = categories.find((c) => c.name === trait);
       if (!cat) return;
@@ -101,6 +113,7 @@ const Quizarea = () => {
       });
     });
 
+    // 3 random Sociality questions
     const socialityCat = categories.find((c) => c.name === "Sociality");
     if (socialityCat) {
       const picked = shuffle(socialityCat.questions)
@@ -112,13 +125,16 @@ const Quizarea = () => {
       });
     }
 
+    // Shuffle all questions for quiz order
     const shuffled = shuffle(tempQuestions);
     setQuestions(shuffled);
     setUsedQuestionIds(new Set(shuffled.map(q => q.id)));
   }, []);
 
+  // Option select handler
   const handleOptionSelect = (optionKey) => setSelectedOption(optionKey);
 
+  // Next/Finish handler
   const handleNext = () => {
     if (selectedOption === null) return;
     const currentQ = (extraMode ? extraQuestions : questions)[current];
@@ -142,9 +158,12 @@ const Quizarea = () => {
 
     setSelectedOption(null);
 
+    // Motivational modal after every 10 questions (except last)
     const totalQ = extraMode ? extraQuestions.length : questions.length;
     if (!extraMode && (current + 1) % 10 === 0 && current + 1 < totalQ) {
+      // Pick a message not used yet
       let availableIndexes = MOTIVATION_MSGS.map((_, i) => i).filter(i => !usedMotivationIndexes.includes(i));
+      // If all used, reset except for the last one shown
       if (availableIndexes.length === 0) {
         availableIndexes = MOTIVATION_MSGS.map((_, i) => i).filter(i => i !== usedMotivationIndexes[usedMotivationIndexes.length - 1]);
         setUsedMotivationIndexes([]);
@@ -156,11 +175,13 @@ const Quizarea = () => {
       return;
     }
 
+    // After 23rd question, show final modal
     if (!extraMode && current === 22) {
       setShowFinalModal(true);
       return;
     }
 
+    // After 10th extra question, finish
     if (extraMode && current === 9) {
       localStorage.setItem("realtest", "true");
       saveScoresAndGo();
@@ -170,12 +191,15 @@ const Quizarea = () => {
     setCurrent((c) => c + 1);
   };
 
+  // Continue after motivational modal
   const handleMotivationOk = () => {
     setShowMotivation(false);
     setCurrent((c) => c + 1);
   };
 
+  // Handle "Take More Questions"
   const handleTakeMore = () => {
+    // Pick 1 unused question per trait
     const categories = quizes.categories || [];
     let extras = [];
     const usedIds = new Set([...usedQuestionIds]);
@@ -197,11 +221,13 @@ const Quizarea = () => {
     setRealTestFlag(true);
   };
 
+  // Handle "Skip"
   const handleSkip = () => {
     localStorage.setItem("realtest", "false");
     saveScoresAndGo();
   };
 
+  // Save scores and go to trait card
   const saveScoresAndGo = () => {
     localStorage.setItem(
       "traitsnap-scores",
@@ -219,6 +245,7 @@ const Quizarea = () => {
     navigate("/trait-card");
   };
 
+  // If loading
   const currentQ = extraMode ? extraQuestions[current] : questions[current];
   if (!currentQ) return <div>Loading questions...</div>;
 
@@ -226,6 +253,7 @@ const Quizarea = () => {
   if (currentQ.optionC) optionKeys.push("C");
   if (currentQ.optionD) optionKeys.push("D");
 
+  // Modal animation classes
   const modalClass = (show) => show ? "quiz-modal quiz-modal--show" : "quiz-modal";
 
   return (
@@ -235,7 +263,11 @@ const Quizarea = () => {
       </div>
       {userPhoto && (
         <div className="quiz-page__photo">
-          <img src={userPhoto} alt="User" className="quiz-page__photo-img" />
+          <img
+            src={userPhoto}
+            alt="User"
+            className="quiz-page__photo-img"
+          />
         </div>
       )}
 
@@ -268,6 +300,7 @@ const Quizarea = () => {
         </button>
       </div>
 
+      {/* Motivational Modal */}
       <div className={modalClass(showMotivation)}>
         <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
         <div className="quiz-modal__content">
@@ -277,6 +310,7 @@ const Quizarea = () => {
         </div>
       </div>
 
+      {/* Final Modal */}
       <div className={modalClass(showFinalModal)}>
         <img src={mascot} alt="Traity" className="quiz-modal__mascot" />
         <div className="quiz-modal__content">
@@ -285,15 +319,16 @@ const Quizarea = () => {
             You can view your result now.<br />
             <b>But for best accuracy, take 10 more questions</b>
           </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginTop: 16, width: "100%" }}>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginTop: 16 , width: "100%"}}>
             <button className="quiz-modal__btn" onClick={handleTakeMore}>Continue</button>
             <button className="quiz-modal__btn quiz-modal__btn--skip" onClick={handleSkip}>Finish</button>
           </div>
         </div>
       </div>
 
-      {/* ✅ SHOW AD AFTER EVERY 3 QUESTIONS */}
-      {current > 0 && current % 3 === 0 && <InlineBannerTwo />}
+      {/* Ad appears after every 3 rounds, disappears for next 3 */}
+      {showAd && <InlineBannerTwo />}
+
     </div>
   );
 };
