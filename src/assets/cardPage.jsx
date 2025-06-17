@@ -85,9 +85,13 @@ const Card = () => {
     }
   }, [scores, realTest]);
 
+  // ✅ FIXED: Correct event listener with cleanup
   useEffect(() => {
-    const handleStorage = () => setRealTest(localStorage.getItem("realtest") === "true");
-    window.addEventListener("storage", handle("storage", handleStorage);
+    const handleStorage = () => {
+      setRealTest(localStorage.getItem("realtest") === "true");
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   if (loading || !scores)
@@ -122,7 +126,6 @@ const Card = () => {
     }));
   }
 
-  // ----------- UPDATED SHARE HANDLER -----------
   async function handleShare() {
     setSharing(true);
     setProgress(0);
@@ -133,7 +136,6 @@ const Card = () => {
       const width = cardRef.current.offsetWidth;
       const height = cardRef.current.offsetHeight;
 
-      // Create image blob of the card
       const blob = await htmlToImage.toBlob(cardRef.current, {
         quality: 1,
         backgroundColor: null,
@@ -150,37 +152,32 @@ const Card = () => {
       });
 
       if (!blob) throw new Error("Could not generate image.");
-
       const file = new File([blob], "personality_card.png", { type: "image/png" });
+
       const shareData = {
         title: "TraitSnap Personality Card",
         text: "Check out my personality card! Make yours at TraitSnap.",
         url: "https://traitsnap.online"
       };
 
-      // Full share (with file) if supported (e.g. Chrome, Edge, Safari)
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ ...shareData, files: [file] });
       } else if (navigator.share) {
-        // Only text/url share (no file) -- not available in Firefox desktop
         await navigator.share(shareData);
         alert("Your browser does not support sharing files. Only the link was shared.");
       } else if (navigator.clipboard && window.isSecureContext) {
-        // Fallback: copy just the URL
         await navigator.clipboard.writeText(shareData.url);
-        alert("Sharing is not supported in this browser. Link copied: " + shareData.url);
+        alert("Link copied to clipboard.");
       } else {
-        // Very old browsers fallback
-        window.prompt("Sharing is not supported. Please copy this link:", shareData.url);
+        window.prompt("Please copy this link:", shareData.url);
       }
     } catch (err) {
-      alert("Sharing failed. Please try again or copy the link manually.\n" + (err.message || err));
+      alert("Sharing failed.\n" + (err.message || err));
     }
     setSharing(false);
     setProgress(100);
   }
 
-  // ----------- UPDATED DOWNLOAD HANDLER -----------
   async function handleDownload() {
     setDownloading(true);
     setDownloadProgress(10);
@@ -211,8 +208,6 @@ const Card = () => {
       if (!blob) throw new Error("Could not generate image.");
 
       setDownloadProgress(80);
-
-      // Download trigger
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -226,7 +221,7 @@ const Card = () => {
       setDownloadProgress(100);
     } catch (err) {
       setDownloadProgress(0);
-      alert("Download failed. Please try again.\n" + (err.message || err));
+      alert("Download failed.\n" + (err.message || err));
     }
     setTimeout(() => {
       setDownloading(false);
@@ -253,12 +248,10 @@ const Card = () => {
       <div className="personality-card-center">
         <div className="personality-card-fancy-wrapper">
           <div className="personality-card-container" ref={cardRef}>
-            {/* ...Card display code remains unchanged... */}
-            {/* Keep your card display JSX here */}
+            {/* KEEP YOUR CARD CONTENT HERE */}
           </div>
         </div>
 
-        {/* Download Button */}
         <button
           className="personality-card-download-btn"
           style={{ marginLeft: 12, position: "relative", overflow: "hidden", minWidth: 180 }}
@@ -285,7 +278,6 @@ const Card = () => {
           )}
         </button>
 
-        {/* Share Button */}
         <button
           className="personality-card-download-btn"
           style={{ marginLeft: 12, position: "relative", overflow: "hidden" }}
@@ -293,9 +285,7 @@ const Card = () => {
           disabled={sharing}
         >
           {sharing ? (
-            <span style={{ position: "relative", zIndex: 2 }}>
-              Sharing...
-            </span>
+            <span style={{ position: "relative", zIndex: 2 }}>Sharing...</span>
           ) : (
             "Share"
           )}
@@ -308,7 +298,6 @@ const Card = () => {
               <img src={mascot} alt="" />
             </div>
             <BannerAd />
-
             <div className="faq-list">
               {TRAITS.map((trait, idx) => {
                 const percent = barPercents[idx];
