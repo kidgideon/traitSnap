@@ -38,18 +38,51 @@ const Home = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleNext = () => {
-    if (!name || !photo) {
-      alert("Please upload a photo and enter your name.");
-      return;
-    }
-    localStorage.removeItem("traitsnap-name");
-    localStorage.removeItem("traitsnap-photo");
-    localStorage.removeItem("traitsnap-scores");
-    localStorage.setItem("traitsnap-name", name);
-    localStorage.setItem("traitsnap-photo", photo);
-    navigate("/trait-test");
-  };
+  const handleNext = async () => {
+  if (!name || !photo) {
+    alert("Please upload a photo and enter your name.");
+    return;
+  }
+
+  // Save to localStorage
+  localStorage.removeItem("traitsnap-name");
+  localStorage.removeItem("traitsnap-photo");
+  localStorage.removeItem("traitsnap-scores");
+  localStorage.setItem("traitsnap-name", name);
+  localStorage.setItem("traitsnap-photo", photo);
+
+  // Push log message to JSONBin
+  try {
+    const binURL = "https://api.jsonbin.io/v3/b/68532c3a8561e97a5026cd4e";
+    const masterKey = "$2a$10$MQaUJ2ZhgWoozb4WR7vzvOtoj/UYQwI87n5IXkxqxHkRLoCnbgvGu";
+
+    const res = await fetch(binURL, {
+      headers: { "X-Master-Key": masterKey }
+    });
+
+    const binData = await res.json();
+    const json = binData.record;
+    if (!Array.isArray(json.entries)) json.entries = [];
+
+    const timestamp = new Date().toISOString();
+    const message = `${name} started taking the test at ${timestamp}`;
+
+    json.entries.push({ message });
+
+    await fetch(binURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": masterKey
+      },
+      body: JSON.stringify(json)
+    });
+  } catch (err) {
+    console.error("Failed to sync with JSONBin:", err);
+  }
+
+  navigate("/trait-test");
+};
 
   return (
     <div className="homePage">
