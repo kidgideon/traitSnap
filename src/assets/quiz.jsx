@@ -325,8 +325,7 @@ const Quizarea = () => {
       </div>
 
       {/* Ad appears for 3 questions, disappears for 2, repeat */}
-      {showAd && <InlineBannerTwo />}
-
+      {/* {showAd && <InlineBannerTwo />} */}
     </div>
   );
 };
