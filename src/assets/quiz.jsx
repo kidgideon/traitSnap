@@ -226,22 +226,53 @@ const Quizarea = () => {
   };
 
   // Save scores and go to trait card
-  const saveScoresAndGo = () => {
-    localStorage.setItem(
-      "traitsnap-scores",
-      JSON.stringify({
-        traits: TRAITS.reduce(
-          (acc, t) => ({ ...acc, [t]: scores[t] || 0 }),
-          {}
-        ),
-        sociality: SOCIALITY_TYPES.reduce(
-          (acc, s) => ({ ...acc, [s]: scores[s] || 0 }),
-          {}
-        ),
-      })
-    );
-    navigate("/trait-card");
-  };
+  const saveScoresAndGo = async () => {
+  localStorage.setItem(
+    "traitsnap-scores",
+    JSON.stringify({
+      traits: TRAITS.reduce(
+        (acc, t) => ({ ...acc, [t]: scores[t] || 0 }),
+        {}
+      ),
+      sociality: SOCIALITY_TYPES.reduce(
+        (acc, s) => ({ ...acc, [s]: scores[s] || 0 }),
+        {}
+      ),
+    })
+  );
+
+  // Log completion to JSONBin
+  try {
+    const binURL = "https://api.jsonbin.io/v3/b/68532c3a8561e97a5026cd4e";
+    const masterKey = "$2a$10$MQaUJ2ZhgWoozb4WR7vzvOtoj/UYQwI87n5IXkxqxHkRLoCnbgvGu";
+
+    const res = await fetch(binURL, {
+      headers: { "X-Master-Key": masterKey }
+    });
+
+    const binData = await res.json();
+    const json = binData.record;
+    if (!Array.isArray(json.entries)) json.entries = [];
+
+    const timestamp = new Date().toISOString();
+    const message = `${userName} finished the test and saw their card at ${timestamp}`;
+
+    json.entries.push({ message });
+
+    await fetch(binURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": masterKey
+      },
+      body: JSON.stringify(json)
+    });
+  } catch (err) {
+    console.error("Failed to log completion:", err);
+  }
+
+  navigate("/trait-card");
+};
 
   // If loading
   const currentQ = extraMode ? extraQuestions[current] : questions[current];
