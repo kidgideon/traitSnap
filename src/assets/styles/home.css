@@ -163,9 +163,9 @@
 
 .spinner {
   display: inline-block;
-  width: 18px;
-  height: 18px;
-  border: 2.5px solid #339cff;
+  width: 10px;
+  height: 10px;
+  border: 2.5px solid black;
   border-radius: 50%;
   border-top-color: transparent;
   margin-right: 8px;
