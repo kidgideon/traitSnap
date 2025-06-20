@@ -283,7 +283,7 @@ setLoading(false)
 >
   {loading ? (
     <>
-      <span className="spinner" aria-label="Loading"></span>
+      <div className="spinner" aria-label="Loading"></div>
       Loading...
     </>
   ) : "Next"}
