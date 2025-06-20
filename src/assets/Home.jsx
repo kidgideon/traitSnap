@@ -13,6 +13,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState(null);
+const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // Fade-in on scroll logic
@@ -43,8 +44,9 @@ const Home = () => {
     alert("Please upload a photo and enter your name.");
     return;
   }
-
+      
   // Save to localStorage
+setLoading(true)
   localStorage.removeItem("traitsnap-name");
   localStorage.removeItem("traitsnap-photo");
   localStorage.removeItem("traitsnap-scores");
@@ -82,6 +84,7 @@ const Home = () => {
   }
 
   navigate("/trait-test");
+setLoading(false) 
 };
 
   return (
@@ -273,7 +276,18 @@ const Home = () => {
               onChange={(e) => setName(e.target.value)}
               className="name-input"
             />
-            <button onClick={handleNext} className="next-btn">Next</button>
+            <button
+  onClick={handleNext}
+  className="next-btn"
+  disabled={loading}
+>
+  {loading ? (
+    <>
+      <span className="spinner" aria-label="Loading"></span>
+      Loading...
+    </>
+  ) : "Next"}
+</button>
           </div>
         </div>
       )}
