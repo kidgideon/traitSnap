@@ -161,6 +161,21 @@
   font-weight: bold;
 }
 
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #339cff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
 .image-view-section {
   width: 100%;
   display: flex;
