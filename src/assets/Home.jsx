@@ -283,8 +283,7 @@ setLoading(false)
 >
   {loading ? (
     <>
-      <div className="spinner" aria-label="Loading"></div>
-      Loading...
+      Hold on☺️.. 
     </>
   ) : "Next"}
 </button>
